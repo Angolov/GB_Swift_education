@@ -1,22 +1,192 @@
 // Блок 21
 // Задание 1
+//MARK: - InterviewProtocol declaration
+protocol InterviewProtocol {
+    
+    var surname: String { get set }
+    func successOfinterview()
+    func failureOfInterview()
+}
 
-/*
- 1) Создайте протокол Собеседование. У него есть свойство: фамилия. И методы: successOfinterview и failureOfInterview.
- 2) Создайте класс Программист. У него задайте свойства: skill типа String и inSearchOfJob типа Bool. Сделайте их опциональными. Программисту подключите протокол Собеседование.
- 3) Добавьте 2 массива, в которые будете добавлять программистов. Вроде okArray и failArray.
- 4) В методе successOfinterview сделайте проверку свойства inSearchOfJob. Если true — выводите сообщение «Подходит» и добавляйте имя в массив + сортируйте его по алфавиту.
- 5) В методе failureOfInterview просто выводите сообщение: «Не подходит».
- 6) Добавьте наблюдателя, который будет отслеживать как добавляются подходящие программисты.
- 7) Добавьте протокол Техническое собеседование (наследник Собеседования). Добавьте ему свойство isSuitable типа Bool и методы: successTechnicalOfinterview и failureTechnicalOfInterview.
- 8) successTechnicalOfinterview проверяет inSearchOfJob и skill: если inSearchOfJob == true, а skill == «ios», то добавляет этого программиста в массив okArray. И выводит сообщение об успешно пройденном собеседовании. «Вы нам подходите. Ждите оффер».
- 9) failureTechnicalOfInterview просто выводит сообщение «Нам жаль, но программист(имя) не прошёл собеседование».
- 10) Создайте класс Тестировщик. Подключите ему протоколы Собеседование, Техническое собеседование. Также добавьте свойство exp(опыт) типа Int и имя типа String.
- 11) Сделайте простую проверку: если опыт больше 3 лет — вызвать метод successOfinterview, который распечатает в консоль: «Тестировщик Егор допущен к техническому собеседованию». А если меньше 3 лет - в методе failureOfInterview просто выводите сообщение: «Егор не подходит».
- 12) Добавьте тестировщику свойство skills и 2 массива, по аналогии с Программистом. Метод successTechnicalOfinterview проверяет skills: если skill == «QA», то добавляет этого тестировщика в массив okArray. И выводит сообщение об успешно пройденном собеседовании. «Вы нам подходите. Ждите оффер».
- 13) failureTechnicalOfInterview просто выводит сообщение «Нам жаль, но тестировщик (имя) не прошёл собеседование».
- 14) Создайте 10-15 тестировщиков и программистов.
- 15) Создайте отдельный тип База Резюме. В нём объедините всех программистов и тестировщиков в общую коллекцию.
- 16) В массив failArray добавьте тех, кто не прошёл собеседование. Распределите их по отдельным массивам и найдите в каждом самое длинное имя.
- Выведите его в консоль.
- */
+// Задание 2-5
+//MARK: - Developer class declaration
+class Developer: InterviewProtocol {
+    
+    //MARK: - Internal properties
+    var name: String
+    var surname: String
+    var exp: Int
+    var skill: String?
+    var inSearchOfJob: Bool?
+    var isSuitable: Bool
+    
+    //MARK: - Type properties
+    static var okArray: [String] = []
+    static var failArray: [String] = []
+    
+    //MARK: - Initializer
+    init(name: String,
+         surname: String,
+         exp: Int,
+         skill: String? = nil,
+         inSearchOfJob: Bool? = nil,
+         isSuitable: Bool) {
+        
+        self.name = name
+        self.surname = surname
+        self.exp = exp
+        self.skill = skill
+        self.inSearchOfJob = inSearchOfJob
+        self.isSuitable = isSuitable
+    }
+    
+    //MARK: - Public methods
+    func successOfinterview() {
+        guard let inSearchOfJob = inSearchOfJob else { return }
+        
+        if inSearchOfJob {
+            print("Passed")
+            Developer.okArray.append(surname)
+            Developer.okArray.sort() { $0 < $1 }
+        }
+    }
+    
+    func failureOfInterview() {
+        print("Failed")
+    }
+}
+
+// Задание 7
+//MARK: - TechnicalInterviewProtocol declartion
+protocol TechnicalInterviewProtocol: InterviewProtocol {
+    
+    var isSuitable: Bool { get set }
+    func successTechnicalOfinterview()
+    func failureTechnicalOfInterview()
+}
+
+// Задание 8-13
+//MARK: - Tester class declaration
+class Tester: InterviewProtocol {
+    
+    //MARK: - Internal properties
+    var name: String
+    var surname: String
+    var exp: Int
+    var skill: String?
+    var inSearchOfJob: Bool?
+    var isSuitable: Bool
+    
+    //MARK: - Type properties
+    static var okArray: [String] = []
+    static var failArray: [String] = []
+    
+    //MARK: - Initializer
+    init(name: String,
+         surname: String,
+         exp: Int,
+         skill: String? = nil,
+         inSearchOfJob: Bool? = nil,
+         isSuitable: Bool) {
+        
+        self.name = name
+        self.surname = surname
+        self.exp = exp
+        self.skill = skill
+        self.inSearchOfJob = inSearchOfJob
+        self.isSuitable = isSuitable
+    }
+    
+    //MARK: - Public methods
+    func successOfinterview() {
+        guard let inSearchOfJob = inSearchOfJob else { return }
+        
+        if inSearchOfJob {
+            print("Passed")
+            Tester.okArray.append(surname)
+            Tester.okArray.sort() { $0 < $1 }
+        }
+    }
+    
+    func failureOfInterview() {
+        print("Failed")
+    }
+}
+
+//MARK: - Developer class extension for TechnicalInterviewProtocol
+extension Developer: TechnicalInterviewProtocol {
+    func successTechnicalOfinterview() {
+        guard let inSearchOfJob = inSearchOfJob else { return }
+        
+        if inSearchOfJob, skill == "ios" {
+            print("You have passed, wait for the offer.")
+            Developer.okArray.append(name)
+            Developer.okArray.sort() { $0 < $1 }
+        }
+    }
+    
+    func failureTechnicalOfInterview() {
+        print("We're sorry but the developer \(name) failed")
+    }
+}
+
+//MARK: - Tester class extension for TechnicalInterviewProtocol
+extension Tester: TechnicalInterviewProtocol {
+    func successTechnicalOfinterview() {
+        guard let inSearchOfJob = inSearchOfJob else { return }
+        
+        if inSearchOfJob, skill == "QA" {
+            print("You have passed, wait for the offer.")
+            Tester.okArray.append(name)
+            Tester.okArray.sort() { $0 < $1 }
+        }
+    }
+    
+    func failureTechnicalOfInterview() {
+        print("We're sorry but the tester \(name) failed")
+    }
+}
+
+// Задание 14-16
+//MARK: - CVBase struct declaration
+struct CVBase {
+    
+    //MARK: - Public property
+    var base: [Any] = []
+}
+
+let dev1 = Developer(name: "Ivan", surname: "Black", exp: 10, skill: "ios", inSearchOfJob: true, isSuitable: false)
+let dev2 = Developer(name: "Alex", surname: "Black", exp: 10, skill: "andoid", inSearchOfJob: false, isSuitable: false)
+let dev3 = Developer(name: "Joell", surname: "Black", exp: 10, skill: "", inSearchOfJob: true, isSuitable: false)
+let dev4 = Developer(name: "Marcus", surname: "Black", exp: 10, skill: "c++", inSearchOfJob: true, isSuitable: false)
+let dev5 = Developer(name: "Ken", surname: "Black", exp: 10, skill: "python", inSearchOfJob: false, isSuitable: false)
+let dev6 = Developer(name: "Joe", surname: "Black", exp: 10, skill: "", inSearchOfJob: false, isSuitable: false)
+let dev7 = Developer(name: "Maximus", surname: "Black", exp: 10, skill: "ios", inSearchOfJob: true, isSuitable: false)
+
+
+let tester1 = Tester(name: "Ivan", surname: "Black", exp: 10, skill: "QA", inSearchOfJob: true, isSuitable: false)
+let tester2 = Tester(name: "Alex", surname: "Black", exp: 10, skill: "", inSearchOfJob: true, isSuitable: false)
+let tester3 = Tester(name: "Maximus", surname: "Black", exp: 10, skill: "QA", inSearchOfJob: false, isSuitable: false)
+let tester4 = Tester(name: "Marcus", surname: "Black", exp: 10, skill: "", inSearchOfJob: true, isSuitable: false)
+let tester5 = Tester(name: "Joe", surname: "Black", exp: 10, skill: "", inSearchOfJob: true, isSuitable: false)
+let tester6 = Tester(name: "Ken", surname: "Black", exp: 10, skill: "", inSearchOfJob: true, isSuitable: false)
+let tester7 = Tester(name: "Joell", surname: "Black", exp: 10, skill: "", inSearchOfJob: true, isSuitable: false)
+ 
+var cvBase = CVBase()
+
+cvBase.base.append(dev1)
+cvBase.base.append(dev2)
+cvBase.base.append(dev3)
+cvBase.base.append(dev4)
+cvBase.base.append(dev5)
+cvBase.base.append(dev6)
+cvBase.base.append(dev7)
+cvBase.base.append(tester1)
+cvBase.base.append(tester2)
+cvBase.base.append(tester3)
+cvBase.base.append(tester4)
+cvBase.base.append(tester5)
+cvBase.base.append(tester6)
+cvBase.base.append(tester7)
+
+cvBase
