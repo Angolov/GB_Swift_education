@@ -85,7 +85,7 @@ extension Queue where Element: Comparable {
         
     }
     
-    mutating func calculate(with closure: (Element, Element) -> Element) -> Element? {
+    func calculate(with closure: (Element, Element) -> Element) -> Element? {
         
         guard elements.count > 0 else { return nil }
         guard elements.count > 1 else { return elements[0] }

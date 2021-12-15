@@ -8,7 +8,6 @@
 //MARK: - AccountActionsProtocol declaration
 protocol AccountActionsProtocol {
     
-    func returnMoneyAmount() -> String
     func reduceAmountOfMoneyOn(_ amount: UInt) throws
     func increaseAmountOfMoneyOn(_ amount: UInt) throws
     func makeTransaction(_ transaction: BankTransaction) throws
@@ -24,15 +23,12 @@ final class BankAccount {
     
     //MARK: - Computed properties
     var getPin: UInt16 {
-        
         return pinCode
     }
     
-    var getAmount: UInt {
-        
+    var getMoneyAmount: UInt {
         return moneyAmount
     }
-    
     
     //MARK: - Initializer
     init(userFullName: String, moneyAmount: UInt = 0) {
@@ -42,42 +38,33 @@ final class BankAccount {
         pinCode = UInt16.random(in: 1000...9999)
     }
     
+    //MARK: - Deinitializer
     deinit {
-        
         print("Bank account of \(userFullName) is closed.")
     }
     
-    //MARK: - Public methods
+    //MARK: - Public method
     func changePinCode() {
-        
         pinCode = UInt16.random(in: 1000...9999)
     }
-    
 }
 
 //MARK: - Extension for AccountActionsProtocol
 extension BankAccount: AccountActionsProtocol {
     
-    func returnMoneyAmount() -> String {
-        
-        return "\(moneyAmount)"
-    }
-    
+    //MARK: - Public methods
     func reduceAmountOfMoneyOn(_ amount: UInt) throws {
-        
         guard amount <= moneyAmount else { throw BankAccountError.insufficientFunds }
         guard amount > 0 else { throw BankAccountError.zeroTransactionAmount }
         moneyAmount -= amount
     }
     
     func increaseAmountOfMoneyOn(_ amount: UInt) throws {
-        
         guard amount > 0 else { throw BankAccountError.zeroTransactionAmount }
         moneyAmount += amount
     }
     
     func makeTransaction(_ transaction: BankTransaction) throws {
-        
         guard transaction.amount <= moneyAmount else { throw BankAccountError.insufficientFunds }
         guard transaction.amount > 0 else { throw BankAccountError.zeroTransactionAmount }
         moneyAmount -= transaction.amount

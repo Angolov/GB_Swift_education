@@ -16,19 +16,18 @@ protocol AtmOperationsProtocol {
 //MARK: - ATM structure declaration
 struct ATM {
     
-    //MARK: - Enums
+    //MARK: - Enum
     enum atmState {
         case on
         case off
         case error
     }
     
-    //MARK: - Private properties
+    //MARK: - Private property
     private var currentState: atmState
     
     //MARK: - Initializer
     init() {
-        
         currentState = .on
     }
 }
@@ -36,9 +35,38 @@ struct ATM {
 //MARK: - Extension for AtmOperationsProtocol
 extension ATM: AtmOperationsProtocol {
     
+    //MARK: - Private method
+    private func errorsHandling(_ error: Error) {
+        
+        switch error {
+            
+        case UserError.accountNotExist:
+            print("Bank account doesn't exist.")
+            
+        case UserError.accountAlreadyOpened:
+            print("Bank account already exists.")
+            
+        case BankAccountError.incorrectPinCode:
+            print("Incorrect PIN code.")
+            
+        case BankAccountError.insufficientFunds:
+            print("We're sorry, but your transaction can't be executed.")
+            print("Insufficient funds.")
+            
+        case BankAccountError.zeroTransactionAmount:
+            print("We're sorry, but your transaction can't be executed.")
+            print("You have not input the transaction amount.")
+            
+        case AtmError.atmIsNotWorking:
+            print("ATM is not working.")
+            
+        default:
+            print(error)
+        }
+    }
+    
     //MARK: - Public methods
     mutating func changeAtmStateFor(_ state: atmState) {
-        
         currentState = state
     }
     
@@ -54,45 +82,27 @@ extension ATM: AtmOperationsProtocol {
             print("Congratulations \(user.getFullName)!\nYou have opened an account in our Orange Bank!")
             return newAccount
             
-        } catch UserError.accountAlreadyOpened {
-            print("Bank account already exists.")
-            return user.bankAccount
-            
-        } catch AtmError.atmIsNotWorking {
-            print("ATM is not working.")
-          
         } catch let error {
-            print(error)
+            errorsHandling(error)
+            return user.bankAccount
         }
-        
-        return nil
-        
     }
     
     func closeBankAccountOf(_ user: User) {
         
         do {
             guard self.currentState == .on else { throw AtmError.atmIsNotWorking }
-            guard let amount = user.bankAccount?.getAmount else { throw UserError.accountNotExist }
+            guard let amount = user.bankAccount?.getMoneyAmount else { throw UserError.accountNotExist }
             guard user.pinCode == user.bankAccount?.getPin else { throw BankAccountError.incorrectPinCode }
             
-            print("We're sorry that you've deceided to close your account.\nWe will miss you.")
+            print("We're sorry that you've decided to close your account.\nWe will miss you.")
             if amount > 0 {
                 makeTransaction(BankTransaction(amount: amount, type: .cashWithdrawal), for: user)
             }
             user.bankAccount = nil
             
-        } catch UserError.accountNotExist {
-            print("Bank account for \(user.getFullName) doesn't exist.")
-            
-        } catch BankAccountError.incorrectPinCode {
-            print("Incorrect PIN code.")
-            
-        } catch AtmError.atmIsNotWorking {
-            print("ATM is not working.")
-          
         } catch let error {
-            print(error)
+            errorsHandling(error)
         }
     }
     
@@ -114,7 +124,7 @@ extension ATM: AtmOperationsProtocol {
                 print("Thank you!\nYou have succesfully put \(transaction.amount) on your bank account.")
                 
             case .checkAccount:
-                print("Your account balance is \(account.returnMoneyAmount()).")
+                print("Your account balance is \(account.getMoneyAmount).")
                 
             case .moneyTransfer, .payment:
                 print("Your \(transaction.type) transaction for \(transaction.amount) is about to be executed.")
@@ -122,23 +132,8 @@ extension ATM: AtmOperationsProtocol {
                 print("Your transaction is done.\nHave a nice day!")
             }
             
-        } catch UserError.accountNotExist {
-            print("Bank account for \(user.getFullName) doesn't exist.")
-            
-        } catch BankAccountError.incorrectPinCode {
-            print("Incorrect PIN code.")
-            
-        } catch BankAccountError.insufficientFunds {
-            print("We're sorry, but your transaction can't be executed.\nInsufficient funds.")
-            
-        } catch BankAccountError.zeroTransactionAmount {
-            print("We're sorry, but your transaction can't be executed.\nYou have not input the transaction amount.")
-          
-        } catch AtmError.atmIsNotWorking {
-            print("ATM is not working.")
-          
         } catch let error {
-            print(error)
+            errorsHandling(error)
         }
     }
 }

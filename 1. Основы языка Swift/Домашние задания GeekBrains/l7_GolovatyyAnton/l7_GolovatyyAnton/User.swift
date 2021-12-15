@@ -5,10 +5,6 @@
 //  Created by Антон Головатый on 08.12.2021.
 //
 
-//MARK: - Global fileprivate constants
-fileprivate let names = ["Alex", "Leo", "Zoe", "Barry", "John", "Frank", "Marry", "Nicole", "Kate", "Jane", "Violet"]
-fileprivate let surnames = ["Black", "Simone", "Smit", "Jones", "Simons", "Toffin", "Turner", "Willis"]
-
 //MARK: - UserProtocol declaration
 private protocol UserProtocol {
     
@@ -34,13 +30,12 @@ final class User: UserProtocol {
     fileprivate let surname: String
     fileprivate var age: UInt
     
-    //MARK: - Internal property
+    //MARK: - Internal properties
     var bankAccount: BankAccount?
     var pinCode: UInt16?
     
-    //MARK: - Computed properties
+    //MARK: - Computed property
     var getFullName: String {
-        
         return name + " " + surname
     }
     
@@ -54,12 +49,15 @@ final class User: UserProtocol {
         pinCode = nil
     }
     
-    init() {
+    convenience init() {
         
-        name = names.randomElement() ?? "Max"
-        surname = surnames.randomElement() ?? "York"
-        age = UInt.random(in: 18...50)
-        bankAccount = nil
+        let names = ["Alex", "Leo", "Zoe", "Barry", "John", "Frank", "Marry", "Nicole", "Kate", "Jane", "Violet"]
+        let surnames = ["Black", "Simone", "Smit", "Jones", "Simons", "Toffin", "Turner", "Willis"]
+        
+        self.init(name: names.randomElement() ?? "Max",
+                  surname: surnames.randomElement() ?? "York",
+                  age: UInt.random(in: 18...50),
+                  bankAccount: nil)
     }
 }
 
@@ -77,17 +75,14 @@ extension User: UserActionsProtocol {
     }
     
     func openBankAccountOn(_ atm: ATM) {
-        
         bankAccount = atm.openBankAccountFor(self)
     }
     
     func closeBankAccountOn(_ atm: ATM) {
-        
         atm.closeBankAccountOf(self)
     }
     
     func makeTransaction(_ transaction: BankTransaction, on atm: ATM) {
-        
         atm.makeTransaction(transaction, for: self)
     }
     

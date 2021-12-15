@@ -11,10 +11,12 @@ enum UserError: Error {
     case accountNotExist
 }
 
+//MARK: - AtmError enum declaration
 enum AtmError: Error {
     case atmIsNotWorking
 }
 
+//MARK: - BankAccountError enum declaration
 enum BankAccountError: Error {
     case incorrectPinCode
     case insufficientFunds

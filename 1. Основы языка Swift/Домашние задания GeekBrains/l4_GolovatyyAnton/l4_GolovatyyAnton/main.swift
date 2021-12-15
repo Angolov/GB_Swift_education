@@ -7,8 +7,6 @@
 
 let someSportsCar = SportCar(model: "Lada", year: 1999, trunkVolume: 100, maximumSpeed: 175, gearType: .MT)
 
-
-
 someSportsCar.turnEngine(.on)
 someSportsCar.makeWindows(.opened)
 someSportsCar.changeTrunkStatus(.load(with: 20))
