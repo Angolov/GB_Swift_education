@@ -7,23 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B426C0E2770C18900E99E4C /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B426C0D2770C18900E99E4C /* menuViewController.swift */; };
+		5B426C102770C1EF00E99E4C /* ColorGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B426C0F2770C1EF00E99E4C /* ColorGameViewController.swift */; };
+		5B426C1A2770D50C00E99E4C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B426C192770D50C00E99E4C /* Color.swift */; };
+		5B426C1C2770E71E00E99E4C /* SecretValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B426C1B2770E71A00E99E4C /* SecretValue.swift */; };
+		5B426C1E2770F98300E99E4C /* GameFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B426C1D2770F98000E99E4C /* GameFactory.swift */; };
 		5BB365EA2769C5CD005688FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB365E92769C5CD005688FE /* AppDelegate.swift */; };
 		5BB365EC2769C5CD005688FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB365EB2769C5CD005688FE /* SceneDelegate.swift */; };
-		5BB365EE2769C5CD005688FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB365ED2769C5CD005688FE /* ViewController.swift */; };
+		5BB365EE2769C5CD005688FE /* NumbersGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB365ED2769C5CD005688FE /* NumbersGameViewController.swift */; };
 		5BB365F12769C5CD005688FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB365EF2769C5CD005688FE /* Main.storyboard */; };
 		5BB365F32769C5CF005688FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BB365F22769C5CF005688FE /* Assets.xcassets */; };
 		5BB365F62769C5CF005688FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BB365F42769C5CF005688FE /* LaunchScreen.storyboard */; };
+		5BE49379276DD97D00BD61AA /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE49378276DD97D00BD61AA /* Game.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5BB365E62769C5CD005688FE /* Right on target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Right on target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B426C0D2770C18900E99E4C /* menuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
+		5B426C0F2770C1EF00E99E4C /* ColorGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorGameViewController.swift; sourceTree = "<group>"; };
+		5B426C182770CDA000E99E4C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5B426C192770D50C00E99E4C /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		5B426C1B2770E71A00E99E4C /* SecretValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretValue.swift; sourceTree = "<group>"; };
+		5B426C1D2770F98000E99E4C /* GameFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFactory.swift; sourceTree = "<group>"; };
 		5BB365E92769C5CD005688FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BB365EB2769C5CD005688FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5BB365ED2769C5CD005688FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5BB365ED2769C5CD005688FE /* NumbersGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumbersGameViewController.swift; sourceTree = "<group>"; };
 		5BB365F02769C5CD005688FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5BB365F22769C5CF005688FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BB365F52769C5CF005688FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BB365F72769C5CF005688FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5BE49378276DD97D00BD61AA /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		5BE4937A276DFF9800BD61AA /* Right on target.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Right on target.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,31 +53,38 @@
 		5BB365DD2769C5CD005688FE = {
 			isa = PBXGroup;
 			children = (
+				5B426C182770CDA000E99E4C /* MyPlayground.playground */,
 				5BB365E82769C5CD005688FE /* Right on target */,
-				5BB365E72769C5CD005688FE /* Products */,
+				5BE4937A276DFF9800BD61AA /* Right on target.app */,
 			);
-			sourceTree = "<group>";
-		};
-		5BB365E72769C5CD005688FE /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5BB365E62769C5CD005688FE /* Right on target.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		5BB365E82769C5CD005688FE /* Right on target */ = {
 			isa = PBXGroup;
 			children = (
+				5BE49377276DD93F00BD61AA /* Model */,
 				5BB365E92769C5CD005688FE /* AppDelegate.swift */,
 				5BB365EB2769C5CD005688FE /* SceneDelegate.swift */,
-				5BB365ED2769C5CD005688FE /* ViewController.swift */,
+				5B426C0D2770C18900E99E4C /* menuViewController.swift */,
+				5BB365ED2769C5CD005688FE /* NumbersGameViewController.swift */,
+				5B426C0F2770C1EF00E99E4C /* ColorGameViewController.swift */,
 				5BB365EF2769C5CD005688FE /* Main.storyboard */,
 				5BB365F22769C5CF005688FE /* Assets.xcassets */,
 				5BB365F42769C5CF005688FE /* LaunchScreen.storyboard */,
 				5BB365F72769C5CF005688FE /* Info.plist */,
 			);
 			path = "Right on target";
+			sourceTree = "<group>";
+		};
+		5BE49377276DD93F00BD61AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BE49378276DD97D00BD61AA /* Game.swift */,
+				5B426C1D2770F98000E99E4C /* GameFactory.swift */,
+				5B426C1B2770E71A00E99E4C /* SecretValue.swift */,
+				5B426C192770D50C00E99E4C /* Color.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -84,7 +104,7 @@
 			);
 			name = "Right on target";
 			productName = "Right on target";
-			productReference = 5BB365E62769C5CD005688FE /* Right on target.app */;
+			productReference = 5BE4937A276DFF9800BD61AA /* Right on target.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -111,7 +131,7 @@
 				Base,
 			);
 			mainGroup = 5BB365DD2769C5CD005688FE;
-			productRefGroup = 5BB365E72769C5CD005688FE /* Products */;
+			productRefGroup = 5BB365DD2769C5CD005688FE;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -138,9 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BB365EE2769C5CD005688FE /* ViewController.swift in Sources */,
+				5B426C102770C1EF00E99E4C /* ColorGameViewController.swift in Sources */,
+				5BB365EE2769C5CD005688FE /* NumbersGameViewController.swift in Sources */,
 				5BB365EA2769C5CD005688FE /* AppDelegate.swift in Sources */,
+				5B426C1E2770F98300E99E4C /* GameFactory.swift in Sources */,
 				5BB365EC2769C5CD005688FE /* SceneDelegate.swift in Sources */,
+				5BE49379276DD97D00BD61AA /* Game.swift in Sources */,
+				5B426C0E2770C18900E99E4C /* menuViewController.swift in Sources */,
+				5B426C1C2770E71E00E99E4C /* SecretValue.swift in Sources */,
+				5B426C1A2770D50C00E99E4C /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,13 +323,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.angolov.Right-on-target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -327,13 +353,13 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.angolov.Right-on-target";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
