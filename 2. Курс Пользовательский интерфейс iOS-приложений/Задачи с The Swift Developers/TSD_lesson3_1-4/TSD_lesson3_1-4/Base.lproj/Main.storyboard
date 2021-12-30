@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TSD_lesson3_1_4" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSi-V6-Q2T">
+                                <rect key="frame" x="186" y="74" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xkE-ia-8mn">
+                                <rect key="frame" x="180.5" y="235" width="53" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Sum"/>
+                                <connections>
+                                    <action selector="sumButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ipB-IO-pe8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hhv-Pa-KDi">
+                                <rect key="frame" x="158.5" y="286" width="97" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Guess num"/>
+                                <connections>
+                                    <action selector="guessButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oJ7-5h-ATO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BSi-V6-Q2T" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="593-Lc-zgI"/>
+                            <constraint firstItem="BSi-V6-Q2T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QzX-gb-MbH"/>
+                            <constraint firstItem="xkE-ia-8mn" firstAttribute="top" secondItem="BSi-V6-Q2T" secondAttribute="bottom" constant="140" id="goF-Uy-jlR"/>
+                            <constraint firstItem="Hhv-Pa-KDi" firstAttribute="top" secondItem="xkE-ia-8mn" secondAttribute="bottom" constant="20" id="why-Y3-elp"/>
+                            <constraint firstItem="Hhv-Pa-KDi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wkR-gy-S9i"/>
+                            <constraint firstItem="xkE-ia-8mn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="x5J-b3-5ya"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="BSi-V6-Q2T" id="rpa-gG-R9r"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="131"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
