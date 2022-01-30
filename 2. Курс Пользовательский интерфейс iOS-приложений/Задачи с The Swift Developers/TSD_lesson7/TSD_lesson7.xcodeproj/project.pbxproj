@@ -7,41 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B3F5A0E27A57FE300306FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A0D27A57FE300306FEA /* AppDelegate.swift */; };
-		5B3F5A1027A57FE300306FEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A0F27A57FE300306FEA /* SceneDelegate.swift */; };
-		5B3F5A1527A57FE300306FEA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F5A1327A57FE300306FEA /* Main.storyboard */; };
-		5B3F5A1727A57FE400306FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F5A1627A57FE400306FEA /* Assets.xcassets */; };
-		5B3F5A1A27A57FE400306FEA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F5A1827A57FE400306FEA /* LaunchScreen.storyboard */; };
-		5B3F5A2527A6745E00306FEA /* SongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A2427A6745E00306FEA /* SongView.swift */; };
-		5B3F5A2727A6746900306FEA /* SongView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F5A2627A6746900306FEA /* SongView.xib */; };
-		5B3F5A2927A6748E00306FEA /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A2827A6748E00306FEA /* Song.swift */; };
-		5B3F5A2B27A674AE00306FEA /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A2A27A674AE00306FEA /* PlaylistViewController.swift */; };
-		5B3F5A2F27A674DA00306FEA /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A2E27A674DA00306FEA /* PlayerViewController.swift */; };
-		5B3F5A3127A683FB00306FEA /* A Sky Full Of Stars.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F5A3027A683FB00306FEA /* A Sky Full Of Stars.mp3 */; };
-		5B3F5A3327A6840400306FEA /* Magic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5B3F5A3227A6840400306FEA /* Magic.mp3 */; };
-		5B3F5A3727A69A4800306FEA /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3F5A3627A69A4800306FEA /* constants.swift */; };
+		5B6186F727A6EA14007E8B22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6186F627A6EA14007E8B22 /* AppDelegate.swift */; };
+		5B6186F927A6EA14007E8B22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B6186F827A6EA14007E8B22 /* SceneDelegate.swift */; };
+		5B6186FE27A6EA14007E8B22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B6186FC27A6EA14007E8B22 /* Main.storyboard */; };
+		5B61870027A6EA15007E8B22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B6186FF27A6EA15007E8B22 /* Assets.xcassets */; };
+		5B61870327A6EA15007E8B22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5B61870127A6EA15007E8B22 /* LaunchScreen.storyboard */; };
+		5B61870E27A6EABF007E8B22 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61870D27A6EABF007E8B22 /* Product.swift */; };
+		5B61871027A6EAD2007E8B22 /* ProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61870F27A6EAD2007E8B22 /* ProductView.swift */; };
+		5B61871227A6EAE2007E8B22 /* ProductView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B61871127A6EAE2007E8B22 /* ProductView.xib */; };
+		5B61871827A6EB6F007E8B22 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61871727A6EB6F007E8B22 /* ProductListViewController.swift */; };
+		5B61871A27A6EB7D007E8B22 /* ProductViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61871927A6EB7D007E8B22 /* ProductViewController.swift */; };
+		5B61871C27A6EB8B007E8B22 /* OrderFromController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61871B27A6EB8B007E8B22 /* OrderFromController.swift */; };
+		5B61871E27A6EEC5007E8B22 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B61871D27A6EEC5007E8B22 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B3F5A0A27A57FE300306FEA /* TSD_lesson6.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSD_lesson6.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		5B3F5A0D27A57FE300306FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5B3F5A0F27A57FE300306FEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5B3F5A1427A57FE300306FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		5B3F5A1627A57FE400306FEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		5B3F5A1927A57FE400306FEA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5B3F5A1B27A57FE400306FEA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5B3F5A2427A6745E00306FEA /* SongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongView.swift; sourceTree = "<group>"; };
-		5B3F5A2627A6746900306FEA /* SongView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SongView.xib; sourceTree = "<group>"; };
-		5B3F5A2827A6748E00306FEA /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
-		5B3F5A2A27A674AE00306FEA /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
-		5B3F5A2E27A674DA00306FEA /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
-		5B3F5A3027A683FB00306FEA /* A Sky Full Of Stars.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "A Sky Full Of Stars.mp3"; sourceTree = "<group>"; };
-		5B3F5A3227A6840400306FEA /* Magic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Magic.mp3; sourceTree = "<group>"; };
-		5B3F5A3627A69A4800306FEA /* constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		5B6186F327A6EA14007E8B22 /* TSD_lesson7.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TSD_lesson7.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B6186F627A6EA14007E8B22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5B6186F827A6EA14007E8B22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5B6186FD27A6EA14007E8B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5B6186FF27A6EA15007E8B22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5B61870227A6EA15007E8B22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5B61870427A6EA15007E8B22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B61870D27A6EABF007E8B22 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		5B61870F27A6EAD2007E8B22 /* ProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductView.swift; sourceTree = "<group>"; };
+		5B61871127A6EAE2007E8B22 /* ProductView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductView.xib; sourceTree = "<group>"; };
+		5B61871727A6EB6F007E8B22 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
+		5B61871927A6EB7D007E8B22 /* ProductViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewController.swift; sourceTree = "<group>"; };
+		5B61871B27A6EB8B007E8B22 /* OrderFromController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFromController.swift; sourceTree = "<group>"; };
+		5B61871D27A6EEC5007E8B22 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5B3F5A0727A57FE300306FEA /* Frameworks */ = {
+		5B6186F027A6EA14007E8B22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -51,119 +49,134 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B3F5A0127A57FE300306FEA = {
+		5B6186EA27A6EA14007E8B22 = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A0C27A57FE300306FEA /* TSD_lesson6 */,
-				5B3F5A0B27A57FE300306FEA /* Products */,
+				5B6186F527A6EA14007E8B22 /* TSD_lesson7 */,
+				5B6186F427A6EA14007E8B22 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		5B3F5A0B27A57FE300306FEA /* Products */ = {
+		5B6186F427A6EA14007E8B22 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A0A27A57FE300306FEA /* TSD_lesson6.app */,
+				5B6186F327A6EA14007E8B22 /* TSD_lesson7.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5B3F5A0C27A57FE300306FEA /* TSD_lesson6 */ = {
+		5B6186F527A6EA14007E8B22 /* TSD_lesson7 */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A0D27A57FE300306FEA /* AppDelegate.swift */,
-				5B3F5A0F27A57FE300306FEA /* SceneDelegate.swift */,
-				5B3F5A3627A69A4800306FEA /* constants.swift */,
-				5B3F5A2127A673EF00306FEA /* Model */,
-				5B3F5A2227A673F800306FEA /* View */,
-				5B3F5A2327A6740500306FEA /* ViewController */,
-				5B3F5A1327A57FE300306FEA /* Main.storyboard */,
-				5B3F5A1627A57FE400306FEA /* Assets.xcassets */,
-				5B3F5A1827A57FE400306FEA /* LaunchScreen.storyboard */,
-				5B3F5A1B27A57FE400306FEA /* Info.plist */,
-				5B3F5A3027A683FB00306FEA /* A Sky Full Of Stars.mp3 */,
-				5B3F5A3227A6840400306FEA /* Magic.mp3 */,
+				5B6186F627A6EA14007E8B22 /* AppDelegate.swift */,
+				5B6186F827A6EA14007E8B22 /* SceneDelegate.swift */,
+				5B61871D27A6EEC5007E8B22 /* Constants.swift */,
+				5B61870A27A6EA86007E8B22 /* Model */,
+				5B61870B27A6EA8F007E8B22 /* View */,
+				5B61870C27A6EA97007E8B22 /* ViewControllers */,
+				5B6186FC27A6EA14007E8B22 /* Main.storyboard */,
+				5B6186FF27A6EA15007E8B22 /* Assets.xcassets */,
+				5B61870127A6EA15007E8B22 /* LaunchScreen.storyboard */,
+				5B61870427A6EA15007E8B22 /* Info.plist */,
 			);
-			path = TSD_lesson6;
+			path = TSD_lesson7;
 			sourceTree = "<group>";
 		};
-		5B3F5A2127A673EF00306FEA /* Model */ = {
+		5B61870A27A6EA86007E8B22 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A2827A6748E00306FEA /* Song.swift */,
+				5B61870D27A6EABF007E8B22 /* Product.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		5B3F5A2227A673F800306FEA /* View */ = {
+		5B61870B27A6EA8F007E8B22 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A2427A6745E00306FEA /* SongView.swift */,
-				5B3F5A2627A6746900306FEA /* SongView.xib */,
+				5B61871327A6EB14007E8B22 /* ProductView */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		5B3F5A2327A6740500306FEA /* ViewController */ = {
+		5B61870C27A6EA97007E8B22 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A2C27A674B100306FEA /* PlaylistViewController */,
-				5B3F5A2D27A674C200306FEA /* PlayerViewController */,
+				5B61871427A6EB22007E8B22 /* ProductListViewController */,
+				5B61871527A6EB3A007E8B22 /* ProductViewController */,
+				5B61871627A6EB49007E8B22 /* OrderFromController */,
 			);
-			path = ViewController;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		5B3F5A2C27A674B100306FEA /* PlaylistViewController */ = {
+		5B61871327A6EB14007E8B22 /* ProductView */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A2A27A674AE00306FEA /* PlaylistViewController.swift */,
+				5B61870F27A6EAD2007E8B22 /* ProductView.swift */,
+				5B61871127A6EAE2007E8B22 /* ProductView.xib */,
 			);
-			name = PlaylistViewController;
+			name = ProductView;
 			sourceTree = "<group>";
 		};
-		5B3F5A2D27A674C200306FEA /* PlayerViewController */ = {
+		5B61871427A6EB22007E8B22 /* ProductListViewController */ = {
 			isa = PBXGroup;
 			children = (
-				5B3F5A2E27A674DA00306FEA /* PlayerViewController.swift */,
+				5B61871727A6EB6F007E8B22 /* ProductListViewController.swift */,
 			);
-			name = PlayerViewController;
+			path = ProductListViewController;
+			sourceTree = "<group>";
+		};
+		5B61871527A6EB3A007E8B22 /* ProductViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5B61871927A6EB7D007E8B22 /* ProductViewController.swift */,
+			);
+			path = ProductViewController;
+			sourceTree = "<group>";
+		};
+		5B61871627A6EB49007E8B22 /* OrderFromController */ = {
+			isa = PBXGroup;
+			children = (
+				5B61871B27A6EB8B007E8B22 /* OrderFromController.swift */,
+			);
+			path = OrderFromController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5B3F5A0927A57FE300306FEA /* TSD_lesson6 */ = {
+		5B6186F227A6EA14007E8B22 /* TSD_lesson7 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5B3F5A1E27A57FE400306FEA /* Build configuration list for PBXNativeTarget "TSD_lesson6" */;
+			buildConfigurationList = 5B61870727A6EA15007E8B22 /* Build configuration list for PBXNativeTarget "TSD_lesson7" */;
 			buildPhases = (
-				5B3F5A0627A57FE300306FEA /* Sources */,
-				5B3F5A0727A57FE300306FEA /* Frameworks */,
-				5B3F5A0827A57FE300306FEA /* Resources */,
+				5B6186EF27A6EA14007E8B22 /* Sources */,
+				5B6186F027A6EA14007E8B22 /* Frameworks */,
+				5B6186F127A6EA14007E8B22 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TSD_lesson6;
-			productName = TSD_lesson6;
-			productReference = 5B3F5A0A27A57FE300306FEA /* TSD_lesson6.app */;
+			name = TSD_lesson7;
+			productName = TSD_lesson7;
+			productReference = 5B6186F327A6EA14007E8B22 /* TSD_lesson7.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5B3F5A0227A57FE300306FEA /* Project object */ = {
+		5B6186EB27A6EA14007E8B22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					5B3F5A0927A57FE300306FEA = {
+					5B6186F227A6EA14007E8B22 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
 			};
-			buildConfigurationList = 5B3F5A0527A57FE300306FEA /* Build configuration list for PBXProject "TSD_lesson6" */;
+			buildConfigurationList = 5B6186EE27A6EA14007E8B22 /* Build configuration list for PBXProject "TSD_lesson7" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -171,62 +184,61 @@
 				en,
 				Base,
 			);
-			mainGroup = 5B3F5A0127A57FE300306FEA;
-			productRefGroup = 5B3F5A0B27A57FE300306FEA /* Products */;
+			mainGroup = 5B6186EA27A6EA14007E8B22;
+			productRefGroup = 5B6186F427A6EA14007E8B22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5B3F5A0927A57FE300306FEA /* TSD_lesson6 */,
+				5B6186F227A6EA14007E8B22 /* TSD_lesson7 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5B3F5A0827A57FE300306FEA /* Resources */ = {
+		5B6186F127A6EA14007E8B22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3F5A3327A6840400306FEA /* Magic.mp3 in Resources */,
-				5B3F5A1A27A57FE400306FEA /* LaunchScreen.storyboard in Resources */,
-				5B3F5A3127A683FB00306FEA /* A Sky Full Of Stars.mp3 in Resources */,
-				5B3F5A1727A57FE400306FEA /* Assets.xcassets in Resources */,
-				5B3F5A1527A57FE300306FEA /* Main.storyboard in Resources */,
-				5B3F5A2727A6746900306FEA /* SongView.xib in Resources */,
+				5B61871227A6EAE2007E8B22 /* ProductView.xib in Resources */,
+				5B61870327A6EA15007E8B22 /* LaunchScreen.storyboard in Resources */,
+				5B61870027A6EA15007E8B22 /* Assets.xcassets in Resources */,
+				5B6186FE27A6EA14007E8B22 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5B3F5A0627A57FE300306FEA /* Sources */ = {
+		5B6186EF27A6EA14007E8B22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3F5A2927A6748E00306FEA /* Song.swift in Sources */,
-				5B3F5A2B27A674AE00306FEA /* PlaylistViewController.swift in Sources */,
-				5B3F5A2527A6745E00306FEA /* SongView.swift in Sources */,
-				5B3F5A3727A69A4800306FEA /* constants.swift in Sources */,
-				5B3F5A0E27A57FE300306FEA /* AppDelegate.swift in Sources */,
-				5B3F5A1027A57FE300306FEA /* SceneDelegate.swift in Sources */,
-				5B3F5A2F27A674DA00306FEA /* PlayerViewController.swift in Sources */,
+				5B61871A27A6EB7D007E8B22 /* ProductViewController.swift in Sources */,
+				5B61871027A6EAD2007E8B22 /* ProductView.swift in Sources */,
+				5B6186F727A6EA14007E8B22 /* AppDelegate.swift in Sources */,
+				5B61871827A6EB6F007E8B22 /* ProductListViewController.swift in Sources */,
+				5B6186F927A6EA14007E8B22 /* SceneDelegate.swift in Sources */,
+				5B61870E27A6EABF007E8B22 /* Product.swift in Sources */,
+				5B61871C27A6EB8B007E8B22 /* OrderFromController.swift in Sources */,
+				5B61871E27A6EEC5007E8B22 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5B3F5A1327A57FE300306FEA /* Main.storyboard */ = {
+		5B6186FC27A6EA14007E8B22 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5B3F5A1427A57FE300306FEA /* Base */,
+				5B6186FD27A6EA14007E8B22 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		5B3F5A1827A57FE400306FEA /* LaunchScreen.storyboard */ = {
+		5B61870127A6EA15007E8B22 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				5B3F5A1927A57FE400306FEA /* Base */,
+				5B61870227A6EA15007E8B22 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -234,7 +246,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		5B3F5A1C27A57FE400306FEA /* Debug */ = {
+		5B61870527A6EA15007E8B22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -295,7 +307,7 @@
 			};
 			name = Debug;
 		};
-		5B3F5A1D27A57FE400306FEA /* Release */ = {
+		5B61870627A6EA15007E8B22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -350,7 +362,7 @@
 			};
 			name = Release;
 		};
-		5B3F5A1F27A57FE400306FEA /* Debug */ = {
+		5B61870827A6EA15007E8B22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -359,7 +371,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GTWUX2NLLN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TSD_lesson6/Info.plist;
+				INFOPLIST_FILE = TSD_lesson7/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -370,7 +382,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.angolov.TSD-lesson6";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.angolov.TSD-lesson7";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -378,7 +390,7 @@
 			};
 			name = Debug;
 		};
-		5B3F5A2027A57FE400306FEA /* Release */ = {
+		5B61870927A6EA15007E8B22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -387,7 +399,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GTWUX2NLLN;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TSD_lesson6/Info.plist;
+				INFOPLIST_FILE = TSD_lesson7/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -398,7 +410,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.angolov.TSD-lesson6";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.angolov.TSD-lesson7";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -409,25 +421,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5B3F5A0527A57FE300306FEA /* Build configuration list for PBXProject "TSD_lesson6" */ = {
+		5B6186EE27A6EA14007E8B22 /* Build configuration list for PBXProject "TSD_lesson7" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B3F5A1C27A57FE400306FEA /* Debug */,
-				5B3F5A1D27A57FE400306FEA /* Release */,
+				5B61870527A6EA15007E8B22 /* Debug */,
+				5B61870627A6EA15007E8B22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5B3F5A1E27A57FE400306FEA /* Build configuration list for PBXNativeTarget "TSD_lesson6" */ = {
+		5B61870727A6EA15007E8B22 /* Build configuration list for PBXNativeTarget "TSD_lesson7" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5B3F5A1F27A57FE400306FEA /* Debug */,
-				5B3F5A2027A57FE400306FEA /* Release */,
+				5B61870827A6EA15007E8B22 /* Debug */,
+				5B61870927A6EA15007E8B22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5B3F5A0227A57FE300306FEA /* Project object */;
+	rootObject = 5B6186EB27A6EA14007E8B22 /* Project object */;
 }
