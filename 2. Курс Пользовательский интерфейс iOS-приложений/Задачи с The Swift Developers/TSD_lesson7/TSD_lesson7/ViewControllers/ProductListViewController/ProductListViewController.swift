@@ -25,27 +25,27 @@ final class ProductListViewController: UIViewController {
     private func loadProducts() {
         products.append(Product(name: "Sentier",
                                 colors: nil,
-                                description: "",
+                                description: "Высокие сапоги SENTIER имеют покрытие из пеноматериала в верхней части голенища и на язычке для обеспечения Вашего комфорта.",
                                 priceInUSD: "$12.99",
                                 imageNames: ["Sentier"]))
         products.append(Product(name: "Crosshunt 100",
                                 colors: nil,
-                                description: "",
+                                description: "Эти прочные, водонепроницаемые и простые в уходе ботинки подходят для нерегулярного использования на местности с небольшими неровностями и небольшим количеством агрессивной растительности.",
                                 priceInUSD: "$27.99",
                                 imageNames: ["Crosshunt 100"]))
         products.append(Product(name: "NH150 MID",
-                                colors: nil,
-                                description: "",
+                                colors: ["Light gray", "Blue"],
+                                description: "Водонепроницаемые комфортабельные летние ботинки, которые гарантируют хорошее сцепление на любых природных маршрутах с небольшим перепадом высот. Комфортная температура использования - до 10 градусов.",
                                 priceInUSD: "$19.99",
                                 imageNames: ["NH150 MID-0", "NH150 MID-1"]))
         products.append(Product(name: "SH100 Ultra-Warm",
-                                colors: nil,
-                                description: "",
+                                colors: ["Blue", "Dark gray", "Black"],
+                                description: "Теплые и водонепроницаемые ботинки с резиновой подошвой Snow Contact обеспечивают оптимальный уровень сцепления и комфорт во время походов по слежавшемуся снегу.",
                                 priceInUSD: "$18.79",
                                 imageNames: ["SH100 Ultra-Warm-0", "SH100 Ultra-Warm-1", "SH100 Ultra-Warm-2"]))
         products.append(Product(name: "SH100 X-Warm",
-                                colors: nil,
-                                description: "",
+                                colors: ["Light gray", "Blue", "Brown"],
+                                description: "Походные ботинки или кроссовки, чтобы было удобно во время зимних прогулок? 2 в 1 Благодаря современному дизайну эту модель можно носить как в походе, так и повседневно",
                                 priceInUSD: "$39.99",
                                 imageNames: ["SH100 X-Warm-0", "SH100 X-Warm-1", "SH100 X-Warm-2"]))
     }
@@ -81,6 +81,6 @@ final class ProductListViewController: UIViewController {
            let destinationController = segue.destination as? ProductViewController,
               let product = sender as? Product else { return }
         
-        destinationController.configureViewWith(product: product)
+        destinationController.product = product
     }
 }
