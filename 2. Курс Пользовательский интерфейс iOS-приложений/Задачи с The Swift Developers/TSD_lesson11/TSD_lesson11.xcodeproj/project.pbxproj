@@ -13,6 +13,10 @@
 		5BBB4C7C27ABAED1009904BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB4C7B27ABAED1009904BC /* Assets.xcassets */; };
 		5BBB4C7F27ABAED1009904BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB4C7D27ABAED1009904BC /* LaunchScreen.storyboard */; };
 		5BBB4C8727AD0174009904BC /* CountDownTimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBB4C8627AD0174009904BC /* CountDownTimerViewController.swift */; };
+		5BBB4C8A27AE79C5009904BC /* WorldClock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB4C8827AE79C5009904BC /* WorldClock.storyboard */; };
+		5BBB4C8C27AE79E8009904BC /* Alarm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB4C8B27AE79E8009904BC /* Alarm.storyboard */; };
+		5BBB4C8F27AE7A0E009904BC /* Secundomer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB4C8D27AE7A0E009904BC /* Secundomer.storyboard */; };
+		5BBB4C9227AE7A2D009904BC /* Timer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BBB4C9027AE7A2D009904BC /* Timer.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		5BBB4C7E27ABAED1009904BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BBB4C8027ABAED1009904BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5BBB4C8627AD0174009904BC /* CountDownTimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountDownTimerViewController.swift; sourceTree = "<group>"; };
+		5BBB4C8927AE79C5009904BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TSD_lesson11/Base.lproj/WorldClock.storyboard; sourceTree = "<group>"; };
+		5BBB4C8B27AE79E8009904BC /* Alarm.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Alarm.storyboard; sourceTree = "<group>"; };
+		5BBB4C8E27AE7A0E009904BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TSD_lesson11/Base.lproj/Secundomer.storyboard; sourceTree = "<group>"; };
+		5BBB4C9127AE7A2D009904BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = TSD_lesson11/Base.lproj/Timer.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				5BBB4C7227ABAECF009904BC /* AppDelegate.swift */,
 				5BBB4C7427ABAECF009904BC /* SceneDelegate.swift */,
 				5BBB4C7827ABAECF009904BC /* Main.storyboard */,
+				5BBB4C8827AE79C5009904BC /* WorldClock.storyboard */,
+				5BBB4C8D27AE7A0E009904BC /* Secundomer.storyboard */,
+				5BBB4C8B27AE79E8009904BC /* Alarm.storyboard */,
+				5BBB4C9027AE7A2D009904BC /* Timer.storyboard */,
 				5BBB4C7B27ABAED1009904BC /* Assets.xcassets */,
 				5BBB4C7D27ABAED1009904BC /* LaunchScreen.storyboard */,
 				5BBB4C8027ABAED1009904BC /* Info.plist */,
@@ -125,8 +137,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BBB4C8A27AE79C5009904BC /* WorldClock.storyboard in Resources */,
 				5BBB4C7F27ABAED1009904BC /* LaunchScreen.storyboard in Resources */,
 				5BBB4C7C27ABAED1009904BC /* Assets.xcassets in Resources */,
+				5BBB4C8F27AE7A0E009904BC /* Secundomer.storyboard in Resources */,
+				5BBB4C8C27AE79E8009904BC /* Alarm.storyboard in Resources */,
+				5BBB4C9227AE7A2D009904BC /* Timer.storyboard in Resources */,
 				5BBB4C7A27ABAECF009904BC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +177,30 @@
 				5BBB4C7E27ABAED1009904BC /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5BBB4C8827AE79C5009904BC /* WorldClock.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BBB4C8927AE79C5009904BC /* Base */,
+			);
+			name = WorldClock.storyboard;
+			sourceTree = "<group>";
+		};
+		5BBB4C8D27AE7A0E009904BC /* Secundomer.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BBB4C8E27AE7A0E009904BC /* Base */,
+			);
+			name = Secundomer.storyboard;
+			sourceTree = "<group>";
+		};
+		5BBB4C9027AE7A2D009904BC /* Timer.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BBB4C9127AE7A2D009904BC /* Base */,
+			);
+			name = Timer.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

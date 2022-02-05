@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Bpb-VL-Jok">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Секундомер-->
+        <scene sceneID="NeX-cJ-zg8">
+            <objects>
+                <viewController id="Bpb-VL-Jok" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1ji-SP-ruv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tHu-vj-3Gd"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Секундомер" image="stopwatch.fill" catalog="system" id="ydZ-DN-N5V"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aG5-GD-xME" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="717" y="662"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="stopwatch.fill" catalog="system" width="121" height="128"/>
+    </resources>
+</document>
