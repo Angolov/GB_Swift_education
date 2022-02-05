@@ -19,6 +19,9 @@ final class FoodViewController: UIViewController {
         return lineView
     }()
     
+    private var pizzaButton: UIButton!
+    private var sushiButton: UIButton!
+    
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +54,7 @@ final class FoodViewController: UIViewController {
         navigationLineView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         navigationLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         
-        let pizzaButton = createFoodButtonWithTitle(text: "Pizza")
+        pizzaButton = createFoodButtonWithTitle(text: "Pizza")
         pizzaButton.addTarget(self, action: #selector(pizzaButtonPressed(_:)), for: .touchUpInside)
         self.view.addSubview(pizzaButton)
         pizzaButton.topAnchor.constraint(equalTo: navigationLineView.bottomAnchor, constant: 70).isActive = true
@@ -59,7 +62,7 @@ final class FoodViewController: UIViewController {
         pizzaButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
         pizzaButton.heightAnchor.constraint(equalToConstant: 125).isActive = true
         
-        let sushiButton = createFoodButtonWithTitle(text: "Sushi")
+        sushiButton = createFoodButtonWithTitle(text: "Sushi")
         self.view.addSubview(sushiButton)
         sushiButton.topAnchor.constraint(equalTo: pizzaButton.bottomAnchor, constant: 30).isActive = true
         sushiButton.leadingAnchor.constraint(equalTo: pizzaButton.leadingAnchor).isActive = true

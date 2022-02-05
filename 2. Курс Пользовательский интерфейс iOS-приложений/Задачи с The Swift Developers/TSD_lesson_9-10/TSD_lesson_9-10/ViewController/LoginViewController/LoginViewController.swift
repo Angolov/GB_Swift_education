@@ -20,6 +20,28 @@ final class LoginViewController: UIViewController {
         return imageView
     }()
     
+    private var phoneLabel: UILabel!
+    private var phoneTextField: UITextField!
+    private var phoneLineView: UIView!
+    private var passwordLabel: UILabel!
+    private var passwordTextField: UITextField!
+    
+    private var eyeButton: UIButton = {
+        var eyeButton = UIButton(type: .custom)
+        let eyeImageFilled = UIImage(systemName: "eye.fill")
+        let eyeImage = UIImage(systemName: "eye")
+        eyeButton.setImage(eyeImage, for: .normal)
+        eyeButton.setImage(eyeImageFilled, for: .highlighted)
+        eyeButton.tintColor = .lightGray
+        
+        eyeButton.addTarget(self, action: #selector(eyeButtonPressed(_:)), for: .touchDown)
+        eyeButton.addTarget(self, action: #selector(eyeButtonReleased(_:)), for: .touchUpInside)
+        
+        return eyeButton
+    }()
+    
+    private var passwordLineView: UIView!
+    
     private var loginButton: UIButton = {
         var loginButton = UIButton()
         loginButton.backgroundColor = #colorLiteral(red: 0.6573816538, green: 0.7767691612, blue: 0.9821795821, alpha: 1)
@@ -54,46 +76,50 @@ final class LoginViewController: UIViewController {
         logoImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
         logoImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
 
-        let phoneLabel = createTextLabelWith(text: "Phone number")
+        phoneLabel = createTextLabelWith(text: "Phone number")
         self.view.addSubview(phoneLabel)
         phoneLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 100).isActive = true
         phoneLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 50).isActive = true
         phoneLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -50).isActive = true
         phoneLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
-        let phoneTextField = createTextFieldWith(placeholder: "Enter phone number here")
+        phoneTextField = createTextFieldWith(placeholder: "Enter phone number here")
         phoneTextField.text = "8 900 000 00 00"
+        phoneTextField.keyboardType = .phonePad
         self.view.addSubview(phoneTextField)
         phoneTextField.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 0).isActive = true
         phoneTextField.leadingAnchor.constraint(equalTo: phoneLabel.leadingAnchor).isActive = true
         phoneTextField.trailingAnchor.constraint(equalTo: phoneLabel.trailingAnchor).isActive = true
         phoneTextField.heightAnchor.constraint(equalTo: phoneLabel.heightAnchor).isActive = true
 
-        let phoneLineView = createLineView()
+        phoneLineView = createLineView()
         self.view.addSubview(phoneLineView)
         phoneLineView.topAnchor.constraint(equalTo: phoneTextField.bottomAnchor, constant: 10).isActive = true
         phoneLineView.leadingAnchor.constraint(equalTo: phoneTextField.leadingAnchor).isActive = true
         phoneLineView.trailingAnchor.constraint(equalTo: phoneTextField.trailingAnchor).isActive = true
         phoneLineView.heightAnchor.constraint(equalToConstant: 2).isActive = true
 
-        let passwordLabel = createTextLabelWith(text: "Password")
+        passwordLabel = createTextLabelWith(text: "Password")
         self.view.addSubview(passwordLabel)
         passwordLabel.topAnchor.constraint(equalTo: phoneLineView.bottomAnchor, constant: 20).isActive = true
         passwordLabel.leadingAnchor.constraint(equalTo: phoneLineView.leadingAnchor).isActive = true
         passwordLabel.trailingAnchor.constraint(equalTo: phoneLineView.trailingAnchor).isActive = true
         passwordLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
-        let passwordTextField = createTextFieldWith(placeholder: "Enter password here")
+        passwordTextField = createTextFieldWith(placeholder: "Enter password here")
         passwordTextField.isSecureTextEntry = true
         passwordTextField.defaultTextAttributes.updateValue(3, forKey: .kern)
         passwordTextField.text = "12345678901"
+        passwordTextField.rightView = eyeButton
+        passwordTextField.rightViewMode = .always
+        
         self.view.addSubview(passwordTextField)
         passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 0).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: passwordLabel.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: passwordLabel.trailingAnchor).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: passwordLabel.heightAnchor).isActive = true
 
-        let passwordLineView = createLineView()
+        passwordLineView = createLineView()
         self.view.addSubview(passwordLineView)
         passwordLineView.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 10).isActive = true
         passwordLineView.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
@@ -122,6 +148,7 @@ final class LoginViewController: UIViewController {
         textField.placeholder = placeholder
         textField.textColor = UIColor.black
         textField.font = .systemFont(ofSize: 16, weight: .semibold)
+        textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
@@ -137,10 +164,17 @@ final class LoginViewController: UIViewController {
     
     //MARK: - Actions
     @objc func loginButtonPressed(_ sender: UIButton) {
-        
         let navController = UINavigationController(rootViewController: FoodViewController())
         navController.modalPresentationStyle = .fullScreen
         navController.modalTransitionStyle = .crossDissolve
         present(navController, animated: true, completion: nil)
+    }
+    
+    @objc func eyeButtonPressed(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry = false
+    }
+    
+    @objc func eyeButtonReleased(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry = true
     }
 }

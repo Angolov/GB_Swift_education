@@ -125,8 +125,6 @@ final class PizzaViewController: UIViewController {
         addIngredientsButton.layer.cornerRadius = 10
         addIngredientsButton.setTitleColor(.white, for: .normal)
         addIngredientsButton.setTitle("+", for: .normal)
-        
-        //Так я еще не пробрасывал данные)))
         addIngredientsButton.tag = index
         addIngredientsButton.translatesAutoresizingMaskIntoConstraints = false
         addIngredientsButton.addTarget(self,
@@ -144,7 +142,6 @@ final class PizzaViewController: UIViewController {
     @objc func addIngredientsButtonPressed(_ sender: UIButton) {
         
         let destination = IngredientsViewController()
-        //Продолжение кардебалета)
         destination.pizzaName = pizzasArray[sender.tag]
         present(destination, animated: true, completion: nil)
     }
