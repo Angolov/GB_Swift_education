@@ -16,6 +16,8 @@
 		5B66A2E327AEF65700B26F0F /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2E227AEF65700B26F0F /* TextViewController.swift */; };
 		5B66A2E627AEF67200B26F0F /* LabelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2E527AEF67200B26F0F /* LabelViewController.swift */; };
 		5B66A2E927AEF69900B26F0F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2E827AEF69900B26F0F /* LoginViewController.swift */; };
+		5B66A2ED27AFCF7600B26F0F /* FontColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2EC27AFCF7600B26F0F /* FontColorPicker.swift */; };
+		5B66A2EF27AFCFA500B26F0F /* LinesCountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2EE27AFCFA500B26F0F /* LinesCountPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		5B66A2E227AEF65700B26F0F /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		5B66A2E527AEF67200B26F0F /* LabelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelViewController.swift; sourceTree = "<group>"; };
 		5B66A2E827AEF69900B26F0F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5B66A2EC27AFCF7600B26F0F /* FontColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorPicker.swift; sourceTree = "<group>"; };
+		5B66A2EE27AFCFA500B26F0F /* LinesCountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesCountPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				5B66A2E527AEF67200B26F0F /* LabelViewController.swift */,
+				5B66A2F027AFCFC300B26F0F /* Helpers */,
 			);
 			path = LabelViewController;
 			sourceTree = "<group>";
@@ -130,6 +135,15 @@
 				5B66A2EA27AEF6BE00B26F0F /* Storyboards */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		5B66A2F027AFCFC300B26F0F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5B66A2EC27AFCF7600B26F0F /* FontColorPicker.swift */,
+				5B66A2EE27AFCFA500B26F0F /* LinesCountPicker.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,8 +217,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B66A2ED27AFCF7600B26F0F /* FontColorPicker.swift in Sources */,
 				5B66A2E927AEF69900B26F0F /* LoginViewController.swift in Sources */,
 				5B66A2C827AEB6E100B26F0F /* AppDelegate.swift in Sources */,
+				5B66A2EF27AFCFA500B26F0F /* LinesCountPicker.swift in Sources */,
 				5B66A2E627AEF67200B26F0F /* LabelViewController.swift in Sources */,
 				5B66A2E027AEF60400B26F0F /* TimerViewController.swift in Sources */,
 				5B66A2CA27AEB6E100B26F0F /* SceneDelegate.swift in Sources */,
