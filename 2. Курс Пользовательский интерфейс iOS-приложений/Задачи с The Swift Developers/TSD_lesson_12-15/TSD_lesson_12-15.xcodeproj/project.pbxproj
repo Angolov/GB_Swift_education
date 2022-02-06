@@ -18,6 +18,8 @@
 		5B66A2E927AEF69900B26F0F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2E827AEF69900B26F0F /* LoginViewController.swift */; };
 		5B66A2ED27AFCF7600B26F0F /* FontColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2EC27AFCF7600B26F0F /* FontColorPicker.swift */; };
 		5B66A2EF27AFCFA500B26F0F /* LinesCountPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2EE27AFCFA500B26F0F /* LinesCountPicker.swift */; };
+		5B66A2F227AFE33900B26F0F /* TextViewController+UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2F127AFE33900B26F0F /* TextViewController+UIPickerViewDelegate.swift */; };
+		5B66A2F427AFE34C00B26F0F /* TextViewController+UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B66A2F327AFE34C00B26F0F /* TextViewController+UIPickerViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		5B66A2E827AEF69900B26F0F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5B66A2EC27AFCF7600B26F0F /* FontColorPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontColorPicker.swift; sourceTree = "<group>"; };
 		5B66A2EE27AFCFA500B26F0F /* LinesCountPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinesCountPicker.swift; sourceTree = "<group>"; };
+		5B66A2F127AFE33900B26F0F /* TextViewController+UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextViewController+UIPickerViewDelegate.swift"; sourceTree = "<group>"; };
+		5B66A2F327AFE34C00B26F0F /* TextViewController+UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextViewController+UIPickerViewDataSource.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				5B66A2E227AEF65700B26F0F /* TextViewController.swift */,
+				5B66A2F327AFE34C00B26F0F /* TextViewController+UIPickerViewDataSource.swift */,
+				5B66A2F127AFE33900B26F0F /* TextViewController+UIPickerViewDelegate.swift */,
 			);
 			path = TextViewController;
 			sourceTree = "<group>";
@@ -219,6 +225,8 @@
 			files = (
 				5B66A2ED27AFCF7600B26F0F /* FontColorPicker.swift in Sources */,
 				5B66A2E927AEF69900B26F0F /* LoginViewController.swift in Sources */,
+				5B66A2F227AFE33900B26F0F /* TextViewController+UIPickerViewDelegate.swift in Sources */,
+				5B66A2F427AFE34C00B26F0F /* TextViewController+UIPickerViewDataSource.swift in Sources */,
 				5B66A2C827AEB6E100B26F0F /* AppDelegate.swift in Sources */,
 				5B66A2EF27AFCFA500B26F0F /* LinesCountPicker.swift in Sources */,
 				5B66A2E627AEF67200B26F0F /* LabelViewController.swift in Sources */,
