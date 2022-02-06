@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupLoginView()
         
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification,
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification,
                                                object: nil,
                                                queue: nil) { [weak self] nc in
             UIView.animate(withDuration: 1) { [weak self] in
@@ -83,10 +83,10 @@ class LoginViewController: UIViewController {
                 self.mainView.frame.origin.y = -150
             }
         }
-        NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification,
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification,
                                                object: nil,
                                                queue: nil) { [weak self] nc in
-            UIView.animate(withDuration: 0.5) { [weak self] in
+            UIView.animate(withDuration: 1) { [weak self] in
                 guard let self = self else { return }
                 self.mainView.frame.origin.y = 0
             }
@@ -299,7 +299,7 @@ class LoginViewController: UIViewController {
     
     //MARK: - Actions
     @objc func switchViewButtonPressed(_ sender: UIButton) {
-        mainView.removeFromSuperview()
+        self.mainView.removeFromSuperview()
         
         if isRegisterView {
             textFieldsCollection = []
@@ -308,6 +308,7 @@ class LoginViewController: UIViewController {
             proceedButton.backgroundColor = #colorLiteral(red: 0.9009638429, green: 0.3160782158, blue: 0.07701078802, alpha: 1)
             proceedButton.setTitle("Login", for: .normal)
             proceedButton.setTitleColor(.white, for: .normal)
+            
         } else {
             textFieldsCollection = []
             setupRegistrationView()
@@ -316,6 +317,7 @@ class LoginViewController: UIViewController {
             proceedButton.setTitle("Register", for: .normal)
             proceedButton.setTitleColor(.white, for: .normal)
         }
+        
         isRegisterView = !isRegisterView
         
     }
@@ -341,6 +343,7 @@ class LoginViewController: UIViewController {
     }
 }
 
+//MARK: - extension for UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -348,6 +351,7 @@ extension LoginViewController: UITextFieldDelegate {
         
         if index < textFieldsCollection.count - 1 {
             textFieldsCollection[index + 1].becomeFirstResponder()
+            
         } else {
             textField.resignFirstResponder()
         }
