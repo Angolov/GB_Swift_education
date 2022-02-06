@@ -21,31 +21,37 @@ class LoginViewController: UIViewController {
         return logoImageView
     }()
     
-    private var button: UIButton = {
-        var button = UIButton(type: .system)
-        button.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        button.backgroundColor = .red
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
     //MARK: - Login UI elements
     private var phoneLabel: UILabel!
     private var phoneTextField: UITextField!
     private var passwordLabel: UILabel!
     private var passwordTextField: UITextField!
     private var switchViewModeButton: UIButton = {
-        var switchViewModeButton = UIButton(type: .system)
+        var switchViewModeButton = UIButton(type: .custom)
+        switchViewModeButton.setTitle("Don't have an account yet? Register here...", for: .normal)
+        let titleColor = #colorLiteral(red: 0.008574218489, green: 0.6101772785, blue: 0.8241466284, alpha: 1)
+        switchViewModeButton.setTitleColor(titleColor, for: .normal)
+        switchViewModeButton.titleLabel?.font = .systemFont(ofSize: 14, weight: .regular)
+        switchViewModeButton.translatesAutoresizingMaskIntoConstraints = false
         
+        switchViewModeButton.addTarget(self, action: #selector(switchViewButtonPressed(_:)), for: .touchUpInside)
         
         return switchViewModeButton
     }()
     private var proceedButton: UIButton = {
-        var proceedButton = UIButton(type: .system)
+        var proceedButton = UIButton(type: .custom)
+        proceedButton.backgroundColor = #colorLiteral(red: 0.9009638429, green: 0.3160782158, blue: 0.07701078802, alpha: 1)
+        proceedButton.setTitle("Login", for: .normal)
+        proceedButton.setTitleColor(.white, for: .normal)
+        proceedButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .heavy)
+        proceedButton.layer.cornerRadius = 10
+        proceedButton.layer.shadowColor = UIColor.lightGray.cgColor
+        proceedButton.layer.shadowRadius = 5
+        proceedButton.layer.shadowOpacity = 0.4
+        proceedButton.layer.shadowOffset = CGSize(width: 0, height: 5)
+        proceedButton.translatesAutoresizingMaskIntoConstraints = false
         
-        
+        proceedButton.addTarget(self, action: #selector(proceedButtonPressed(_:)), for: .touchUpInside)
         
         return proceedButton
     }()
@@ -56,12 +62,35 @@ class LoginViewController: UIViewController {
     private var repeatPasswordLabel: UILabel!
     private var repeatPasswordTextField: UITextField!
     
-    private var isTapped = false
+    //MARK: - Private properties
+    private let loginTitle = "Don't have an account yet? Register here..."
+    private let registerTitle = "Already have an account? Login here..."
+    private let fromLoginToTabBarView = "fromLoginToTabBarView"
+    private var isRegisterView = false
+    
+    private var textFieldsCollection = [UITextField]()
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoginView()
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidShowNotification,
+                                               object: nil,
+                                               queue: nil) { [weak self] nc in
+            UIView.animate(withDuration: 1) { [weak self] in
+                guard let self = self else { return }
+                self.mainView.frame.origin.y = -150
+            }
+        }
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification,
+                                               object: nil,
+                                               queue: nil) { [weak self] nc in
+            UIView.animate(withDuration: 0.5) { [weak self] in
+                guard let self = self else { return }
+                self.mainView.frame.origin.y = 0
+            }
+        }
     }
     
     //MARK: - Private methods
@@ -76,10 +105,6 @@ class LoginViewController: UIViewController {
         logoImageView.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
         logoImageView.widthAnchor.constraint(equalToConstant: mainView.frame.width / 2).isActive = true
         logoImageView.heightAnchor.constraint(equalToConstant: mainView.frame.width / 2).isActive = true
-        
-        mainView.addSubview(button)
-        button.centerXAnchor.constraint(equalTo: mainView.centerXAnchor).isActive = true
-        button.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -100).isActive = true
     }
     
     //MARK: - Setup for login view
@@ -98,6 +123,7 @@ class LoginViewController: UIViewController {
         phoneTextField = createTextFieldWith(placeholder: "Enter phone number here")
         phoneTextField.text = "8 900 000 00 00"
         phoneTextField.keyboardType = .phonePad
+        textFieldsCollection.append(phoneTextField)
         self.mainView.addSubview(phoneTextField)
         phoneTextField.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 0).isActive = true
         phoneTextField.leadingAnchor.constraint(equalTo: phoneLabel.leadingAnchor).isActive = true
@@ -115,14 +141,24 @@ class LoginViewController: UIViewController {
                                                 secureTextEntry: true,
                                                 tag: 1)
         passwordTextField.text = "12345678901"
-
+        textFieldsCollection.append(passwordTextField)
         self.mainView.addSubview(passwordTextField)
         passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 0).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: passwordLabel.leadingAnchor).isActive = true
         passwordTextField.trailingAnchor.constraint(equalTo: passwordLabel.trailingAnchor).isActive = true
         passwordTextField.heightAnchor.constraint(equalTo: passwordLabel.heightAnchor).isActive = true
         
+        self.mainView.addSubview(switchViewModeButton)
+        switchViewModeButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 0).isActive = true
+        switchViewModeButton.leadingAnchor.constraint(equalTo: passwordTextField.leadingAnchor).isActive = true
+        switchViewModeButton.trailingAnchor.constraint(equalTo: passwordTextField.trailingAnchor).isActive = true
+        switchViewModeButton.heightAnchor.constraint(equalTo: passwordTextField.heightAnchor).isActive = true
         
+        self.mainView.addSubview(proceedButton)
+        proceedButton.topAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -100).isActive = true
+        proceedButton.leadingAnchor.constraint(equalTo: switchViewModeButton.leadingAnchor).isActive = true
+        proceedButton.trailingAnchor.constraint(equalTo: switchViewModeButton.trailingAnchor).isActive = true
+        proceedButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
     //MARK: - Setup for registration view
@@ -138,7 +174,7 @@ class LoginViewController: UIViewController {
         nameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
         nameTextField = createTextFieldWith(placeholder: "Enter your name here")
-        nameTextField.text = "Alex"
+        textFieldsCollection.append(nameTextField)
         self.mainView.addSubview(nameTextField)
         nameTextField.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 0).isActive = true
         nameTextField.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor).isActive = true
@@ -153,8 +189,8 @@ class LoginViewController: UIViewController {
         phoneLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
         phoneTextField = createTextFieldWith(placeholder: "Enter phone number here")
-        phoneTextField.text = "8 900 000 00 00"
         phoneTextField.keyboardType = .phonePad
+        textFieldsCollection.append(phoneTextField)
         self.mainView.addSubview(phoneTextField)
         phoneTextField.topAnchor.constraint(equalTo: phoneLabel.bottomAnchor, constant: 0).isActive = true
         phoneTextField.leadingAnchor.constraint(equalTo: phoneLabel.leadingAnchor).isActive = true
@@ -171,8 +207,7 @@ class LoginViewController: UIViewController {
         passwordTextField = createTextFieldWith(placeholder: "Enter password here",
                                                 secureTextEntry: true,
                                                 tag: 1)
-        passwordTextField.text = "12345678901"
-
+        textFieldsCollection.append(passwordTextField)
         self.mainView.addSubview(passwordTextField)
         passwordTextField.topAnchor.constraint(equalTo: passwordLabel.bottomAnchor, constant: 0).isActive = true
         passwordTextField.leadingAnchor.constraint(equalTo: passwordLabel.leadingAnchor).isActive = true
@@ -190,8 +225,7 @@ class LoginViewController: UIViewController {
         repeatPasswordTextField = createTextFieldWith(placeholder: "Repeat password here",
                                                       secureTextEntry: true,
                                                       tag: 2)
-        repeatPasswordTextField.text = "12345678901"
-
+        textFieldsCollection.append(repeatPasswordTextField)
         self.mainView.addSubview(repeatPasswordTextField)
         repeatPasswordTextField.topAnchor.constraint(equalTo: repeatPasswordLabel.bottomAnchor,
                                                      constant: 0).isActive = true
@@ -199,7 +233,18 @@ class LoginViewController: UIViewController {
         repeatPasswordTextField.trailingAnchor.constraint(equalTo: repeatPasswordLabel.trailingAnchor).isActive = true
         repeatPasswordTextField.heightAnchor.constraint(equalTo: repeatPasswordLabel.heightAnchor).isActive = true
         
+        self.mainView.addSubview(switchViewModeButton)
+        switchViewModeButton.topAnchor.constraint(equalTo: repeatPasswordTextField.bottomAnchor,
+                                                  constant: 0).isActive = true
+        switchViewModeButton.leadingAnchor.constraint(equalTo: repeatPasswordTextField.leadingAnchor).isActive = true
+        switchViewModeButton.trailingAnchor.constraint(equalTo: repeatPasswordTextField.trailingAnchor).isActive = true
+        switchViewModeButton.heightAnchor.constraint(equalTo: repeatPasswordTextField.heightAnchor).isActive = true
         
+        self.mainView.addSubview(proceedButton)
+        proceedButton.topAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -100).isActive = true
+        proceedButton.leadingAnchor.constraint(equalTo: switchViewModeButton.leadingAnchor).isActive = true
+        proceedButton.trailingAnchor.constraint(equalTo: switchViewModeButton.trailingAnchor).isActive = true
+        proceedButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
     }
     
     //MARK: - Methods for creation of UI elements
@@ -223,6 +268,7 @@ class LoginViewController: UIViewController {
         textField.font = .systemFont(ofSize: 16, weight: .semibold)
         textField.clearButtonMode = .whileEditing
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.delegate = self
         
         if secureTextEntry {
             textField.isSecureTextEntry = true
@@ -242,7 +288,7 @@ class LoginViewController: UIViewController {
         let eyeImage = UIImage(systemName: "eye")
         eyeButton.setImage(eyeImage, for: .normal)
         eyeButton.setImage(eyeImageFilled, for: .highlighted)
-        eyeButton.tintColor = .lightGray
+        eyeButton.tintColor = #colorLiteral(red: 0.4835574627, green: 0.7781214118, blue: 0.7422924638, alpha: 1)
         eyeButton.tag = tag
         
         eyeButton.addTarget(self, action: #selector(eyeButtonPressed(_:)), for: .touchDown)
@@ -252,15 +298,30 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - Actions
-    @objc func buttonTapped() {
+    @objc func switchViewButtonPressed(_ sender: UIButton) {
         mainView.removeFromSuperview()
         
-        if isTapped {
+        if isRegisterView {
+            textFieldsCollection = []
             setupLoginView()
+            sender.setTitle(loginTitle, for: .normal)
+            proceedButton.backgroundColor = #colorLiteral(red: 0.9009638429, green: 0.3160782158, blue: 0.07701078802, alpha: 1)
+            proceedButton.setTitle("Login", for: .normal)
+            proceedButton.setTitleColor(.white, for: .normal)
         } else {
+            textFieldsCollection = []
             setupRegistrationView()
+            sender.setTitle(registerTitle, for: .normal)
+            proceedButton.backgroundColor = #colorLiteral(red: 0.008966139518, green: 0.5648388863, blue: 0.2099609375, alpha: 1)
+            proceedButton.setTitle("Register", for: .normal)
+            proceedButton.setTitleColor(.white, for: .normal)
         }
-        isTapped = !isTapped
+        isRegisterView = !isRegisterView
+        
+    }
+    
+    @objc func proceedButtonPressed(_ sender: UIButton) {
+        self.performSegue(withIdentifier: fromLoginToTabBarView, sender: nil)
     }
     
     @objc func eyeButtonPressed(_ sender: UIButton) {
@@ -278,4 +339,20 @@ class LoginViewController: UIViewController {
         default: return
         }
     }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        guard let index = textFieldsCollection.firstIndex(of: textField) else { return true }
+        
+        if index < textFieldsCollection.count - 1 {
+            textFieldsCollection[index + 1].becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
+    }
+    
 }

@@ -20,7 +20,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Eqg-2i-iqg"/>
                     <connections>
-                        <segue destination="ON6-Xz-mnU" kind="show" id="H6y-tf-afz"/>
+                        <segue destination="ON6-Xz-mnU" kind="show" identifier="fromLoginToTabBarView" id="H6y-tf-afz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -54,6 +54,7 @@ final class LoginViewController: UIViewController {
         loginButton.layer.shadowOpacity = 0.4
         loginButton.layer.shadowOffset = CGSize(width: 0, height: 5)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
+        
         loginButton.addTarget(self, action: #selector(loginButtonPressed(_:)), for: .touchUpInside)
         
         return loginButton
