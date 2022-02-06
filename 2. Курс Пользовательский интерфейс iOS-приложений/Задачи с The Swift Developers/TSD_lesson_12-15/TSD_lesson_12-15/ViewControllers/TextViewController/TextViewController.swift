@@ -15,10 +15,11 @@ class TextViewController: UIViewController {
     @IBOutlet weak var fontTextField: UITextField!
     @IBOutlet weak var mainTextView: UITextView!
     
-    //MARK: - Private properties
-    private let fonts = ["Arial", "Bradley Hand Bold", "Futura Medium", "Noteworthy Bold"]
+    //MARK: - Properties
     private var fontPicker = UIPickerView()
-    private var currentFont = ""
+    
+    let fonts = ["Arial", "Bradley Hand Bold", "Futura Medium", "Noteworthy Bold"]
+    var currentFont = ""
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {

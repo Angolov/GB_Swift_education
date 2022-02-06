@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
 
     //MARK: - Base UI elements
     private var mainView: UIView!
-    private var logoImageView: UIImageView = {
+    private lazy var logoImageView: UIImageView = {
         var logoImageView = UIImageView()
         logoImageView.image = UIImage(named: "logo")
         logoImageView.contentMode = .scaleAspectFit
@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
     private var phoneTextField: UITextField!
     private var passwordLabel: UILabel!
     private var passwordTextField: UITextField!
-    private var switchViewModeButton: UIButton = {
+    private lazy var switchViewModeButton: UIButton = {
         var switchViewModeButton = UIButton(type: .custom)
         switchViewModeButton.setTitle("Don't have an account yet? Register here...", for: .normal)
         let titleColor = #colorLiteral(red: 0.008574218489, green: 0.6101772785, blue: 0.8241466284, alpha: 1)
@@ -38,7 +38,7 @@ class LoginViewController: UIViewController {
         
         return switchViewModeButton
     }()
-    private var proceedButton: UIButton = {
+    private lazy var proceedButton: UIButton = {
         var proceedButton = UIButton(type: .custom)
         proceedButton.backgroundColor = #colorLiteral(red: 0.9009638429, green: 0.3160782158, blue: 0.07701078802, alpha: 1)
         proceedButton.setTitle("Login", for: .normal)
