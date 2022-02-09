@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sHm-j4-rHv">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Для вас-->
+        <scene sceneID="Bba-ea-rxd">
+            <objects>
+                <viewController id="IXr-xC-aCZ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="joc-sN-5Y2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="STS-zT-ekD"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Для вас" image="person.crop.circle" catalog="system" id="lMh-bz-hmh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D9c-pG-XWn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410" y="446"/>
+        </scene>
+        <!--Поиск-->
+        <scene sceneID="vzi-oZ-Igv">
+            <objects>
+                <viewController id="cya-Di-git" customClass="SearchViewController" customModule="TSD_lesson_16_20" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xoQ-gB-BzZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Поиск" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGz-M5-atc">
+                                <rect key="frame" x="20" y="74" width="374" height="41"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Недавно просмотренные" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vxa-MS-kQq">
+                                <rect key="frame" x="20" y="206" width="274" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svr-n9-Inh">
+                                <rect key="frame" x="299" y="209.5" width="115" height="20.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Очистить">
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
+                                    <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
+                                </buttonConfiguration>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JK3-NX-yMa">
+                                <rect key="frame" x="20" y="243" width="394" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="SBf-UR-G3B"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Варианты запросов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gk1-hg-zb9">
+                                <rect key="frame" x="20" y="483" width="374" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tE-vR-K38">
+                                <rect key="frame" x="30" y="525" width="364" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="  AirPods">
+                                    <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.3959894705678999" green="0.3959894705678999" blue="0.3959894705678999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="11"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aAz-G4-xOF">
+                                <rect key="frame" x="30" y="578" width="364" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="  AppleCare">
+                                    <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.3959894705678999" green="0.3959894705678999" blue="0.3959894705678999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="11"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G32-bR-tfU">
+                                <rect key="frame" x="30" y="631" width="364" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="  Beats">
+                                    <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.3959894705678999" green="0.3959894705678999" blue="0.3959894705678999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="11"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ChS-mg-4Ji">
+                                <rect key="frame" x="30" y="684" width="364" height="38"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" imagePlacement="leading" title="  Сравните модели iPhone">
+                                    <imageReference key="image" image="magnifyingglass" catalog="system" renderingMode="hierarchical">
+                                        <hierarchicalColors>
+                                            <color red="0.3959894705678999" green="0.3959894705678999" blue="0.3959894705678999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <color systemColor="secondaryLabelColor"/>
+                                            <color systemColor="tertiaryLabelColor"/>
+                                        </hierarchicalColors>
+                                    </imageReference>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="11"/>
+                                    <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                </buttonConfiguration>
+                            </button>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Поиск по продуктам и магазинам" translatesAutoresizingMaskIntoConstraints="NO" id="Mh0-2C-vZH">
+                                <rect key="frame" x="5" y="115" width="404" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="tintColor"/>
+                                <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="eC0-yw-y3l"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vxa-MS-kQq" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="20" id="1le-T9-w8t"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="ChS-mg-4Ji" secondAttribute="trailing" constant="20" id="8nV-ix-8Be"/>
+                            <constraint firstItem="gk1-hg-zb9" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="20" id="BaX-ka-3JO"/>
+                            <constraint firstItem="svr-n9-Inh" firstAttribute="leading" secondItem="vxa-MS-kQq" secondAttribute="trailing" constant="5" id="CWy-3V-gbQ"/>
+                            <constraint firstItem="Mh0-2C-vZH" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="5" id="Des-Kf-WHs"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="aAz-G4-xOF" secondAttribute="trailing" constant="20" id="FgF-Ar-e17"/>
+                            <constraint firstItem="gk1-hg-zb9" firstAttribute="top" secondItem="JK3-NX-yMa" secondAttribute="bottom" constant="40" id="IgX-Dc-rHZ"/>
+                            <constraint firstItem="RGz-M5-atc" firstAttribute="top" secondItem="eC0-yw-y3l" secondAttribute="top" constant="30" id="L1b-7Q-iqI"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="gk1-hg-zb9" secondAttribute="trailing" constant="20" id="MN1-9Q-HDF"/>
+                            <constraint firstItem="svr-n9-Inh" firstAttribute="centerY" secondItem="vxa-MS-kQq" secondAttribute="centerY" id="NQq-nx-Pfn"/>
+                            <constraint firstItem="JK3-NX-yMa" firstAttribute="trailing" secondItem="eC0-yw-y3l" secondAttribute="trailing" id="Qqj-kx-BCj"/>
+                            <constraint firstItem="G32-bR-tfU" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="30" id="RUW-QC-ncw"/>
+                            <constraint firstItem="ChS-mg-4Ji" firstAttribute="top" secondItem="G32-bR-tfU" secondAttribute="bottom" constant="15" id="Upn-Xl-sO7"/>
+                            <constraint firstItem="ChS-mg-4Ji" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="30" id="V2b-Z8-hzM"/>
+                            <constraint firstItem="1tE-vR-K38" firstAttribute="top" secondItem="gk1-hg-zb9" secondAttribute="bottom" constant="15" id="WmX-k1-Hpp"/>
+                            <constraint firstItem="RGz-M5-atc" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="20" id="dFU-KJ-gdA"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="G32-bR-tfU" secondAttribute="trailing" constant="20" id="dsP-j3-agH"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="1tE-vR-K38" secondAttribute="trailing" constant="20" id="eqD-GI-8uG"/>
+                            <constraint firstItem="1tE-vR-K38" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="30" id="fQO-yg-Tgr"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="RGz-M5-atc" secondAttribute="trailing" constant="20" id="fRD-7q-4ep"/>
+                            <constraint firstItem="aAz-G4-xOF" firstAttribute="top" secondItem="1tE-vR-K38" secondAttribute="bottom" constant="15" id="jGS-xK-N7W"/>
+                            <constraint firstItem="JK3-NX-yMa" firstAttribute="top" secondItem="vxa-MS-kQq" secondAttribute="bottom" constant="10" id="jjw-OW-AuJ"/>
+                            <constraint firstItem="G32-bR-tfU" firstAttribute="top" secondItem="aAz-G4-xOF" secondAttribute="bottom" constant="15" id="kZC-aD-JpO"/>
+                            <constraint firstItem="JK3-NX-yMa" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="20" id="mDa-bo-YaG"/>
+                            <constraint firstItem="aAz-G4-xOF" firstAttribute="leading" secondItem="eC0-yw-y3l" secondAttribute="leading" constant="30" id="oIH-ta-lIC"/>
+                            <constraint firstItem="vxa-MS-kQq" firstAttribute="top" secondItem="Mh0-2C-vZH" secondAttribute="bottom" constant="40" id="s01-hu-KX0"/>
+                            <constraint firstItem="Mh0-2C-vZH" firstAttribute="top" secondItem="RGz-M5-atc" secondAttribute="bottom" id="u0b-tT-Kha"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="svr-n9-Inh" secondAttribute="trailing" id="uap-8V-5rl"/>
+                            <constraint firstItem="eC0-yw-y3l" firstAttribute="trailing" secondItem="Mh0-2C-vZH" secondAttribute="trailing" constant="5" id="vSO-Xg-d1s"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Поиск" image="magnifyingglass" catalog="system" id="L8W-YQ-baO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsy-OI-xKj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1260.8695652173915" y="445.98214285714283"/>
+        </scene>
+        <!--Корзина-->
+        <scene sceneID="41S-Jj-PKl">
+            <objects>
+                <viewController id="lQ0-4D-W7p" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rh0-56-Hj6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KMg-Ow-hfq"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Корзина" image="bag" catalog="system" id="oUF-vQ-Fod"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rML-IU-McP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2100" y="446"/>
+        </scene>
+        <!--Купить-->
+        <scene sceneID="Rf2-jH-B8W">
+            <objects>
+                <viewController id="Wc8-EQ-iJK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rxy-6E-oSs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="64Z-n1-57r"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Купить" image="laptopcomputer.and.iphone" catalog="system" id="CIh-0h-qrz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dZ-Gw-2yr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362" y="446"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="gHG-x5-bEs">
+            <objects>
+                <tabBarController id="sHm-j4-rHv" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ZaJ-dl-mjP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="tintColor"/>
+                        <color key="barTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Wc8-EQ-iJK" kind="relationship" relationship="viewControllers" id="YCp-qa-1cE"/>
+                        <segue destination="IXr-xC-aCZ" kind="relationship" relationship="viewControllers" id="EHg-aV-V2u"/>
+                        <segue destination="cya-Di-git" kind="relationship" relationship="viewControllers" id="NKs-jq-880"/>
+                        <segue destination="lQ0-4D-W7p" kind="relationship" relationship="viewControllers" id="zTY-w6-1JK"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U5K-NT-9MW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="767" y="-267"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bag" catalog="system" width="128" height="128"/>
+        <image name="laptopcomputer.and.iphone" catalog="system" width="128" height="74"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="person.crop.circle" catalog="system" width="128" height="121"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

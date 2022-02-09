@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wc8-EQ-iJK">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Купить-->
+        <scene sceneID="Rf2-jH-B8W">
+            <objects>
+                <viewController id="Wc8-EQ-iJK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rxy-6E-oSs">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="64Z-n1-57r"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Купить" image="laptopcomputer.and.iphone" catalog="system" id="CIh-0h-qrz"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dZ-Gw-2yr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-362" y="446"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="laptopcomputer.and.iphone" catalog="system" width="128" height="74"/>
+    </resources>
+</document>
