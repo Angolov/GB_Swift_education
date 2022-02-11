@@ -16,6 +16,7 @@ class BoardGameViewController: UIViewController {
     private var stepsDone = 0
     private var cardsLeftCount = 8
     private var flippedCards = [UIView]()
+    private var isAllCardFlipped = false
     
     private var cardSize: CGSize {
         CGSize(width: 80, height: 120)
@@ -29,7 +30,6 @@ class BoardGameViewController: UIViewController {
         Int(boardGameView.frame.height - cardSize.height)
     }
 
-    
     lazy var game: Game = getNewGame()
     
     lazy var startButtonView = getStartButtonView()
@@ -109,6 +109,8 @@ class BoardGameViewController: UIViewController {
         button.setTitleColor(.gray, for: .highlighted)
         button.backgroundColor = .systemGray4
         button.layer.cornerRadius = 10
+        
+        button.addTarget(self, action: #selector(flipAllCards(_:)), for: .touchUpInside)
         
         return button
     }
@@ -239,5 +241,22 @@ class BoardGameViewController: UIViewController {
         score = 100
         stepsDone = 0
         updateView()
+    }
+    
+    @objc func flipAllCards(_ sender: UIButton) {
+        if flippedCards.count > 0 || !isAllCardFlipped {
+            for card in cardViews {
+                (card as! FlippableView).isFlipped = true
+            }
+            flippedCards = []
+            isAllCardFlipped = true
+            
+        } else {
+            for card in cardViews {
+                (card as! FlippableView).isFlipped = false
+            }
+            flippedCards = []
+            isAllCardFlipped = false
+        }
     }
 }
