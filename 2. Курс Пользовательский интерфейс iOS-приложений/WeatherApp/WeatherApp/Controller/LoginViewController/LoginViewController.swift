@@ -87,11 +87,12 @@ final class LoginViewController: UIViewController {
     
     //MARK: - Navigation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        let checkResult = checkUserData()
-        if !checkResult {
-            showLoginError()
-        }
-        return checkResult
+//        let checkResult = checkUserData()
+//        if !checkResult {
+//            showLoginError()
+//        }
+//        return checkResult
+        return true
     }
     
     //MARK: - Actions
