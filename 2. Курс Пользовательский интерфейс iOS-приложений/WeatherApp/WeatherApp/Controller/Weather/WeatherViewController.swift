@@ -8,27 +8,40 @@
 import UIKit
 
 //MARK: - WeatherViewController class declaration
-final class WeatherViewController: UICollectionViewController {
+final class WeatherViewController: UIViewController {
 
+    //MARK: - Outlets
+    @IBOutlet weak var weatherCollectionView: UICollectionView!
+    @IBOutlet weak var weekDayPicker: WeekDayPicker!
+    
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        weatherCollectionView.delegate = self
+        weatherCollectionView.dataSource = self
     }
-    
-    // MARK: UICollectionViewDataSource
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-    }
+}
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell",
-                                                            for: indexPath) as? WeatherCell
-        else {
-            return UICollectionViewCell()
+//MARK: - UICollectionViewDataSource
+extension WeatherViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+            return 10
         }
-        cell.weatherLabel.text = "30 C"
-        cell.timeLabel.text = "30.08.2017 18:00"
-        
-        return cell
-    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell",
+                                                                for: indexPath) as? WeatherCell
+            else {
+                return UICollectionViewCell()
+            }
+            cell.weatherLabel.text = "30 C"
+            cell.timeLabel.text = "30.08.2017 18:00"
+            
+            return cell
+        }
+}
+
+//MARK: - UICollectionViewDelegate
+extension WeatherViewController: UICollectionViewDelegate {
+    
 }
