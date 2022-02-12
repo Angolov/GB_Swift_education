@@ -54,7 +54,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZQ6-Y1-6Ge">
                                         <rect key="frame" x="178" y="346.5" width="58.5" height="31"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Enter"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Enter"/>
                                         <connections>
                                             <action selector="enterButtonPressed:" destination="k9V-xq-1ek" eventType="touchUpInside" id="ayN-N2-qlO"/>
                                             <segue destination="pzo-hS-6U8" kind="show" id="3CQ-bh-Rv0"/>
@@ -113,9 +113,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="6hf-CF-CbM"/>
                     <connections>
+                        <outlet property="enterButton" destination="ZQ6-Y1-6Ge" id="Mqf-xY-bGo"/>
+                        <outlet property="loginLabel" destination="paL-cW-vsK" id="mc0-f9-LYV"/>
                         <outlet property="loginTextField" destination="VDv-aO-Aqr" id="kAP-J4-ffY"/>
                         <outlet property="mainScrollView" destination="kgZ-4m-saE" id="uct-DK-A67"/>
+                        <outlet property="passwordLabel" destination="98G-IU-iul" id="gaw-dM-8jq"/>
                         <outlet property="passwordTextField" destination="S2u-db-MlW" id="N0t-n2-RxZ"/>
+                        <outlet property="titleLabel" destination="6U1-gS-O76" id="Kdf-SY-rtF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYs-TM-FDi" sceneMemberID="firstResponder"/>

@@ -12,15 +12,20 @@ final class LoginViewController: UIViewController {
 
     //MARK: - Outlets
     @IBOutlet weak var mainScrollView: UIScrollView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var loginTextField: UITextField!
+    @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var enterButton: UIButton!
+    
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         mainScrollView?.addGestureRecognizer(UITapGestureRecognizer(target: self,
                                                                     action: #selector(hideKeyboard)))
+        setupView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,6 +72,25 @@ final class LoginViewController: UIViewController {
     }
     
     //MARK: - Private methods
+    private func setupView() {
+        enterButton.layer.cornerRadius = 15
+        enterButton.layer.shadowColor = UIColor.black.cgColor
+        enterButton.layer.shadowRadius = 5
+        enterButton.layer.shadowOffset = CGSize(width: 5, height: 5)
+        enterButton.layer.shadowOpacity = 0.7
+        enterButton.setAttributedTitle(NSAttributedString(string: "Enter",
+                                                          attributes: [.font: UIFont.systemFont(ofSize: 16,
+                                                                                                weight: .bold)]),
+                                       for: .normal)
+        enterButton.setTitleColor(.white, for: .normal)
+        enterButton.setTitleColor(.lightGray, for: .highlighted)
+        
+        animateTitleAppearing()
+        animateTitlesAppearing()
+        animateFieldsAppearing()
+        animateAuthButton()
+    }
+    
     private func checkUserData() -> Bool {
         guard let login = loginTextField.text,
               let password = passwordTextField.text,
@@ -77,12 +101,64 @@ final class LoginViewController: UIViewController {
     }
     
     private func showLoginError() {
-        // Создаем контроллер
         let alert = UIAlertController(title: "Error",
                                       message: "Wrong user login/password",
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Animations
+    func animateTitlesAppearing() {
+        let offset = self.view.bounds.width
+        loginLabel.transform = CGAffineTransform(translationX: -offset, y: 0)
+        passwordLabel.transform = CGAffineTransform(translationX: offset, y: 0)
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+            guard let self = self else { return }
+            self.loginLabel.transform = .identity
+            self.passwordLabel.transform = .identity
+        }, completion: nil)
+    }
+    
+    func animateTitleAppearing() {
+        self.titleLabel.transform = CGAffineTransform(translationX: 0,
+                                                     y: -self.view.bounds.height/2)
+        UIView.animate(withDuration: 1,
+                       delay: 1,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0,
+                       options: .curveEaseOut,
+                       animations: { [weak self] in
+            guard let self = self else { return }
+            self.titleLabel.transform = .identity
+        }, completion: nil)
+    }
+    
+    func animateFieldsAppearing() {
+        let fadeInAnimation = CABasicAnimation(keyPath: "opacity")
+        fadeInAnimation.fromValue = 0
+        fadeInAnimation.toValue = 1
+        fadeInAnimation.duration = 1
+        fadeInAnimation.beginTime = CACurrentMediaTime() + 1
+        fadeInAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
+        fadeInAnimation.fillMode = CAMediaTimingFillMode.backwards
+        self.loginTextField.layer.add(fadeInAnimation, forKey: nil)
+        self.passwordTextField.layer.add(fadeInAnimation, forKey: nil)
+    }
+    
+    func animateAuthButton() {
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 0
+        animation.toValue = 1
+        animation.stiffness = 200
+        animation.mass = 2
+        animation.duration = 2
+        animation.beginTime = CACurrentMediaTime() + 1
+        animation.fillMode = CAMediaTimingFillMode.backwards
+        self.enterButton.layer.add(animation, forKey: nil)
     }
     
     //MARK: - Navigation
