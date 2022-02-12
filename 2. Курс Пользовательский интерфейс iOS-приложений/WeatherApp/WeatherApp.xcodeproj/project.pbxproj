@@ -25,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B2E938E27B822AA00545805 /* FollowAnimations.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FollowAnimations.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		5B2E938F27B82EA400545805 /* FromDotToCrossAnimation.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = FromDotToCrossAnimation.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		5B2FF87027B7A7BA00BAF9F8 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B2FF87327B7A7BA00BAF9F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B2FF87527B7A7BA00BAF9F8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,8 @@
 				5B2FF87C27B7A7BB00BAF9F8 /* Assets.xcassets */,
 				5B2FF87E27B7A7BB00BAF9F8 /* LaunchScreen.storyboard */,
 				5B2FF88127B7A7BB00BAF9F8 /* Info.plist */,
+				5B2E938E27B822AA00545805 /* FollowAnimations.playground */,
+				5B2E938F27B82EA400545805 /* FromDotToCrossAnimation.playground */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
