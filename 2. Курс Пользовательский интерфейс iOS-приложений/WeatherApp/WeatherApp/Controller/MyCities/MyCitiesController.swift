@@ -36,7 +36,7 @@ final class MyCitiesController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 60
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -51,7 +51,7 @@ final class MyCitiesController: UITableViewController {
               let allCitiesController = segue.source as? AllCitiesController,
               let indexPath = allCitiesController.tableView.indexPathForSelectedRow else { return }
         
-        let city = allCitiesController.cities[indexPath.row]
+        let city = allCitiesController.cities[indexPath.row].title
         if !cities.contains(city) {
             cities.append(city)
             tableView.reloadData()

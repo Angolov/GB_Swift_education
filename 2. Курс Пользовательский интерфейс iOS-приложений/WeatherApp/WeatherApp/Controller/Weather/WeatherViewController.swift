@@ -29,16 +29,17 @@ extension WeatherViewController: UICollectionViewDataSource {
         }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell",
-                                                                for: indexPath) as? WeatherCell
-            else {
-                return UICollectionViewCell()
-            }
-            cell.weatherLabel.text = "30 C"
-            cell.timeLabel.text = "30.08.2017 18:00"
-            
-            return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WeatherCell",
+                                                            for: indexPath) as? WeatherCell
+        else {
+            return UICollectionViewCell()
         }
+        cell.layoutIfNeeded()
+        cell.weatherLabel.text = "-10"
+        cell.timeLabel.text = "30.08.2017 18:00"
+        
+        return cell
+    }
 }
 
 //MARK: - UICollectionViewDelegate

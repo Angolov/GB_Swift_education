@@ -12,10 +12,11 @@ final class AllCitiesController: UITableViewController {
 
     //MARK: - Properties
     var cities = [
-        "Moscow",
-        "Krasnoyarsk",
-        "London",
-        "Paris"
+        (title: "Moscow", emblem: #imageLiteral(resourceName: "moscow")),
+        (title: "Krasnoyarsk", emblem: #imageLiteral(resourceName: "krasnoyarsk")),
+        (title: "London", emblem: #imageLiteral(resourceName: "london")),
+        (title: "Paris", emblem: #imageLiteral(resourceName: "paris")),
+        (title: "Novosibirsk", emblem: #imageLiteral(resourceName: "novosibirsk"))
     ]
     
     //MARK: - ViewController lifecycle
@@ -37,11 +38,11 @@ final class AllCitiesController: UITableViewController {
         }
         
         let city = cities[indexPath.row]
-        cell.cityNameLabel.text = city
+        cell.configure(city: city.title, emblem: city.emblem)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 45
+        return 60
     }
 }

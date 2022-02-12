@@ -21,6 +21,7 @@
 		5B2FF89927B7CB9200BAF9F8 /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF89827B7CB9200BAF9F8 /* WeatherCell.swift */; };
 		5B2FF89B27B7E8E900BAF9F8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF89A27B7E8E900BAF9F8 /* GradientView.swift */; };
 		5B2FF89F27B7EBDE00BAF9F8 /* WeekDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF89E27B7EBDE00BAF9F8 /* WeekDayPicker.swift */; };
+		5B2FF8A127B8043800BAF9F8 /* WeatherCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF8A027B8043800BAF9F8 /* WeatherCollectionViewLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		5B2FF89827B7CB9200BAF9F8 /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		5B2FF89A27B7E8E900BAF9F8 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5B2FF89E27B7EBDE00BAF9F8 /* WeekDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayPicker.swift; sourceTree = "<group>"; };
+		5B2FF8A027B8043800BAF9F8 /* WeatherCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewLayout.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				5B2FF89627B7CB8100BAF9F8 /* WeatherViewController.swift */,
 				5B2FF89827B7CB9200BAF9F8 /* WeatherCell.swift */,
+				5B2FF8A027B8043800BAF9F8 /* WeatherCollectionViewLayout.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				5B2FF89227B7C71000BAF9F8 /* MyCitiesCell.swift in Sources */,
 				5B2FF89427B7C72100BAF9F8 /* MyCitiesController.swift in Sources */,
 				5B2FF89B27B7E8E900BAF9F8 /* GradientView.swift in Sources */,
+				5B2FF8A127B8043800BAF9F8 /* WeatherCollectionViewLayout.swift in Sources */,
 				5B2FF89F27B7EBDE00BAF9F8 /* WeekDayPicker.swift in Sources */,
 				5B2FF89927B7CB9200BAF9F8 /* WeatherCell.swift in Sources */,
 				5B2FF88827B7A81A00BAF9F8 /* LoginViewController.swift in Sources */,
