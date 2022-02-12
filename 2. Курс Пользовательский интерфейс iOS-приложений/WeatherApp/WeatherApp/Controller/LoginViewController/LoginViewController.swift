@@ -46,7 +46,7 @@ final class LoginViewController: UIViewController {
                                                   object: nil)
     }
     
-    
+    //MARK: - Objc handlers
     @objc func keyboardWasShown(_ notification: Notification) {
         guard let info = notification.userInfo as NSDictionary?,
               let value = info.value(forKey: UIResponder.keyboardFrameEndUserInfoKey) as? NSValue else { return }
@@ -64,6 +64,34 @@ final class LoginViewController: UIViewController {
     
     @objc func hideKeyboard() {
         self.mainScrollView?.endEditing(true)
+    }
+    
+    //MARK: - Private methods
+    private func checkUserData() -> Bool {
+        guard let login = loginTextField.text,
+              let password = passwordTextField.text,
+              login == "admin",
+              password == "123456" else { return false }
+        
+        return true
+    }
+    
+    private func showLoginError() {
+        // Создаем контроллер
+        let alert = UIAlertController(title: "Error",
+                                      message: "Wrong user login/password",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Navigation
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let checkResult = checkUserData()
+        if !checkResult {
+            showLoginError()
+        }
+        return checkResult
     }
     
     //MARK: - Actions
