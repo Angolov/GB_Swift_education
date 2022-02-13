@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B09F2F7279E8538003F3E7A /* DataLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B09F2F6279E8538003F3E7A /* DataLoadingViewController.swift */; };
+		5B43935F27B95FC80081A104 /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43935E27B95FC80081A104 /* UserHelper.swift */; };
 		5B593B1227A44F8500663C94 /* GalleryHorizontalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B593B1127A44F8500663C94 /* GalleryHorizontalView.swift */; };
 		5B593B1627A4625300663C94 /* GalleryHorizontalView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B593B1527A4625300663C94 /* GalleryHorizontalView+Animations.swift */; };
 		5B593B1827A46EC900663C94 /* LikeControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B593B1727A46EC900663C94 /* LikeControlView.xib */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		5B09F2F6279E8538003F3E7A /* DataLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadingViewController.swift; sourceTree = "<group>"; };
+		5B43935E27B95FC80081A104 /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
 		5B593B1127A44F8500663C94 /* GalleryHorizontalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryHorizontalView.swift; sourceTree = "<group>"; };
 		5B593B1527A4625300663C94 /* GalleryHorizontalView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GalleryHorizontalView+Animations.swift"; sourceTree = "<group>"; };
 		5B593B1727A46EC900663C94 /* LikeControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LikeControlView.xib; sourceTree = "<group>"; };
@@ -120,6 +122,14 @@
 			path = LikeControl;
 			sourceTree = "<group>";
 		};
+		5B43935D27B95FA80081A104 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5B43935E27B95FC80081A104 /* UserHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		5B593B1027A44F3A00663C94 /* GalleryHorizontalView */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +163,7 @@
 				5B7960232793234000CA3D52 /* Constants.swift */,
 				5B795FEB279310F000CA3D52 /* Storage */,
 				5B795FE627930C8C00CA3D52 /* Model */,
+				5B43935D27B95FA80081A104 /* Helpers */,
 				5B795FF927931BEB00CA3D52 /* View */,
 				5BA93FA027A57D4F00C099F8 /* NavigationControllerAnimations */,
 				5B795FE727930C9300CA3D52 /* ViewControllers */,
@@ -396,6 +407,7 @@
 				5B79600227931C7000CA3D52 /* GlobalGroupsController.swift in Sources */,
 				5B7960242793234000CA3D52 /* Constants.swift in Sources */,
 				5B593B1A27A46ED900663C94 /* LikeControlView.swift in Sources */,
+				5B43935F27B95FC80081A104 /* UserHelper.swift in Sources */,
 				5B79600E27931F6E00CA3D52 /* UserGroupsController+TableDelegate.swift in Sources */,
 				5B79600A27931F0F00CA3D52 /* FriendGalleryController+CollectionDelegate.swift in Sources */,
 				5B593B1627A4625300663C94 /* GalleryHorizontalView+Animations.swift in Sources */,

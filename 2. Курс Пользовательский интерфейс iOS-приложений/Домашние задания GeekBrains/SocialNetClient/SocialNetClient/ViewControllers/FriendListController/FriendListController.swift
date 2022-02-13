@@ -17,6 +17,15 @@ final class FriendListController: UIViewController {
     let sourceFriendList = Storage.shared.friends
     var friendList = [UserProtocol]()
     
+    lazy var friendsInSectionList: [Character : [UserProtocol]] = {
+        let helper = UserInSectionsHelper()
+        return helper.getFriendInSections(from: sourceFriendList)
+    }()
+    lazy var sectionChars: [Character] = {
+        let helper = UserInSectionsHelper()
+        return helper.getSectionsChars(from: sourceFriendList)
+    }()
+    
     //MARK: - Properties
     let reuseIdentifierFriendCell = "reuseIdentifierFriendCell"
     let fromFriendsListToFriendGallery = "fromFriendsListToFriendGallery"
@@ -28,7 +37,9 @@ final class FriendListController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: "FriendCell", bundle: nil),
                            forCellReuseIdentifier: reuseIdentifierFriendCell)
+        tableView.sectionHeaderTopPadding = 0
         searchBar.delegate = self
+        
         friendList = sourceFriendList
         
         self.navigationController?.delegate = self

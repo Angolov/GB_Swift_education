@@ -15,7 +15,8 @@ extension FriendListController: UINavigationControllerDelegate {
                               from fromVC: UIViewController,
                               to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if toVC is FriendGalleryController {
+        if operation == .push,
+           toVC is FriendGalleryController {
             return Animator()
         }
         

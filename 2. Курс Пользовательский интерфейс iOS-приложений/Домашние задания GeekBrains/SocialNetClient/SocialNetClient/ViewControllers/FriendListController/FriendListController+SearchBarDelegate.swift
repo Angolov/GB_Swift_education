@@ -12,13 +12,18 @@ extension FriendListController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
+        let helper = UserInSectionsHelper()
+        
         if searchText.isEmpty {
             friendList = sourceFriendList
+            
         } else {
             friendList = sourceFriendList.filter({ sourceFriendsItem in
                 sourceFriendsItem.name.lowercased().contains(searchText.lowercased())
             })
         }
+        friendsInSectionList = helper.getFriendInSections(from: friendList)
+        sectionChars = helper.getSectionsChars(from: friendList)
         
         tableView.reloadData()
     }

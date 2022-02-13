@@ -80,6 +80,66 @@ final class Storage: NSObject {
                             photosImageNames: Array(repeating: "friend4", count: 5),
                             likes: [87, 9, 13, 47, 5],
                             isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Кирилл Николаев",
+                            avatarImageName: "friend1",
+                            photosImageNames: Array(repeating: "friend1", count: 5),
+                            likes: [10, 12, 2, 5, 3],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Артем Никитин",
+                            avatarImageName: "friend2",
+                            photosImageNames: Array(repeating: "friend2", count: 5),
+                            likes: [7, 6, 24, 15, 32],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Николай Антонов",
+                            avatarImageName: "friend3",
+                            photosImageNames: Array(repeating: "friend3", count: 5),
+                            likes: [0, 21, 72, 9, 44],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Фредерик Бауменшталь",
+                            avatarImageName: "friend4",
+                            photosImageNames: Array(repeating: "friend4", count: 5),
+                            likes: [87, 9, 13, 47, 5],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Джон Смит",
+                            avatarImageName: "friend1",
+                            photosImageNames: Array(repeating: "friend1", count: 5),
+                            likes: [10, 12, 2, 5, 3],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Джеймс Абрамс",
+                            avatarImageName: "friend2",
+                            photosImageNames: Array(repeating: "friend2", count: 5),
+                            likes: [7, 6, 24, 15, 32],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Роберт Блэк",
+                            avatarImageName: "friend3",
+                            photosImageNames: Array(repeating: "friend3", count: 5),
+                            likes: [0, 21, 72, 9, 44],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Альберт Штайнмайер",
+                            avatarImageName: "friend4",
+                            photosImageNames: Array(repeating: "friend4", count: 5),
+                            likes: [87, 9, 13, 47, 5],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Мария Синицина",
+                            avatarImageName: "friend1",
+                            photosImageNames: Array(repeating: "friend1", count: 5),
+                            likes: [10, 12, 2, 5, 3],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Жанна Белова",
+                            avatarImageName: "friend2",
+                            photosImageNames: Array(repeating: "friend2", count: 5),
+                            likes: [7, 6, 24, 15, 32],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Лидия Иванова",
+                            avatarImageName: "friend3",
+                            photosImageNames: Array(repeating: "friend3", count: 5),
+                            likes: [0, 21, 72, 9, 44],
+                            isLiked: Array(repeating: false, count: 5)))
+        resultFriends.append(User(name: "Зоя Кожина",
+                            avatarImageName: "friend4",
+                            photosImageNames: Array(repeating: "friend4", count: 5),
+                            likes: [87, 9, 13, 47, 5],
+                            isLiked: Array(repeating: false, count: 5)))
         resultFriends.sort { $0.name < $1.name }
         
         return resultFriends

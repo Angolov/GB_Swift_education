@@ -11,7 +11,7 @@ import UIKit
 final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return 3
+        return 1
     }
 
     
@@ -23,11 +23,13 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
         
         let containerFrame = transitionContext.containerView.frame
         transitionContext.containerView.addSubview(destination.view)
-        destination.view.frame = CGRect(x: source.view.frame.height,
-                                        y: -source.view.frame.width / 2,
+        
+        destination.view.frame = CGRect(x: source.view.frame.width / 2,
+                                        y: -source.view.frame.height / 2,
                                         width: source.view.frame.width,
                                         height: source.view.frame.height)
         
+        destination.view.layer.anchorPoint = CGPoint(x: 1, y: 0)
         destination.view.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
         
       
@@ -40,9 +42,4 @@ final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
             }
         }
     }
-    
-
-    
-    
-    
 }

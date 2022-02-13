@@ -86,7 +86,7 @@ class LikeControlView: UIView {
         }
         
         UIView.transition(with: counterLabel,
-                          duration: 1,
+                          duration: 0.5,
                           options: .transitionFlipFromTop) { [weak self] in
             guard let self = self else { return }
             self.counterLabel.text = String(self.currentLikeCount)
