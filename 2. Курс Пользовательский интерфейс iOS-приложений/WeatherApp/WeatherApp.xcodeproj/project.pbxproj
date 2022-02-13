@@ -22,6 +22,10 @@
 		5B2FF89B27B7E8E900BAF9F8 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF89A27B7E8E900BAF9F8 /* GradientView.swift */; };
 		5B2FF89F27B7EBDE00BAF9F8 /* WeekDayPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF89E27B7EBDE00BAF9F8 /* WeekDayPicker.swift */; };
 		5B2FF8A127B8043800BAF9F8 /* WeatherCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2FF8A027B8043800BAF9F8 /* WeatherCollectionViewLayout.swift */; };
+		5B43934827B8ECA80081A104 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43934727B8ECA80081A104 /* CustomPushAnimator.swift */; };
+		5B43934A27B8EF710081A104 /* CustomPopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43934927B8EF710081A104 /* CustomPopAnimator.swift */; };
+		5B43934E27B8F2470081A104 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43934D27B8F2470081A104 /* CustomNavigationController.swift */; };
+		5B43935027B8F3A80081A104 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43934F27B8F3A80081A104 /* CustomInteractiveTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,10 @@
 		5B2FF89A27B7E8E900BAF9F8 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		5B2FF89E27B7EBDE00BAF9F8 /* WeekDayPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayPicker.swift; sourceTree = "<group>"; };
 		5B2FF8A027B8043800BAF9F8 /* WeatherCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewLayout.swift; sourceTree = "<group>"; };
+		5B43934727B8ECA80081A104 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
+		5B43934927B8EF710081A104 /* CustomPopAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPopAnimator.swift; sourceTree = "<group>"; };
+		5B43934D27B8F2470081A104 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
+		5B43934F27B8F3A80081A104 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				5B2FF89D27B7EBB300BAF9F8 /* CustomUIComponents */,
+				5B43934B27B8F21B0081A104 /* CustomNavigationController */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -152,6 +161,25 @@
 				5B2FF89E27B7EBDE00BAF9F8 /* WeekDayPicker.swift */,
 			);
 			path = CustomUIComponents;
+			sourceTree = "<group>";
+		};
+		5B43934B27B8F21B0081A104 /* CustomNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				5B43934C27B8F2280081A104 /* Animations */,
+				5B43934D27B8F2470081A104 /* CustomNavigationController.swift */,
+			);
+			path = CustomNavigationController;
+			sourceTree = "<group>";
+		};
+		5B43934C27B8F2280081A104 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				5B43934727B8ECA80081A104 /* CustomPushAnimator.swift */,
+				5B43934927B8EF710081A104 /* CustomPopAnimator.swift */,
+				5B43934F27B8F3A80081A104 /* CustomInteractiveTransition.swift */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,10 +253,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B43935027B8F3A80081A104 /* CustomInteractiveTransition.swift in Sources */,
 				5B2FF89227B7C71000BAF9F8 /* MyCitiesCell.swift in Sources */,
+				5B43934A27B8EF710081A104 /* CustomPopAnimator.swift in Sources */,
 				5B2FF89427B7C72100BAF9F8 /* MyCitiesController.swift in Sources */,
 				5B2FF89B27B7E8E900BAF9F8 /* GradientView.swift in Sources */,
+				5B43934827B8ECA80081A104 /* CustomPushAnimator.swift in Sources */,
 				5B2FF8A127B8043800BAF9F8 /* WeatherCollectionViewLayout.swift in Sources */,
+				5B43934E27B8F2470081A104 /* CustomNavigationController.swift in Sources */,
 				5B2FF89F27B7EBDE00BAF9F8 /* WeekDayPicker.swift in Sources */,
 				5B2FF89927B7CB9200BAF9F8 /* WeatherCell.swift in Sources */,
 				5B2FF88827B7A81A00BAF9F8 /* LoginViewController.swift in Sources */,
