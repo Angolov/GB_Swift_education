@@ -31,7 +31,7 @@
                         </constraints>
                     </view>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v5e-vv-hvG">
-                        <rect key="frame" x="0.0" y="0.0" width="266" height="90"/>
+                        <rect key="frame" x="0.0" y="0.0" width="86" height="90"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" title="Button"/>
@@ -52,7 +52,7 @@
                     <constraint firstItem="ws5-0W-MIJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="NLU-cB-xS9"/>
                     <constraint firstAttribute="bottom" secondItem="v5e-vv-hvG" secondAttribute="bottom" id="bxh-4g-O95"/>
                     <constraint firstItem="Irz-za-Mej" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="k5E-LL-lbX"/>
-                    <constraint firstAttribute="trailing" secondItem="v5e-vv-hvG" secondAttribute="trailing" id="m7Z-2J-ZQd"/>
+                    <constraint firstItem="v5e-vv-hvG" firstAttribute="trailing" secondItem="Irz-za-Mej" secondAttribute="trailing" id="ryp-nH-TYU"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

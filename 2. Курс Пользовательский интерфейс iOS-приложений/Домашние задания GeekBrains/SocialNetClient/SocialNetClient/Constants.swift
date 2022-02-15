@@ -10,4 +10,5 @@ import Foundation
 
 let heightForFriendCellTableView: CGFloat = 50
 let heightForGroupCellTableView: CGFloat = 85
-let heightForLikeControlView: CGFloat = 50
+let heightForLikeControlView: CGFloat = 30
+let heigthForPhotoCollectionView: CGFloat = 300

@@ -17,32 +17,30 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="132" height="47"/>
+            <rect key="frame" x="0.0" y="0.0" width="144" height="99"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PYM-0Y-BJv">
-                    <rect key="frame" x="82" y="0.0" width="40" height="40"/>
+                    <rect key="frame" x="89" y="44" width="55" height="55"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="40" id="Opv-LJ-ACa"/>
-                        <constraint firstAttribute="height" constant="40" id="fi9-ZV-QOs"/>
+                        <constraint firstAttribute="width" secondItem="PYM-0Y-BJv" secondAttribute="height" multiplier="1:1" id="iQ5-Kw-rUZ"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <color key="tintColor" systemColor="systemRedColor"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal">
-                        <imageReference key="image" image="heart" catalog="system" symbolScale="large"/>
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                        <imageReference key="image" image="heart" catalog="system" symbolScale="default"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font" weight="medium">
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        </preferredSymbolConfiguration>
                     </state>
                     <connections>
                         <action selector="liked:" destination="-1" eventType="touchUpInside" id="t8G-ty-h7Q"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-9p-WpL">
-                    <rect key="frame" x="42" y="0.0" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="40" id="9Ov-3y-AkK"/>
-                        <constraint firstAttribute="height" constant="40" id="Y7o-YJ-Bay"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUB-9p-WpL">
+                    <rect key="frame" x="0.0" y="62" width="84" height="19.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" systemColor="systemRedColor"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -50,14 +48,16 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="PYM-0Y-BJv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0j3-NT-w1L"/>
+                <constraint firstAttribute="bottomMargin" secondItem="PYM-0Y-BJv" secondAttribute="bottom" id="Ka8-Yv-e18"/>
                 <constraint firstItem="hUB-9p-WpL" firstAttribute="centerY" secondItem="PYM-0Y-BJv" secondAttribute="centerY" id="Mib-z1-Ra6"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="top" secondItem="PYM-0Y-BJv" secondAttribute="top" constant="44" id="eW1-8V-yK1"/>
-                <constraint firstItem="PYM-0Y-BJv" firstAttribute="leading" secondItem="hUB-9p-WpL" secondAttribute="trailing" id="ecE-ae-bTa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PYM-0Y-BJv" secondAttribute="trailing" constant="10" id="w6E-eH-YJB"/>
+                <constraint firstItem="PYM-0Y-BJv" firstAttribute="leading" secondItem="hUB-9p-WpL" secondAttribute="trailing" constant="5" id="ecE-ae-bTa"/>
+                <constraint firstItem="PYM-0Y-BJv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="topMargin" id="lz0-0i-gis"/>
+                <constraint firstItem="PYM-0Y-BJv" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerYWithinMargins" id="n6w-pM-6k2"/>
+                <constraint firstItem="hUB-9p-WpL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="nLH-qD-tRf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="PYM-0Y-BJv" secondAttribute="trailing" id="w6E-eH-YJB"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-66.666666666666671" y="258.14732142857144"/>
+            <point key="canvasLocation" x="53.623188405797109" y="288.95089285714283"/>
         </view>
     </objects>
     <resources>

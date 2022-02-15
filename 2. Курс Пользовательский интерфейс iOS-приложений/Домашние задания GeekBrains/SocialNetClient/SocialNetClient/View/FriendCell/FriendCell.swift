@@ -35,7 +35,7 @@ final class FriendCell: UITableViewCell {
     
     @IBAction func animatePressButton(_ sender: Any) {
         
-        UIView.animate(withDuration: 0.5,
+        UIView.animate(withDuration: 0.7,
                        delay: 0,
                        usingSpringWithDamping: 0.3,
                        initialSpringVelocity: 0,

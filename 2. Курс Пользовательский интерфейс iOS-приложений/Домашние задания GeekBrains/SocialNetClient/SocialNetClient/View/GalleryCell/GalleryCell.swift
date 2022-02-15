@@ -30,6 +30,7 @@ final class GalleryCell: UICollectionViewCell {
     func configure(friendIndex: Int,
                    photoIndex: Int,
                    completion: @escaping (Int, Bool) -> Void) {
+        
         photoImageView.image = Storage.shared.friends[friendIndex].photos[photoIndex]
         currentLikeCount = Storage.shared.friends[friendIndex].likes[photoIndex]
         let isLiked = Storage.shared.friends[friendIndex].isLiked[photoIndex]

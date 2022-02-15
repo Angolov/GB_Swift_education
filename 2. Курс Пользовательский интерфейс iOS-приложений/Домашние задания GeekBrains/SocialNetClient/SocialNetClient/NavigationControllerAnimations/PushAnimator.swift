@@ -7,8 +7,8 @@
 
 import UIKit
 
-//MARK: - Animator class declaration
-final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
+//MARK: - PushAnimator class declaration
+final class PushAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 1

@@ -66,6 +66,19 @@ class LikeControlView: UIView {
         }
     }
     
+    func configure(count: Int, isLiked: Bool) {
+        currentLikeCount = count
+        counterLabel.text = String(currentLikeCount)
+        self.isLiked = isLiked
+        isHeartEmpty = !isLiked
+        
+        if isLiked {
+            heartButon.setImage(UIImage(systemName: fullHeart), for: .normal)
+        } else {
+            heartButon.setImage(UIImage(systemName: emptyHeart), for: .normal)
+        }
+    }
+    
     //MARK: - Actions
     @IBAction func liked(_ sender: Any) {
         

@@ -17,7 +17,7 @@ extension FriendListController: UINavigationControllerDelegate {
         
         if operation == .push,
            toVC is FriendGalleryController {
-            return Animator()
+            return PushAnimator()
         }
         
         return nil

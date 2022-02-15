@@ -46,6 +46,12 @@ final class Storage: NSObject {
     }
     var allGroups = [GroupProtocol]()
     
+    var news = [NewsProtocol]() {
+        didSet {
+            news.sort { $0.date > $1.date }
+        }
+    }
+    
     //MARK: - Private initializer
     private override init() {
         super.init()
@@ -53,6 +59,7 @@ final class Storage: NSObject {
         //friends = loadFriendsList()
         friends = loadLikesFromUserDefaults()
         userGroups = loadGroupsFromUserDefaults()
+        news = loadNews()
     }
     
     //MARK: - Private methods
@@ -271,5 +278,50 @@ final class Storage: NSObject {
         }
         
         storage.set(arrayForStorage, forKey: groupsStorageKey)
+    }
+    
+    private func loadNews() -> [NewsProtocol] {
+        
+        var resultNews = [News]()
+        
+        let secondsInDay = 24 * 60 * 60
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        
+        let newsText = """
+В этом руководстве вы найдете базовую информацию о принципах работы API ВКонтакте и о подготовке к его использованию. Если вы уже работали с нашим API или с аналогичными сервисами других платформ, и знаете, какое приложение хотите создать, мы рекомендуем вам перейти в соответствующий раздел документации.
+API (application programming interface) — это посредник между разработчиком приложений и какой-либо средой, с которой это приложение должно взаимодействовать. API упрощает создание кода, поскольку предоставляет набор готовых классов, функций или структур для работы с имеющимися данными.
+"""
+        
+        for _ in 1...10 {
+            
+            let randomPoster = friends[Int.random(in: 0..<friends.count)]
+            let postDate = Date(timeIntervalSinceNow: -TimeInterval(Int.random(in: 1...60) * secondsInDay))
+            let postDateInString = dateFormatter.string(from: postDate)
+            let photosCount = Int.random(in: 1...5)
+            var photosNames = [String]()
+            
+            for _ in 0...photosCount {
+                let photoName = "friend\(Int.random(in: 1...4))"
+                photosNames.append(photoName)
+            }
+            
+            resultNews.append(News(authorName: randomPoster.name,
+                                   authorAvatarImageName: randomPoster.avatarImageName,
+                                   date: postDate,
+                                   dateInString: postDateInString,
+                                   photosNames: photosNames,
+                                   text: newsText,
+                                   likes: Int.random(in: 0...187),
+                                   isLiked: false,
+                                   views: Int.random(in: 42...10000)))
+        }
+        
+        resultNews.sort { $0.date > $1.date }
+        
+        return resultNews
     }
 }
