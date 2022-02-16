@@ -48,7 +48,7 @@ extension FriendListController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifierFriendCell,
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendCell.reuseIdentifier,
                                                        for: indexPath) as? FriendCell,
               let friendsForSection = friendsInSectionList[sectionChars[indexPath.section]]
         else { return UITableViewCell() }

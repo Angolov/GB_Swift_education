@@ -27,4 +27,11 @@ extension FriendListController: UITableViewDelegate {
         performSegue(withIdentifier: fromFriendsListToFriendGallery,
                      sender: index)
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if let cell = cell as? FriendCell {
+            cell.animate()
+            
+        }
+    }
 }

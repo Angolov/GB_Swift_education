@@ -10,6 +10,9 @@ import UIKit
 //MARK: - FriendCell class declaration
 final class FriendCell: UITableViewCell {
 
+    //MARK: - Type properties
+    static let reuseIdentifier = "FriendCell"
+    
     //MARK: - Outlets
     @IBOutlet var avatarView: AvatarView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -33,6 +36,26 @@ final class FriendCell: UITableViewCell {
         self.completion = completion
     }
     
+    func animate() {
+        self.avatarView.alpha = 0
+        self.frame.origin.x += 400
+        
+        UIView.animate(withDuration: 0.3,
+                       delay: 0.15,
+                       options: [],
+                       animations: {
+            self.avatarView.alpha = 1
+        })
+        
+        UIView.animate(withDuration: 0.7,
+                       delay: 0.1,
+                       options: [],
+                       animations: {
+            self.frame.origin.x = 0
+        })
+    }
+    
+    //MARK: - Actions
     @IBAction func animatePressButton(_ sender: Any) {
         
         UIView.animate(withDuration: 0.7,
