@@ -51,6 +51,7 @@
 		5BA1AB5A27BACA0C0041D53C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1AB5927BACA0C0041D53C /* News.swift */; };
 		5BA1AB5D27BAD1F00041D53C /* NewsPhotoCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1AB5C27BAD1F00041D53C /* NewsPhotoCollectionView.swift */; };
 		5BA1AB6027BAD3720041D53C /* NewsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1AB5F27BAD3720041D53C /* NewsPhotoCell.swift */; };
+		5BA1AB6327BD63DB0041D53C /* CloudLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1AB6227BD63DB0041D53C /* CloudLoadingViewController.swift */; };
 		5BA93F9D27A5750A00C099F8 /* PushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA93F9C27A5750A00C099F8 /* PushAnimator.swift */; };
 		5BA93F9F27A5766D00C099F8 /* FriendListController+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA93F9E27A5766D00C099F8 /* FriendListController+UINavigationControllerDelegate.swift */; };
 		5BE8FB7E27947BD4002A01FF /* FriendListController+SearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BE8FB7D27947BD4002A01FF /* FriendListController+SearchBarDelegate.swift */; };
@@ -103,6 +104,7 @@
 		5BA1AB5927BACA0C0041D53C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		5BA1AB5C27BAD1F00041D53C /* NewsPhotoCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCollectionView.swift; sourceTree = "<group>"; };
 		5BA1AB5F27BAD3720041D53C /* NewsPhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPhotoCell.swift; sourceTree = "<group>"; };
+		5BA1AB6227BD63DB0041D53C /* CloudLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudLoadingViewController.swift; sourceTree = "<group>"; };
 		5BA93F9C27A5750A00C099F8 /* PushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushAnimator.swift; sourceTree = "<group>"; };
 		5BA93F9E27A5766D00C099F8 /* FriendListController+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendListController+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
 		5BE8FB7D27947BD4002A01FF /* FriendListController+SearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FriendListController+SearchBarDelegate.swift"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 		5B795FE727930C9300CA3D52 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5BA1AB6127BD63B90041D53C /* CloudLoadingViewController */,
 				5B795FE827930CA100CA3D52 /* LoginViewController */,
 				5B09F2F5279E850C003F3E7A /* DataLoadingViewController */,
 				5B795FF427931B7900CA3D52 /* FriendListController */,
@@ -366,6 +369,14 @@
 			path = NewsPhotoCell;
 			sourceTree = "<group>";
 		};
+		5BA1AB6127BD63B90041D53C /* CloudLoadingViewController */ = {
+			isa = PBXGroup;
+			children = (
+				5BA1AB6227BD63DB0041D53C /* CloudLoadingViewController.swift */,
+			);
+			path = CloudLoadingViewController;
+			sourceTree = "<group>";
+		};
 		5BA93FA027A57D4F00C099F8 /* NavigationControllerAnimations */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,6 +471,7 @@
 				5B795FEA27930D0100CA3D52 /* LoginViewController.swift in Sources */,
 				5B79600227931C7000CA3D52 /* GlobalGroupsController.swift in Sources */,
 				5B7960242793234000CA3D52 /* Constants.swift in Sources */,
+				5BA1AB6327BD63DB0041D53C /* CloudLoadingViewController.swift in Sources */,
 				5BA1AB5827BAC9540041D53C /* NewsViewController+TableViewDelegate.swift in Sources */,
 				5B593B1A27A46ED900663C94 /* LikeControlView.swift in Sources */,
 				5B43935F27B95FC80081A104 /* UserInSectionsHelper.swift in Sources */,
