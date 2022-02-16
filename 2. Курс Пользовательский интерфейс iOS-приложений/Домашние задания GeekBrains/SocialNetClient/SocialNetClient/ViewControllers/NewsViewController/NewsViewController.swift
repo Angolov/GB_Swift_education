@@ -14,7 +14,6 @@ final class NewsViewController: UIViewController {
     lazy var tableView: UITableView = {
         var tableView = UITableView(frame: CGRect(), style: .plain)
         tableView.allowsSelection = false
-        //tableView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         tableView.backgroundColor = .clear
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 70
@@ -30,11 +29,6 @@ final class NewsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
-//        for news in news {
-//            print(news)
-//            print("=============")
-//        }
     }
     
     //MARK: - Private methods

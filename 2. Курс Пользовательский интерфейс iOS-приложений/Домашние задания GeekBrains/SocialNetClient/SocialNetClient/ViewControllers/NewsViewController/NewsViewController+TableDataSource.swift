@@ -18,7 +18,19 @@ extension NewsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reuseIdentifier,
                                                        for: indexPath) as? NewsCell else { return UITableViewCell() }
         cell.frame.size.width = tableView.frame.width
-        cell.configure(with: news[indexPath.row])
+        cell.configure(with: news[indexPath.row]) { [weak self] photos, currentIndex in
+            guard let self = self else { return }
+            
+            let photoViewController = PhotoViewController()
+            photoViewController.view.frame = CGRect(x: 0,
+                                                    y: self.view.center.y - self.view.frame.width / 2,
+                                                    width: self.view.frame.width,
+                                                    height: 600)
+            photoViewController.configure(images: photos,
+                                          index: currentIndex)
+            photoViewController.modalPresentationStyle = .formSheet
+            self.present(photoViewController, animated: true, completion: nil)
+        }
         
         return cell
     }

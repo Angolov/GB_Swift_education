@@ -45,8 +45,6 @@ final class NewsCell: UITableViewCell {
                                                                    height: heigthForPhotoCollectionView),
                                                      collectionViewLayout: viewLayout)
         collectionView.setCollectionViewLayout(viewLayout, animated: false)
-        //collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        //collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -123,16 +121,14 @@ final class NewsCell: UITableViewCell {
     //MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-//        setupView()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        setupView()
     }
     
     //MARK: - Public properties
-    func configure(with news: NewsProtocol) {
+    func configure(with news: NewsProtocol, completion: @escaping ([UIImage], Int) -> Void) {
         
         setupView()
         
@@ -143,7 +139,7 @@ final class NewsCell: UITableViewCell {
         likeControlView.configure(count: news.likes, isLiked: news.isLiked)
         viewsLabel.text = String(news.views)
         
-        photosCollectionView.configure(with: news.photosNames)
+        photosCollectionView.configure(with: news.photosNames, completion: completion)
     }
     
     //MARK: - Private properties

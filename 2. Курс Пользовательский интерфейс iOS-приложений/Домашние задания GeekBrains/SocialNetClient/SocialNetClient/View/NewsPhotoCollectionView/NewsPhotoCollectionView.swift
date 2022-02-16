@@ -13,6 +13,7 @@ final class NewsPhotoCollectionView: UICollectionView {
     //MARK: - Private properties
     private var photos: [UIImage]!
     private var itemSizes: [CGSize]!
+    private var completion: (([UIImage], Int) -> Void)?
     
     //MARK: - Initializers
     override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
@@ -26,7 +27,7 @@ final class NewsPhotoCollectionView: UICollectionView {
     }
     
     //MARK: - Public methods
-    func configure(with photoNames: [String]) {
+    func configure(with photoNames: [String], completion: @escaping ([UIImage], Int) -> Void) {
         self.dataSource = self
         self.delegate = self
         register(NewsPhotoCell.self, forCellWithReuseIdentifier: NewsPhotoCell.reuseIdentifier)
@@ -37,7 +38,7 @@ final class NewsPhotoCollectionView: UICollectionView {
             guard let image = UIImage(named: photo) else { continue }
             photos.append(image)
         }
-        
+        self.completion = completion
         getItemSizes()
     }
     
@@ -76,9 +77,23 @@ extension NewsPhotoCollectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = dequeueReusableCell(withReuseIdentifier: NewsPhotoCell.reuseIdentifier,
                                              for: indexPath) as? NewsPhotoCell else { return UICollectionViewCell() }
-        cell.configure(with: photos[indexPath.item])
+        var isForthItem = false
+        if indexPath.item == 3,
+           photos.count > 4 {
+            isForthItem = true
+        }
+        
+        cell.configure(with: photos[indexPath.item], isForthItem: isForthItem, counter: photos.count)
         
         return cell
+    }
+}
+
+extension NewsPhotoCollectionView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let completion = completion else { return }
+        completion(photos, indexPath.item)
     }
 }
 

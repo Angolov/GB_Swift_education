@@ -301,7 +301,7 @@ API (application programming interface) — это посредник между
             let randomPoster = friends[Int.random(in: 0..<friends.count)]
             let postDate = Date(timeIntervalSinceNow: -TimeInterval(Int.random(in: 1...60) * secondsInDay))
             let postDateInString = dateFormatter.string(from: postDate)
-            let photosCount = Int.random(in: 1...5)
+            let photosCount = Int.random(in: 1...6)
             var photosNames = [String]()
             
             for _ in 0...photosCount {

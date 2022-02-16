@@ -43,7 +43,24 @@ final class NewsPhotoCell: UICollectionViewCell {
     }
     
     //MARK: - Public methods
-    func configure(with image: UIImage) {
+    func configure(with image: UIImage, isForthItem: Bool, counter: Int) {
         newsImageView.image = image
+        
+        if isForthItem {
+            let label = UILabel()
+            label.frame = newsImageView.frame
+            label.font = .systemFont(ofSize: 40, weight: .bold)
+            label.textColor = .white
+            label.textAlignment = .center
+            label.text = "+\(counter - 3)"
+            
+            let view = UIView()
+            view.frame = newsImageView.frame
+            view.backgroundColor = .black
+            view.alpha = 0.7
+            
+            newsImageView.addSubview(view)
+            newsImageView.addSubview(label)
+        }
     }
 }
