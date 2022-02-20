@@ -206,7 +206,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-56" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTR-d0-6tQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="50"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="39"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -220,10 +220,10 @@
                                                         <constraint firstItem="iTR-d0-6tQ" firstAttribute="leading" secondItem="ZDt-Bd-UdB" secondAttribute="leading" id="tgz-PH-avr"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="ZBq-vK-pft">
-                                                    <rect key="frame" x="65" y="-5" width="50" height="50"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="01d" translatesAutoresizingMaskIntoConstraints="NO" id="ZBq-vK-pft">
+                                                    <rect key="frame" x="50" y="-20" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="50" id="FG3-qm-O7V"/>
+                                                        <constraint firstAttribute="height" constant="80" id="FG3-qm-O7V"/>
                                                         <constraint firstAttribute="width" secondItem="ZBq-vK-pft" secondAttribute="height" multiplier="1:1" id="ROo-El-YEZ"/>
                                                     </constraints>
                                                 </imageView>
@@ -243,7 +243,7 @@
                                                 <constraint firstItem="uUr-XH-8eZ" firstAttribute="bottom" secondItem="ZDt-Bd-UdB" secondAttribute="bottom" constant="1" id="8uE-WN-uPi"/>
                                                 <constraint firstItem="uUr-XH-8eZ" firstAttribute="trailing" secondItem="ZDt-Bd-UdB" secondAttribute="trailing" constant="1" id="CMr-7h-zUD"/>
                                                 <constraint firstAttribute="bottom" secondItem="UXC-h9-nuH" secondAttribute="bottom" constant="5" id="IZF-yb-cWh"/>
-                                                <constraint firstItem="ZBq-vK-pft" firstAttribute="top" secondItem="OmP-oc-0lC" secondAttribute="top" constant="-5" id="O3S-K9-8GT"/>
+                                                <constraint firstItem="ZBq-vK-pft" firstAttribute="top" secondItem="OmP-oc-0lC" secondAttribute="top" constant="-20" id="O3S-K9-8GT"/>
                                                 <constraint firstItem="uUr-XH-8eZ" firstAttribute="top" secondItem="ZDt-Bd-UdB" secondAttribute="top" constant="1" id="OV1-bz-6jh"/>
                                                 <constraint firstItem="ZDt-Bd-UdB" firstAttribute="top" secondItem="OmP-oc-0lC" secondAttribute="top" constant="20" id="STz-yD-hvn"/>
                                                 <constraint firstItem="UXC-h9-nuH" firstAttribute="top" secondItem="ZDt-Bd-UdB" secondAttribute="bottom" constant="5" id="ZzW-TQ-O8Q"/>
@@ -453,8 +453,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="01d" width="128" height="128"/>
         <image name="cities" width="1024" height="461"/>
-        <image name="sunny" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

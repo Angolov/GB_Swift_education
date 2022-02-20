@@ -14,6 +14,7 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var weekDayPicker: WeekDayPicker!
     
+    var weathers = [Weather]()
     let weatherService = WeatherService()
     
     //MARK: - ViewController lifecycle
@@ -22,14 +23,17 @@ final class WeatherViewController: UIViewController {
         weatherCollectionView.delegate = self
         weatherCollectionView.dataSource = self
         
-        weatherService.loadWeatherData(city: "Moscow,RU")
+        weatherService.loadWeatherData(city: "Moscow,RU") { [weak self] weathers in
+            self?.weathers = weathers
+            self?.weatherCollectionView?.reloadData()
+        }
     }
 }
 
 //MARK: - UICollectionViewDataSource
 extension WeatherViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return 10
+        return weathers.count
         }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -38,9 +42,8 @@ extension WeatherViewController: UICollectionViewDataSource {
         else {
             return UICollectionViewCell()
         }
-        cell.layoutIfNeeded()
-        cell.weatherLabel.text = "-10"
-        cell.timeLabel.text = "30.08.2017 18:00"
+        
+        cell.configure(whithWeather: weathers[indexPath.row])
         
         return cell
     }

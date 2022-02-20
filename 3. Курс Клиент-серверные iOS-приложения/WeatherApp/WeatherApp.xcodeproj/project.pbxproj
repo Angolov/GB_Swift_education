@@ -28,6 +28,7 @@
 		5B43934E27B8F2470081A104 /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43934D27B8F2470081A104 /* CustomNavigationController.swift */; };
 		5B43935027B8F3A80081A104 /* CustomInteractiveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43934F27B8F3A80081A104 /* CustomInteractiveTransition.swift */; };
 		5B43935C27B90CB30081A104 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B43935B27B90CB30081A104 /* WeatherService.swift */; };
+		5BA1AB7827C004050041D53C /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA1AB7727C004050041D53C /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		5B43934D27B8F2470081A104 /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		5B43934F27B8F3A80081A104 /* CustomInteractiveTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInteractiveTransition.swift; sourceTree = "<group>"; };
 		5B43935B27B90CB30081A104 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		5BA1AB7727C004050041D53C /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		90DD04E100E65E3E3B281395 /* Pods_WeatherApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06924CFE01B5E5720F7E9EC /* Pods-WeatherApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherApp.release.xcconfig"; path = "Target Support Files/Pods-WeatherApp/Pods-WeatherApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				5B2FF87327B7A7BA00BAF9F8 /* AppDelegate.swift */,
 				5B2FF87527B7A7BA00BAF9F8 /* SceneDelegate.swift */,
 				5B2FF87927B7A7BA00BAF9F8 /* Main.storyboard */,
+				5BA1AB7727C004050041D53C /* Weather.swift */,
 				5B43935A27B90CA80081A104 /* Services */,
 				5B2FF89C27B7E8EE00BAF9F8 /* View */,
 				5B2FF88A27B7A82700BAF9F8 /* Controller */,
@@ -336,6 +339,7 @@
 				5B2FF89227B7C71000BAF9F8 /* MyCitiesCell.swift in Sources */,
 				5B43934A27B8EF710081A104 /* CustomPopAnimator.swift in Sources */,
 				5B2FF89427B7C72100BAF9F8 /* MyCitiesController.swift in Sources */,
+				5BA1AB7827C004050041D53C /* Weather.swift in Sources */,
 				5B2FF89B27B7E8E900BAF9F8 /* GradientView.swift in Sources */,
 				5B43934827B8ECA80081A104 /* CustomPushAnimator.swift in Sources */,
 				5B2FF8A127B8043800BAF9F8 /* WeatherCollectionViewLayout.swift in Sources */,
