@@ -11,7 +11,28 @@ class ConversationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .red
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let isLoggedIn = UserDefaults.standard.bool(forKey: "loggend_in")
+        
+        if !isLoggedIn {
+            let vc = LoginViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            
+            let appearence = UINavigationBarAppearance()
+            appearence.backgroundColor = .white
+            nav.navigationBar.compactAppearance = appearence
+            nav.navigationBar.standardAppearance = appearence
+            nav.navigationBar.scrollEdgeAppearance = appearence
+            nav.navigationBar.compactScrollEdgeAppearance = appearence
+            
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: false, completion: nil)
+        }
     }
 
 
