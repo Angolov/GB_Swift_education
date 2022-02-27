@@ -2,14 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UISupportedInterfaceOrientations~ipad</key>
+	<key>CFBundleURLTypes</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.509521813044-d3bs04ciouv9rom4ev38ih6j9o7km6vs</string>
+			</array>
+		</dict>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -30,9 +32,5 @@
 			</array>
 		</dict>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>Please allow access to take a profile picture.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to select a photo to your profile.</string>
 </dict>
 </plist>

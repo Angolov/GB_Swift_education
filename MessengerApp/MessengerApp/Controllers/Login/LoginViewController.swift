@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -64,9 +65,23 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
     }()
+    
+    private let googleLogInButton = GIDSignInButton()
+    
+    private var loginObserver: NSObjectProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification,
+                                               object: nil,
+                                               queue: .main) { [weak self] _ in
+            guard let self = self else { return }
+            self.navigationController?.dismiss(animated: true, completion: nil)
+        }
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         title = "Log In"
         view.backgroundColor = .white
         
@@ -85,6 +100,13 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(googleLogInButton)
+    }
+    
+    deinit {
+        if let observer = loginObserver {
+            NotificationCenter.default.removeObserver(observer)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -106,6 +128,10 @@ class LoginViewController: UIViewController {
                                      height: 52)
         loginButton.frame = CGRect(x: 30,
                                    y: passwordField.bottom + 10,
+                                   width: scrollView.width - 60,
+                                   height: 52)
+        googleLogInButton.frame = CGRect(x: 30,
+                                   y: loginButton.bottom + 10,
                                    width: scrollView.width - 60,
                                    height: 52)
     }
