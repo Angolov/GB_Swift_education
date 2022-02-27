@@ -15,6 +15,9 @@ PODS:
   - Firebase/Database (8.12.1):
     - Firebase/CoreOnly
     - FirebaseDatabase (~> 8.12.0)
+  - Firebase/Storage (8.12.1):
+    - Firebase/CoreOnly
+    - FirebaseStorage (~> 8.12.0)
   - FirebaseAnalytics (8.12.0):
     - FirebaseAnalytics/AdIdSupport (= 8.12.0)
     - FirebaseCore (~> 8.0)
@@ -55,6 +58,9 @@ PODS:
     - GoogleUtilities/Environment (~> 7.7)
     - GoogleUtilities/UserDefaults (~> 7.7)
     - PromisesObjC (< 3.0, >= 1.2)
+  - FirebaseStorage (8.12.0):
+    - FirebaseCore (~> 8.0)
+    - GTMSessionFetcher/Core (~> 1.5)
   - GoogleAppMeasurement (8.12.0):
     - GoogleAppMeasurement/AdIdSupport (= 8.12.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
@@ -132,6 +138,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - Firebase/Storage
   - GoogleSignIn (= 5.0.2)
   - JGProgressHUD
   - MessageKit
@@ -148,6 +155,7 @@ SPEC REPOS:
     - FirebaseCoreDiagnostics
     - FirebaseDatabase
     - FirebaseInstallations
+    - FirebaseStorage
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleSignIn
@@ -173,6 +181,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 3b40dfadef5b90433a60ae01f01e90fe87aa76aa
   FirebaseDatabase: f130b3d45b2a7a0b86059734d5bd67353df8d32f
   FirebaseInstallations: 25764cf322e77f99449395870a65b2bef88e1545
+  FirebaseStorage: 4b75458c35d8b728e4c1fc1371942997456ab299
   GoogleAppMeasurement: ae033c3aad67e68294369373056b4d74cc8ae0d6
   GoogleDataTransport: 629c20a4d363167143f30ea78320d5a7eb8bd940
   GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
@@ -189,6 +198,6 @@ SPEC CHECKSUMS:
   RealmSwift: e4191b4b957fcfcbed23751ec65eec98f8173ab5
   SDWebImage: 53179a2dba77246efa8a9b85f5c5b21f8f43e38f
 
-PODFILE CHECKSUM: fcace4e21e574f72609e824b1bcc049e36a9d2cf
+PODFILE CHECKSUM: 4dafaab6bd92c9cc85f345f5e8663c1e0f9ff9fa
 
 COCOAPODS: 1.11.2

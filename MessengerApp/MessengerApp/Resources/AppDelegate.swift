@@ -47,15 +47,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         guard let email = user.profile.email,
               let user = user else { return }
         
+        UserDefaults.standard.set(email, forKey: "email")
+        
         let firstName = user.profile.givenName ?? email
         let lastName = user.profile.familyName ?? ""
         print("Did sign in with Google: \(user)")
         
         DatabaseManager.shared.userExists(with: email) { exists in
             if !exists {
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                    lastName: lastName,
-                                                                    emailAddress: email))
+                let chatUser = ChatAppUser(firstName: firstName,
+                                           lastName: lastName,
+                                           emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser) { success in
+                    if success {
+                        if user.profile.hasImage {
+                            guard let url = user.profile.imageURL(withDimension: 200) else { return }
+                            URLSession.shared.dataTask(with: url) { data, _, _ in
+                                guard let data = data else {
+                                    return
+                                }
+                                let fileName = chatUser.profilePictureFileName
+                                StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { result in
+                                    switch result {
+                                    case .success(let downloadUrl):
+                                        print(downloadUrl)
+                                        UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                                    case .failure(let error):
+                                        print("Storage manager error: \(error)")
+                                    }
+                                }
+                            }.resume()
+                        }
+                    }
+                }
             }
         }
         

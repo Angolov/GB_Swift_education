@@ -196,13 +196,13 @@ class RegisterViewController: UIViewController {
         DatabaseManager.shared.userExists(with: email) { [weak self] exists in
             guard let self = self else { return }
             
+            DispatchQueue.main.async {
+                self.spinner.dismiss()
+            }
+
             guard !exists else {
                 self.alertUserLoginError(message: "Looks like a user account for that email address already exists.")
                 return
-            }
-            
-            DispatchQueue.main.async {
-                self.spinner.dismiss()
             }
             
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
@@ -210,10 +210,26 @@ class RegisterViewController: UIViewController {
                     print("Error creating user")
                     return
                 }
-                
-                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
-                                                                    lastName: lastName,
-                                                                    emailAddress: email))
+                let chatUser = ChatAppUser(firstName: firstName,
+                                           lastName: lastName,
+                                           emailAddress: email)
+                DatabaseManager.shared.insertUser(with: chatUser) { success in
+                    if success {
+                        guard let image = self.imageView.image,
+                              let data = image.pngData() else { return }
+                        
+                        let fileName = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName) { result in
+                            switch result {
+                            case .success(let downloadUrl):
+                                print(downloadUrl)
+                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+                            case .failure(let error):
+                                print("Storage manager error: \(error)")
+                            }
+                        }
+                    }
+                }
                 
                 self.navigationController?.dismiss(animated: true, completion: nil)
             }
