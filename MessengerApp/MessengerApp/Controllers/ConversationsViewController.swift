@@ -103,7 +103,24 @@ class ConversationsViewController: UIViewController {
     @objc private func didTapComposeButton() {
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
-            self?.createNewConversation(result: result)
+            guard let self = self else { return }
+            
+            let currentConversations = self.conversations
+            
+            if let targetConversation = currentConversations.first(where: {
+                $0.otherUserEmail == DatabaseManager.safeEmail(emailAddress: result.email)
+            }) {
+                let vc = ChatViewController(with: targetConversation.otherUserEmail,
+                                            id: targetConversation.id)
+                vc.isNewConversation = false
+                vc.title = targetConversation.name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            else {
+                self.createNewConversation(result: result)
+                
+            }
         }
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
@@ -112,11 +129,26 @@ class ConversationsViewController: UIViewController {
     private func createNewConversation(result: SearchResult) {
         let name = result.name
         let email = result.email
-        let vc = ChatViewController(with: email, id: nil)
-        vc.isNewConversation = true
-        vc.title = name
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
+        
+        DatabaseManager.shared.conversationExists(with: email) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let id):
+                let vc = ChatViewController(with: email, id: id)
+                vc.isNewConversation = false
+                vc.title = name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .failure(_):
+                let vc = ChatViewController(with: email, id: nil)
+                vc.isNewConversation = true
+                vc.title = name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
+        
     }
 
     private func validateAuth() {
@@ -126,7 +158,7 @@ class ConversationsViewController: UIViewController {
             let nav = UINavigationController(rootViewController: vc)
             
             let appearence = UINavigationBarAppearance()
-            appearence.backgroundColor = .white
+            appearence.backgroundColor = .secondarySystemBackground
             nav.navigationBar.compactAppearance = appearence
             nav.navigationBar.standardAppearance = appearence
             nav.navigationBar.scrollEdgeAppearance = appearence
@@ -166,6 +198,10 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let model = conversations[indexPath.row]
+        openConversation(with: model)
+    }
+    
+    private func openConversation(with model: Conversation) {
         let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
         vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
