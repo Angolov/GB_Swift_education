@@ -7,8 +7,8 @@
 
 import Foundation
 import FirebaseStorage
-import SwiftUI
 
+/// Allows you to get, fetch and upload files to firebase storage
 final class StorageManager {
     
     static let shared = StorageManager()

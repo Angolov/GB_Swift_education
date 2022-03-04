@@ -10,7 +10,7 @@ import FirebaseAuth
 import GoogleSignIn
 import JGProgressHUD
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -79,8 +79,8 @@ class LoginViewController: UIViewController {
         loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification,
                                                object: nil,
                                                queue: .main) { [weak self] _ in
-            guard let self = self else { return }
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            guard let strongSelf = self else { return }
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         }
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
@@ -154,13 +154,13 @@ class LoginViewController: UIViewController {
         
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
             
-            guard let self = self, let result = authResult, error == nil else {
+            guard let strongSelf = self, let result = authResult, error == nil else {
                 print("Failed to log in user with email: \(email)")
                 return
             }
             
             DispatchQueue.main.async {
-                self.spinner.dismiss()
+                strongSelf.spinner.dismiss()
             }
             
             let user = result.user
@@ -184,7 +184,7 @@ class LoginViewController: UIViewController {
             UserDefaults.standard.set(email, forKey: "email")
             
             print("Logged in user: \(user)")
-            self.navigationController?.dismiss(animated: true, completion: nil)
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
         }
     }
     

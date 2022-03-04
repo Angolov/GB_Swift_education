@@ -12,59 +12,7 @@ import SDWebImage
 import AVKit
 import CoreLocation
 
-struct Message: MessageType {
-    public var sender: SenderType
-    public var messageId: String
-    public var sentDate: Date
-    public var kind: MessageKind
-}
-
-extension MessageKind {
-    var messageKindString: String {
-        switch self {
-        case .text(_):
-            return "text"
-        case .attributedText(_):
-            return "attributedText"
-        case .photo(_):
-            return "photo"
-        case .video(_):
-            return "video"
-        case .location(_):
-            return "location"
-        case .emoji(_):
-            return "emoji"
-        case .audio(_):
-            return "audio"
-        case .contact(_):
-            return "contact"
-        case .linkPreview(_):
-            return "linkPreview"
-        case .custom(_):
-            return "custom"
-        }
-    }
-}
-
-struct Sender: SenderType {
-    public var photoURL: String
-    public var senderId: String
-    public var displayName: String
-}
-
-struct Media: MediaItem {
-    var url: URL?
-    var image: UIImage?
-    var placeholderImage: UIImage
-    var size: CGSize
-}
-
-struct Location: LocationItem {
-    var location: CLLocation
-    var size: CGSize
-}
-
-class ChatViewController: MessagesViewController {
+final class ChatViewController: MessagesViewController {
 
     private var senderPhotoUrl: URL?
     private var otherUserUrl: URL?
@@ -94,8 +42,8 @@ class ChatViewController: MessagesViewController {
     }
     
     init(with email: String, id: String?) {
-        self.otherUserEmail = email
-        self.conversationId = id
+        otherUserEmail = email
+        conversationId = id
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -151,11 +99,11 @@ class ChatViewController: MessagesViewController {
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.completion = { [weak self] selectedCoordinates in
 
-            guard let self = self,
-                  let messageId = self.createMessageId(),
-                  let conversationId = self.conversationId,
-                  let name = self.title,
-                  let selfSender = self.selfSender else { return }
+            guard let strongSelf = self,
+                  let messageId = strongSelf.createMessageId(),
+                  let conversationId = strongSelf.conversationId,
+                  let name = strongSelf.title,
+                  let selfSender = strongSelf.selfSender else { return }
             
             let longitude: Double = selectedCoordinates.longitude
             let latitude: Double = selectedCoordinates.latitude
@@ -169,7 +117,7 @@ class ChatViewController: MessagesViewController {
                                   kind: .location(location))
             
             DatabaseManager.shared.sendMessage(to: conversationId,
-                                               otherUserEmail: self.otherUserEmail,
+                                               otherUserEmail: strongSelf.otherUserEmail,
                                                name: name,
                                                newMessage: message) { success in
                 if success {
@@ -274,7 +222,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         picker.dismiss(animated: true, completion: nil)
         guard let messageId = createMessageId(),
               let conversationId = conversationId,
-              let name = self.title,
+              let name = title,
               let selfSender = selfSender else { return }
         
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage,
@@ -283,7 +231,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
             let fileName = "photo_message_" + messageId.replacingOccurrences(of: " ", with: "-") + ".png"
             
             StorageManager.shared.uploadMessagePhoto(with: imageData, fileName: fileName) { [weak self] result in
-                guard let self = self else { return }
+                guard let strongSelf = self else { return }
                 switch result {
                 case .success(let urlString):
                     // Ready to send message
@@ -303,7 +251,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                                           kind: .photo(media))
                     
                     DatabaseManager.shared.sendMessage(to: conversationId,
-                                                       otherUserEmail: self.otherUserEmail,
+                                                       otherUserEmail: strongSelf.otherUserEmail,
                                                        name: name,
                                                        newMessage: message) { success in
                         if success {
@@ -322,7 +270,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
             let fileName = "video_message" + messageId.replacingOccurrences(of: " ", with: "-") + ".mov"
             
             StorageManager.shared.uploadMessageVideo(with: videoUrl, fileName: fileName) { [weak self] result in
-                guard let self = self else { return }
+                guard let strongSelf = self else { return }
                 switch result {
                 case .success(let urlString):
                     // Ready to send message
@@ -342,7 +290,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                                           kind: .video(media))
                     
                     DatabaseManager.shared.sendMessage(to: conversationId,
-                                                       otherUserEmail: self.otherUserEmail,
+                                                       otherUserEmail: strongSelf.otherUserEmail,
                                                        name: name,
                                                        newMessage: message) { success in
                         if success {
@@ -378,7 +326,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         if isNewConversation {
             // create convo in database
             DatabaseManager.shared.createNewConversation(with: otherUserEmail,
-                                                         name: self.title ?? "User",
+                                                         name: title ?? "User",
                                                          firstMessage: message) { [weak self] success in
                 if success {
                     print("message sent")
@@ -393,7 +341,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             }
         }
         else {
-            guard let conversationId = self.conversationId, let name = self.title else { return }
+            guard let conversationId = self.conversationId, let name = title else { return }
             // append to existing conversation data
             DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: message) { success in
                 if success {
@@ -410,7 +358,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     private func createMessageId() -> String? {
         guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
         let safeCurrentEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
-        let dateString = Self.dateFormatter.string(from: Date())
+        let dateString = ChatViewController.dateFormatter.string(from: Date())
         let newIdentifier = "\(otherUserEmail)_\(safeCurrentEmail)_\(dateString)"
         print("Created message ID: \(newIdentifier)")
         return newIdentifier
@@ -459,7 +407,7 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
         let sender = message.sender
         if sender.senderId == selfSender?.senderId {
-            if let currentUserImageUrl = self.senderPhotoUrl {
+            if let currentUserImageUrl = senderPhotoUrl {
                 avatarView.sd_setImage(with: currentUserImageUrl, completed: nil)
             }
             else {
@@ -481,11 +429,11 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
             }
         }
         else {
-            if let otherUserImageUrl = self.otherUserUrl {
+            if let otherUserImageUrl = otherUserUrl {
                 avatarView.sd_setImage(with: otherUserImageUrl, completed: nil)
             }
             else {
-                let email = self.otherUserEmail
+                let email = otherUserEmail
                 let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
                 let path = "images/\(safeEmail)_profile_picture.png"
                 
@@ -516,7 +464,7 @@ extension ChatViewController: MessageCellDelegate {
             let coordinates = locationData.location.coordinate
             let vc = LocationPickerViewController(coordinates: coordinates)
             vc.title = "Location"
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }
@@ -530,7 +478,7 @@ extension ChatViewController: MessageCellDelegate {
         case .photo(let media):
             guard let imageUrl = media.url else { return }
             let vc = PhotoViewerViewController(with: imageUrl)
-            self.navigationController?.pushViewController(vc, animated: true)
+            navigationController?.pushViewController(vc, animated: true)
         case .video(let media):
             guard let videoUrl = media.url else { return }
             let vc = AVPlayerViewController()

@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
 
-class RegisterViewController: UIViewController {
+final class RegisterViewController: UIViewController {
 
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -192,14 +192,14 @@ class RegisterViewController: UIViewController {
         spinner.show(in: view)
         
         DatabaseManager.shared.userExists(with: email) { [weak self] exists in
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
             
             DispatchQueue.main.async {
-                self.spinner.dismiss()
+                strongSelf.spinner.dismiss()
             }
 
             guard !exists else {
-                self.alertUserLoginError(message: "Looks like a user account for that email address already exists.")
+                strongSelf.alertUserLoginError(message: "Looks like a user account for that email address already exists.")
                 return
             }
             
@@ -217,7 +217,7 @@ class RegisterViewController: UIViewController {
                                            emailAddress: email)
                 DatabaseManager.shared.insertUser(with: chatUser) { success in
                     if success {
-                        guard let image = self.imageView.image,
+                        guard let image = strongSelf.imageView.image,
                               let data = image.pngData() else { return }
                         
                         let fileName = chatUser.profilePictureFileName
@@ -233,7 +233,7 @@ class RegisterViewController: UIViewController {
                     }
                 }
                 
-                self.navigationController?.dismiss(animated: true, completion: nil)
+                strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             }
         }
     }

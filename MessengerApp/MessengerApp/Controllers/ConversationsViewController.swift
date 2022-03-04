@@ -8,21 +8,9 @@
 import UIKit
 import FirebaseAuth
 import JGProgressHUD
-
-struct Conversation {
-    let id: String
-    let name: String
-    let otherUserEmail: String
-    let latestMessage: LatestMessage
-}
-
-struct LatestMessage {
-    let date: String
-    let text: String
-    let isRead: Bool
-}
-
-class ConversationsViewController: UIViewController {
+ 
+/// Controller that shows list of conversations
+final class ConversationsViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -61,8 +49,8 @@ class ConversationsViewController: UIViewController {
         loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification,
                                                object: nil,
                                                queue: .main) { [weak self] _ in
-            guard let self = self else { return }
-            self.startListenningForConversations()
+            guard let strongSelf = self else { return }
+            strongSelf.startListenningForConversations()
         }
     }
     
@@ -113,9 +101,9 @@ class ConversationsViewController: UIViewController {
     @objc private func didTapComposeButton() {
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
             
-            let currentConversations = self.conversations
+            let currentConversations = strongSelf.conversations
             
             if let targetConversation = currentConversations.first(where: {
                 $0.otherUserEmail == DatabaseManager.safeEmail(emailAddress: result.email)
@@ -125,10 +113,10 @@ class ConversationsViewController: UIViewController {
                 vc.isNewConversation = false
                 vc.title = targetConversation.name
                 vc.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(vc, animated: true)
+                strongSelf.navigationController?.pushViewController(vc, animated: true)
             }
             else {
-                self.createNewConversation(result: result)
+                strongSelf.createNewConversation(result: result)
                 
             }
         }
@@ -141,20 +129,20 @@ class ConversationsViewController: UIViewController {
         let email = result.email
         
         DatabaseManager.shared.conversationExists(with: email) { [weak self] result in
-            guard let self = self else { return }
+            guard let strongSelf = self else { return }
             switch result {
             case .success(let id):
                 let vc = ChatViewController(with: email, id: id)
                 vc.isNewConversation = false
                 vc.title = name
                 vc.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(vc, animated: true)
+                strongSelf.navigationController?.pushViewController(vc, animated: true)
             case .failure(_):
                 let vc = ChatViewController(with: email, id: nil)
                 vc.isNewConversation = true
                 vc.title = name
                 vc.navigationItem.largeTitleDisplayMode = .never
-                self.navigationController?.pushViewController(vc, animated: true)
+                strongSelf.navigationController?.pushViewController(vc, animated: true)
             }
         }
         
@@ -222,11 +210,12 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
         if editingStyle == .delete {
             let conversationId = conversations[indexPath.row].id
             tableView.beginUpdates()
+            self.conversations.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .left)
             
-            DatabaseManager.shared.deleteConversation(conversationId: conversationId) { [weak self] success in
-                if success {
-                    self?.conversations.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .left)
+            DatabaseManager.shared.deleteConversation(conversationId: conversationId) { success in
+                if !success {
+                    print("Failed to delete")
                 }
             }
             
