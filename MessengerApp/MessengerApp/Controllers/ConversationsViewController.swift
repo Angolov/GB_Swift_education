@@ -56,7 +56,6 @@ class ConversationsViewController: UIViewController {
         view.addSubview(tableView)
         view.addSubview(noConversationsLabel)
         setupTableView()
-        fetchConversations()
         startListenningForConversations()
         
         loginObserver = NotificationCenter.default.addObserver(forName: .didLogInNotification,
@@ -78,12 +77,20 @@ class ConversationsViewController: UIViewController {
         DatabaseManager.shared.getAllConversations(for: safeEmail) { [weak self] result in
             switch result {
             case .success(let conversations):
-                guard !conversations.isEmpty else { return }
+                guard !conversations.isEmpty else {
+                    self?.tableView.isHidden = true
+                    self?.noConversationsLabel.isHidden = false
+                    return
+                }
+                self?.tableView.isHidden = false
+                self?.noConversationsLabel.isHidden = true
                 self?.conversations = conversations
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
             case .failure(let error):
+                self?.tableView.isHidden = true
+                self?.noConversationsLabel.isHidden = false
                 print("Failed to get conversations: \(error)")
             }
         }
@@ -91,13 +98,16 @@ class ConversationsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        tableView.frame = view.bounds
         validateAuth()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
+        tableView.frame = view.bounds
+        noConversationsLabel.frame = CGRect(x: 10,
+                                            y: (view.height - 100) / 2,
+                                            width: view.width - 20,
+                                            height: 100)
     }
     
     @objc private func didTapComposeButton() {
@@ -172,10 +182,6 @@ class ConversationsViewController: UIViewController {
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
-    }
-    
-    private func fetchConversations() {
-        tableView.isHidden = false
     }
 }
 

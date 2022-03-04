@@ -66,6 +66,9 @@ struct Location: LocationItem {
 
 class ChatViewController: MessagesViewController {
 
+    private var senderPhotoUrl: URL?
+    private var otherUserUrl: URL?
+    
     public static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -75,7 +78,7 @@ class ChatViewController: MessagesViewController {
     }()
     
     public var isNewConversation = false
-    private let conversationId: String?
+    private var conversationId: String?
     public let otherUserEmail: String
     
     private var messages = [Message]()
@@ -380,6 +383,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 if success {
                     print("message sent")
                     self?.isNewConversation = false
+                    let newConversationId = "conversation_\(message.messageId)"
+                    self?.conversationId = newConversationId
+                    self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                 }
                 else {
                     print("failed to send")
@@ -398,6 +404,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 }
             }
         }
+        messageInputBar.inputTextView.text = nil
     }
     
     private func createMessageId() -> String? {
@@ -437,6 +444,63 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
             imageView.sd_setImage(with: imageUrl, completed: nil)
         default:
             break
+        }
+    }
+    
+    func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
+        let sender = message.sender
+        if sender.senderId == selfSender?.senderId {
+            return .link
+        }
+        
+        return .secondarySystemBackground
+    }
+    
+    func configureAvatarView(_ avatarView: AvatarView, for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) {
+        let sender = message.sender
+        if sender.senderId == selfSender?.senderId {
+            if let currentUserImageUrl = self.senderPhotoUrl {
+                avatarView.sd_setImage(with: currentUserImageUrl, completed: nil)
+            }
+            else {
+                guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
+                let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+                let path = "images/\(safeEmail)_profile_picture.png"
+                
+                StorageManager.shared.downloadURL(for: path) { [weak self] result in
+                    switch result {
+                    case .success(let url):
+                        self?.senderPhotoUrl = url
+                        DispatchQueue.main.async {
+                            avatarView.sd_setImage(with: url, completed: nil)
+                        }
+                    case .failure(let error):
+                        print("\(error)")
+                    }
+                }
+            }
+        }
+        else {
+            if let otherUserImageUrl = self.otherUserUrl {
+                avatarView.sd_setImage(with: otherUserImageUrl, completed: nil)
+            }
+            else {
+                let email = self.otherUserEmail
+                let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+                let path = "images/\(safeEmail)_profile_picture.png"
+                
+                StorageManager.shared.downloadURL(for: path) { [weak self] result in
+                    switch result {
+                    case .success(let url):
+                        self?.otherUserUrl = url
+                        DispatchQueue.main.async {
+                            avatarView.sd_setImage(with: url, completed: nil)
+                        }
+                    case .failure(let error):
+                        print("\(error)")
+                    }
+                }
+            }
         }
     }
 }
