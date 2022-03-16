@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 //MARK: - WeatherViewController class declaration
 final class WeatherViewController: UIViewController {
@@ -23,9 +24,20 @@ final class WeatherViewController: UIViewController {
         weatherCollectionView.delegate = self
         weatherCollectionView.dataSource = self
         
-        weatherService.loadWeatherData(city: "Moscow,RU") { [weak self] weathers in
-            self?.weathers = weathers
+        weatherService.loadWeatherData(city: "Moscow,RU") { [weak self] in
+            self?.loadData()
             self?.weatherCollectionView?.reloadData()
+        }
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let weathers = realm.objects(Weather.self).filter("city == %@", "Moscow,RU")
+            self.weathers = Array(weathers)
+        }
+        catch {
+            print(error)
         }
     }
 }
