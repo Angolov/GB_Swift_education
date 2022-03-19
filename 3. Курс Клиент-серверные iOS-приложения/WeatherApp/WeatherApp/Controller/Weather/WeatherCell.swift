@@ -42,7 +42,7 @@ final class WeatherCell: UICollectionViewCell {
         
     }
     
-    func configure(whithWeather weather: Weather) {
+    func configure(withWeather weather: Weather) {
         let date = Date(timeIntervalSince1970: weather.date)
         let stringDate = WeatherCell.dateFormatter.string(from: date)
         timeLabel.text = stringDate

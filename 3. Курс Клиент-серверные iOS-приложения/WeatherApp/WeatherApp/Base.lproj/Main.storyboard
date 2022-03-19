@@ -133,10 +133,54 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="zae-Yf-RA3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="pI2-0e-7OO">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cities" translatesAutoresizingMaskIntoConstraints="NO" id="sHb-bE-yiM">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
+                                </imageView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LnP-Wo-QMB" customClass="GradientView" customModule="WeatherApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="64" width="414" height="64"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                            <color key="value" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                            <real key="value" value="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                            <real key="value" value="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
+                                            <point key="value" x="0.0" y="1"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
+                                            <point key="value" x="0.0" y="0.0"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="LnP-Wo-QMB" secondAttribute="bottom" id="4bK-tb-hsg"/>
+                                <constraint firstAttribute="trailing" secondItem="sHb-bE-yiM" secondAttribute="trailing" id="7dT-R3-4Qo"/>
+                                <constraint firstAttribute="trailing" secondItem="LnP-Wo-QMB" secondAttribute="trailing" id="M3p-VL-pe0"/>
+                                <constraint firstAttribute="bottom" secondItem="sHb-bE-yiM" secondAttribute="bottom" id="N22-PT-gWQ"/>
+                                <constraint firstItem="LnP-Wo-QMB" firstAttribute="leading" secondItem="pI2-0e-7OO" secondAttribute="leading" id="ZKb-dL-3Hi"/>
+                                <constraint firstItem="sHb-bE-yiM" firstAttribute="leading" secondItem="pI2-0e-7OO" secondAttribute="leading" id="edk-8X-hCd"/>
+                                <constraint firstItem="sHb-bE-yiM" firstAttribute="top" secondItem="pI2-0e-7OO" secondAttribute="top" id="gr1-cw-gyp"/>
+                                <constraint firstItem="LnP-Wo-QMB" firstAttribute="height" secondItem="pI2-0e-7OO" secondAttribute="height" multiplier="0.5" id="xbb-xU-hPZ"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCitiesCell" id="Ak8-HD-9Sf" customClass="MyCitiesCell" customModule="WeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="172.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ak8-HD-9Sf" id="tD2-nT-zm4">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -154,9 +198,10 @@
                                         <constraint firstItem="0qh-jM-50C" firstAttribute="leading" secondItem="tD2-nT-zm4" secondAttribute="leadingMargin" id="oxa-ye-HLt"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
                                     <outlet property="cityNameLabel" destination="0qh-jM-50C" id="RmW-lk-iHN"/>
-                                    <segue destination="UVR-Xr-Ngb" kind="show" id="IJ2-Fp-7ag"/>
+                                    <segue destination="UVR-Xr-Ngb" kind="show" identifier="toWeatherViewController" id="IJ2-Fp-7ag"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -168,7 +213,7 @@
                     <navigationItem key="navigationItem" title="Your cities" id="ZCv-HB-b6M">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gzI-Xq-Eea">
                             <connections>
-                                <segue destination="Uxf-fR-B1n" kind="show" id="Lct-Rs-FOh"/>
+                                <action selector="addButtonPressed:" destination="pzo-hS-6U8" id="bUu-SE-aaw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -292,135 +337,6 @@
             </objects>
             <point key="canvasLocation" x="3111.594202898551" y="393.75"/>
         </scene>
-        <!--Choose city-->
-        <scene sceneID="zjF-Us-WpX">
-            <objects>
-                <tableViewController id="Uxf-fR-B1n" customClass="AllCitiesController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="jg9-5h-Ppq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.44378602499999997" green="0.69047456979999999" blue="0.89414328340000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="0fk-vL-3gI">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cities" translatesAutoresizingMaskIntoConstraints="NO" id="HCf-cY-jS9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
-                                </imageView>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R04-wI-PW5" customClass="GradientView" customModule="WeatherApp" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="64" width="414" height="64"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                            <color key="value" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
-                                            <point key="value" x="0.0" y="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                            <point key="value" x="0.0" y="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
-                                            <real key="value" value="0.0"/>
-                                        </userDefinedRuntimeAttribute>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                            <real key="value" value="1"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </view>
-                            </subviews>
-                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            <constraints>
-                                <constraint firstItem="R04-wI-PW5" firstAttribute="height" secondItem="0fk-vL-3gI" secondAttribute="height" multiplier="0.5" id="4Ki-ia-wuB"/>
-                                <constraint firstItem="R04-wI-PW5" firstAttribute="leading" secondItem="0fk-vL-3gI" secondAttribute="leading" id="HLr-VH-MeS"/>
-                                <constraint firstAttribute="bottom" secondItem="R04-wI-PW5" secondAttribute="bottom" id="J4r-Jp-h1D"/>
-                                <constraint firstItem="HCf-cY-jS9" firstAttribute="top" secondItem="0fk-vL-3gI" secondAttribute="top" id="XTt-kD-P8Z"/>
-                                <constraint firstAttribute="bottom" secondItem="HCf-cY-jS9" secondAttribute="bottom" id="cn0-D9-u3z"/>
-                                <constraint firstAttribute="trailing" secondItem="R04-wI-PW5" secondAttribute="trailing" id="mto-ie-H2e"/>
-                                <constraint firstItem="HCf-cY-jS9" firstAttribute="leading" secondItem="0fk-vL-3gI" secondAttribute="leading" id="tf5-XI-Fal"/>
-                                <constraint firstAttribute="trailing" secondItem="HCf-cY-jS9" secondAttribute="trailing" id="yne-lK-SQr"/>
-                            </constraints>
-                        </view>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityCell" id="hMd-mx-yfV" customClass="AllCitiesCell" customModule="WeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="172.5" width="414" height="43.5"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hMd-mx-yfV" id="85B-JY-lKQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lb1-Id-0aE" customClass="GradientView" customModule="WeatherApp" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="startColor">
-                                                    <color key="value" red="0.5597059727" green="0.75042933229999997" blue="0.89805901050000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="color" keyPath="endColor">
-                                                    <color key="value" red="0.44378602499999997" green="0.69047456979999999" blue="0.89414328340000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
-                                                    <real key="value" value="0.0"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
-                                                    <real key="value" value="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="point" keyPath="startPoint">
-                                                    <point key="value" x="0.0" y="0.0"/>
-                                                </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="point" keyPath="endPoint">
-                                                    <point key="value" x="0.0" y="1"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
-                                        </view>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GhC-aE-jhU">
-                                            <rect key="frame" x="70" y="11.5" width="344" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PxP-a9-R1N">
-                                            <rect key="frame" x="10" y="-3.5" width="50" height="50.5"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="KmB-2X-7AE"/>
-                                                <constraint firstAttribute="width" secondItem="PxP-a9-R1N" secondAttribute="height" multiplier="1:1" id="bnZ-20-ZjG"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="PxP-a9-R1N" firstAttribute="leading" secondItem="85B-JY-lKQ" secondAttribute="leading" constant="10" id="ARG-YF-pvn"/>
-                                        <constraint firstItem="GhC-aE-jhU" firstAttribute="leading" secondItem="PxP-a9-R1N" secondAttribute="trailing" constant="10" id="AWG-J6-dYE"/>
-                                        <constraint firstItem="Lb1-Id-0aE" firstAttribute="leading" secondItem="85B-JY-lKQ" secondAttribute="leading" id="Iep-sU-aWL"/>
-                                        <constraint firstAttribute="trailing" secondItem="Lb1-Id-0aE" secondAttribute="trailing" id="U8b-Lj-0jG"/>
-                                        <constraint firstItem="Lb1-Id-0aE" firstAttribute="top" secondItem="85B-JY-lKQ" secondAttribute="top" id="VxS-Vb-IM8"/>
-                                        <constraint firstItem="PxP-a9-R1N" firstAttribute="centerY" secondItem="85B-JY-lKQ" secondAttribute="centerY" id="WnO-qr-cIR"/>
-                                        <constraint firstAttribute="trailing" secondItem="GhC-aE-jhU" secondAttribute="trailing" id="vQH-WF-Rve"/>
-                                        <constraint firstItem="GhC-aE-jhU" firstAttribute="centerY" secondItem="85B-JY-lKQ" secondAttribute="centerY" id="wxU-Kc-og8"/>
-                                        <constraint firstAttribute="bottom" secondItem="Lb1-Id-0aE" secondAttribute="bottom" id="y6u-Tr-0D7"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="cityEmblemImageView" destination="PxP-a9-R1N" id="9R3-fO-rKR"/>
-                                    <outlet property="cityNameLabel" destination="GhC-aE-jhU" id="6zI-6S-z6L"/>
-                                    <segue destination="uvP-0g-TJ5" kind="unwind" identifier="addCity" unwindAction="addCityWithSegue:" id="99L-Jw-wYb"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="Uxf-fR-B1n" id="JhP-1I-HhV"/>
-                            <outlet property="delegate" destination="Uxf-fR-B1n" id="JLO-Cx-995"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Choose city" id="eav-We-DBN"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9py-2a-hcj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="uvP-0g-TJ5" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="2295.6521739130435" y="-321.42857142857139"/>
-        </scene>
         <!--Custom Navigation Controller-->
         <scene sceneID="7Sy-gb-5PS">
             <objects>
@@ -430,16 +346,16 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <navigationBarAppearance key="standardAppearance">
-                            <color key="backgroundColor" red="0.7350230217" green="0.91279810669999994" blue="0.96863716840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="compactAppearance">
-                            <color key="backgroundColor" red="0.7350230217" green="0.91279810669999994" blue="0.96863716840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="scrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.7350230217" green="0.91279810669999994" blue="0.96863716840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </navigationBarAppearance>
                         <navigationBarAppearance key="compactScrollEdgeAppearance">
-                            <color key="backgroundColor" red="0.7350230217" green="0.91279810669999994" blue="0.96863716840000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="0.33632531760000001" green="0.6867653131" blue="0.87845641370000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>

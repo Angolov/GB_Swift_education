@@ -15,8 +15,10 @@ final class WeatherViewController: UIViewController {
     @IBOutlet weak var weatherCollectionView: UICollectionView!
     @IBOutlet weak var weekDayPicker: WeekDayPicker!
     
-    var weathers = [Weather]()
+    var weathers: List<Weather>!
     let weatherService = WeatherService()
+    var cityName = ""
+    var token: NotificationToken?
     
     //MARK: - ViewController lifecycle
     override func viewDidLoad() {
@@ -24,20 +26,33 @@ final class WeatherViewController: UIViewController {
         weatherCollectionView.delegate = self
         weatherCollectionView.dataSource = self
         
-        weatherService.loadWeatherData(city: "Moscow,RU") { [weak self] in
-            self?.loadData()
-            self?.weatherCollectionView?.reloadData()
-        }
+        weatherService.loadWeatherData(city: cityName)
+        pairCollectionAndRealm()
     }
     
-    func loadData() {
-        do {
-            let realm = try Realm()
-            let weathers = realm.objects(Weather.self).filter("city == %@", "Moscow,RU")
-            self.weathers = Array(weathers)
-        }
-        catch {
-            print(error)
+    func pairCollectionAndRealm() {
+        guard let realm = try? Realm(),
+              let city = realm.object(ofType: City.self, forPrimaryKey: cityName)
+        else { return }
+        
+        weathers = city.weathers
+
+        token = weathers.observe { [weak self] (changes: RealmCollectionChange) in
+            guard let collectionView = self?.weatherCollectionView else { return }
+            
+            switch changes {
+            case .initial:
+                collectionView.reloadData()
+                
+            case .update(_, let deletions, let insertions, let modifications):
+                collectionView.performBatchUpdates ({
+                    collectionView.insertItems(at: insertions.map({ IndexPath(row: $0, section: 0) }))
+                    collectionView.deleteItems(at: deletions.map({ IndexPath(row: $0, section: 0) }))
+                    collectionView.reloadItems(at: modifications.map({ IndexPath(row: $0, section: 0) }))
+                }, completion: nil )
+            
+            case .error(let error):
+                fatalError("\(error)") }
         }
     }
 }
@@ -55,7 +70,7 @@ extension WeatherViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configure(whithWeather: weathers[indexPath.row])
+        cell.configure(withWeather: weathers[indexPath.row])
         
         return cell
     }
