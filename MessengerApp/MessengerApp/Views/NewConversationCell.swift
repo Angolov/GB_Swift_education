@@ -8,10 +8,12 @@
 import UIKit
 import SDWebImage
 
+//MARK: - NewConversationCell class declaration
 class NewConversationCell: UITableViewCell {
     
     static let identifier = "NewConversationCell"
     
+    //MARK: - UI elements
     private let userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -26,6 +28,7 @@ class NewConversationCell: UITableViewCell {
         return label
     }()
     
+    //MARK: - Initializers
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
@@ -37,6 +40,7 @@ class NewConversationCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Methods
     override func layoutSubviews() {
         super.layoutSubviews()
         

@@ -12,15 +12,30 @@ import FirebaseStorage
 final class StorageManager {
     
     static let shared = StorageManager()
-    
     private let storage = Storage.storage().reference()
-    
     private init() {}
     
-    public typealias UploadPictureCompletion = (Result<String, Error>) -> Void
+    public typealias UploadMediaCompletion = (Result<String, Error>) -> Void
+    
+    public enum StorageErrors: Error {
+        case failedToUpload
+        case failedToGetDownloadUrl
+    }
+    
+    public func downloadURL(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
+        let reference = storage.child(path)
+        reference.downloadURL(completion: { url, error in
+            guard let url = url, error == nil else {
+                completion(.failure(StorageErrors.failedToGetDownloadUrl))
+                return
+            }
+            
+            completion(.success(url))
+        })
+    }
     
     /// Uploads picture to Firebase storage and return completion with url string to download
-    public func uploadProfilePicture(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadProfilePicture(with data: Data, fileName: String, completion: @escaping UploadMediaCompletion) {
         storage.child("images/\(fileName)").putData(data, metadata: nil) { [weak self] metadata, error in
             guard error == nil else {
                 print("Failed to upload data to Firebase for picture")
@@ -42,25 +57,8 @@ final class StorageManager {
         }
     }
     
-    public enum StorageErrors: Error {
-        case failedToUpload
-        case failedToGetDownloadUrl
-    }
-    
-    public func downloadURL(for path: String, completion: @escaping (Result<URL, Error>) -> Void) {
-        let reference = storage.child(path)
-        reference.downloadURL(completion: { url, error in
-            guard let url = url, error == nil else {
-                completion(.failure(StorageErrors.failedToGetDownloadUrl))
-                return
-            }
-            
-            completion(.success(url))
-        })
-    }
-    
     /// Uploads image that will be sent  in a conversation message
-    public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadMediaCompletion) {
         storage.child("message_images/\(fileName)").putData(data, metadata: nil) { [weak self] metadata, error in
             guard error == nil else {
                 print("Failed to upload data to Firebase for picture")
@@ -83,7 +81,7 @@ final class StorageManager {
     }
     
     /// Uploads video that will be sent  in a conversation message
-    public func uploadMessageVideo(with fileUrl: URL, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadMessageVideo(with fileUrl: URL, fileName: String, completion: @escaping UploadMediaCompletion) {
         storage.child("message_videos/\(fileName)").putFile(from: fileUrl, metadata: nil) { [weak self] metadata, error in
             guard error == nil else {
                 print("Failed to upload video file to Firebase for picture")

@@ -8,16 +8,20 @@
 import UIKit
 import SDWebImage
 
+//MARK: - PhotoViewerViewController class declaration
 final class PhotoViewerViewController: UIViewController {
 
-    private let url: URL
-    
+    //MARK: - UI elements
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+
+    //MARK: - Properties
+    private let url: URL
+
+    //MARK: - Initializers
     init(with url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
@@ -27,17 +31,23 @@ final class PhotoViewerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Photo"
-        navigationItem.largeTitleDisplayMode = .never
-        view.addSubview(imageView)
-        imageView.sd_setImage(with: url, completed: nil)
+        setupView()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         view.backgroundColor = .black
         imageView.frame = view.bounds
+    }
+    
+    //MARK: - Private methods
+    private func setupView() {
+        title = "Photo"
+        navigationItem.largeTitleDisplayMode = .never
+        view.addSubview(imageView)
+        imageView.sd_setImage(with: url, completed: nil)
     }
 }

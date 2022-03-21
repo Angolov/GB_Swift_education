@@ -9,12 +9,12 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
  
+//MARK: - ConversationsViewController class declaration
 /// Controller that shows list of conversations
 final class ConversationsViewController: UIViewController {
     
+    //MARK: - UI elements
     private let spinner = JGProgressHUD(style: .dark)
-    
-    private var conversations = [Conversation]()
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -34,8 +34,11 @@ final class ConversationsViewController: UIViewController {
         return label
     }()
     
+    //MARK: - Properties
+    private var conversations = [Conversation]()
     private var loginObserver: NSObjectProtocol?
     
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose,
@@ -54,6 +57,21 @@ final class ConversationsViewController: UIViewController {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        validateAuth()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.frame = view.bounds
+        noConversationsLabel.frame = CGRect(x: 10,
+                                            y: (view.height - 100) / 2,
+                                            width: view.width - 20,
+                                            height: 100)
+    }
+    
+    //MARK: - Private methods
     private func startListenningForConversations() {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return }
         
@@ -76,6 +94,7 @@ final class ConversationsViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
                 }
+                
             case .failure(let error):
                 self?.tableView.isHidden = true
                 self?.noConversationsLabel.isHidden = false
@@ -84,20 +103,53 @@ final class ConversationsViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        validateAuth()
+    private func createNewConversation(result: SearchResult) {
+        let name = result.name
+        let email = result.email
+        
+        DatabaseManager.shared.conversationExists(with: email) { [weak self] result in
+            guard let strongSelf = self else { return }
+            
+            switch result {
+            case .success(let id):
+                let vc = ChatViewController(with: email, id: id)
+                vc.isNewConversation = false
+                vc.title = name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                strongSelf.navigationController?.pushViewController(vc, animated: true)
+                
+            case .failure(_):
+                let vc = ChatViewController(with: email, id: nil)
+                vc.isNewConversation = true
+                vc.title = name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                strongSelf.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+
+    private func validateAuth() {
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            let vc = LoginViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            let appearence = UINavigationBarAppearance()
+            appearence.backgroundColor = .secondarySystemBackground
+            nav.navigationBar.compactAppearance = appearence
+            nav.navigationBar.standardAppearance = appearence
+            nav.navigationBar.scrollEdgeAppearance = appearence
+            nav.navigationBar.compactScrollEdgeAppearance = appearence
+            
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: false, completion: nil)
+        }
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
-        noConversationsLabel.frame = CGRect(x: 10,
-                                            y: (view.height - 100) / 2,
-                                            width: view.width - 20,
-                                            height: 100)
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
+    //MARK: - Actions
     @objc private func didTapComposeButton() {
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
@@ -123,57 +175,17 @@ final class ConversationsViewController: UIViewController {
         let navVC = UINavigationController(rootViewController: vc)
         present(navVC, animated: true)
     }
-    
-    private func createNewConversation(result: SearchResult) {
-        let name = result.name
-        let email = result.email
-        
-        DatabaseManager.shared.conversationExists(with: email) { [weak self] result in
-            guard let strongSelf = self else { return }
-            switch result {
-            case .success(let id):
-                let vc = ChatViewController(with: email, id: id)
-                vc.isNewConversation = false
-                vc.title = name
-                vc.navigationItem.largeTitleDisplayMode = .never
-                strongSelf.navigationController?.pushViewController(vc, animated: true)
-            case .failure(_):
-                let vc = ChatViewController(with: email, id: nil)
-                vc.isNewConversation = true
-                vc.title = name
-                vc.navigationItem.largeTitleDisplayMode = .never
-                strongSelf.navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-        
-        
-    }
-
-    private func validateAuth() {
-        
-        if FirebaseAuth.Auth.auth().currentUser == nil {
-            let vc = LoginViewController()
-            let nav = UINavigationController(rootViewController: vc)
-            
-            let appearence = UINavigationBarAppearance()
-            appearence.backgroundColor = .secondarySystemBackground
-            nav.navigationBar.compactAppearance = appearence
-            nav.navigationBar.standardAppearance = appearence
-            nav.navigationBar.scrollEdgeAppearance = appearence
-            nav.navigationBar.compactScrollEdgeAppearance = appearence
-            
-            nav.modalPresentationStyle = .fullScreen
-            present(nav, animated: false, completion: nil)
-        }
-    }
-    
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
 }
 
+//MARK: - ConversationsViewController extension for UITableViewDelegate, UITableViewDataSource
 extension ConversationsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    private func openConversation(with model: Conversation) {
+        let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
+        vc.title = model.name
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return conversations.count
@@ -193,13 +205,6 @@ extension ConversationsViewController: UITableViewDelegate, UITableViewDataSourc
         tableView.deselectRow(at: indexPath, animated: true)
         let model = conversations[indexPath.row]
         openConversation(with: model)
-    }
-    
-    private func openConversation(with model: Conversation) {
-        let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
-        vc.title = model.name
-        vc.navigationItem.largeTitleDisplayMode = .never
-        navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

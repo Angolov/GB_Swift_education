@@ -10,8 +10,10 @@ import FirebaseAuth
 import GoogleSignIn
 import JGProgressHUD
 
+//MARK: - LoginViewController class declaration
 final class LoginViewController: UIViewController {
     
+    //MARK: - UI elements
     private let spinner = JGProgressHUD(style: .dark)
     
     private let scrollView: UIScrollView = {
@@ -73,6 +75,7 @@ final class LoginViewController: UIViewController {
     
     private var loginObserver: NSObjectProtocol?
 
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -139,6 +142,16 @@ final class LoginViewController: UIViewController {
                                    height: 52)
     }
     
+    //MARK: - Private methods
+    private func alertUserLoginError() {
+        let alert = UIAlertController(title: "Woops",
+                                      message: "Please enter all information to log in.",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Actions
     @objc private func loginButtonTapped() {
         
         emailField.resignFirstResponder()
@@ -188,14 +201,6 @@ final class LoginViewController: UIViewController {
         }
     }
     
-    func alertUserLoginError() {
-        let alert = UIAlertController(title: "Woops",
-                                      message: "Please enter all information to log in.",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
     @objc private func didTapRegister() {
         let vc = RegisterViewController()
         vc.title = "Create Account"
@@ -203,6 +208,7 @@ final class LoginViewController: UIViewController {
     }
 }
 
+//MARK: - LoginViewController extension for UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailField {

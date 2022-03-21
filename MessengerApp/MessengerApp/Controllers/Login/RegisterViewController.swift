@@ -9,8 +9,10 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
 
+//MARK: - RegisterViewController class declaration
 final class RegisterViewController: UIViewController {
 
+    //MARK: - UI elements
     private let spinner = JGProgressHUD(style: .dark)
     
     private let scrollView: UIScrollView = {
@@ -100,15 +102,11 @@ final class RegisterViewController: UIViewController {
         return button
     }()
 
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Create New Account"
         view.backgroundColor = .systemBackground
-
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
-//                                                            style: .done,
-//                                                            target: self,
-//                                                            action: #selector(didTapRegister ))
 
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         emailField.delegate = self
@@ -164,12 +162,21 @@ final class RegisterViewController: UIViewController {
                                    height: 52)
     }
     
+    //MARK: - Private methods
+    private func alertUserLoginError(message: String = "Please enter all information to create a new account.") {
+        let alert = UIAlertController(title: "Woops",
+                                      message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    //MARK: - Actions
     @objc private func didTapChangeProfilePic() {
         presentPhotoActionSheet()
     }
     
     @objc private func registerButtonTapped() {
-        
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         firstNameField.resignFirstResponder()
@@ -237,20 +244,6 @@ final class RegisterViewController: UIViewController {
             }
         }
     }
-    
-    func alertUserLoginError(message: String = "Please enter all information to create a new account.") {
-        let alert = UIAlertController(title: "Woops",
-                                      message: message,
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
-    }
-    
-//    @objc private func didTapRegister() {
-//        let vc = RegisterViewController()
-//        vc.title = "Create Account"
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
 }
 
 extension RegisterViewController: UITextFieldDelegate {
@@ -266,9 +259,10 @@ extension RegisterViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: RegisterViewController extension for UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func presentPhotoActionSheet() {
+    private func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(title: "Profile Picture",
                                             message: "How would you like to select a picture?",
                                             preferredStyle: .actionSheet)
@@ -289,7 +283,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         present(actionSheet, animated: true, completion: nil)
     }
     
-    func presentCamera() {
+    private func presentCamera() {
         let vc = UIImagePickerController()
         vc.sourceType = .camera
         vc.delegate = self
@@ -297,7 +291,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         present(vc, animated: true, completion: nil)
     }
     
-    func presentPhotoPicker() {
+    private func presentPhotoPicker() {
         let vc = UIImagePickerController()
         vc.sourceType = .photoLibrary
         vc.delegate = self

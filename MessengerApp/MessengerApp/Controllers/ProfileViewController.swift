@@ -10,15 +10,24 @@ import FirebaseAuth
 import GoogleSignIn
 import SDWebImage
 
+//MARK: - ProfileViewController class declaration
 final class ProfileViewController: UIViewController {
     
+    //MARK: - UI elements
     @IBOutlet var tableView: UITableView!
     
+    //MARK: - Properties
     var data = [ProfileViewModel]()
 
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupTableViewData()
+        setupTableView()
+    }
+    
+    //MARK: - Private methods
+    private func setupTableViewData() {
         let name = UserDefaults.standard.value(forKey: "name") as? String ?? "No Name"
         let email = UserDefaults.standard.value(forKey: "email") as? String ?? "No Email"
         data.append(ProfileViewModel(viewModelType: .info,
@@ -37,39 +46,41 @@ final class ProfileViewController: UIViewController {
                                           preferredStyle: .actionSheet)
             actionSheet.addAction(UIAlertAction(title: "Log Out",
                                           style: .destructive,
-                                          handler: { _ in
-                
-                UserDefaults.standard.set(nil, forKey: "email")
-                UserDefaults.standard.set(nil, forKey: "name")
-                
-                GIDSignIn.sharedInstance()?.signOut()
-                
-                do {
-                    try FirebaseAuth.Auth.auth().signOut()
-                    
-                    let vc = LoginViewController()
-                    let nav = UINavigationController(rootViewController: vc)
-                    
-                    let appearence = UINavigationBarAppearance()
-                    appearence.backgroundColor = .secondarySystemBackground
-                    nav.navigationBar.compactAppearance = appearence
-                    nav.navigationBar.standardAppearance = appearence
-                    nav.navigationBar.scrollEdgeAppearance = appearence
-                    nav.navigationBar.compactScrollEdgeAppearance = appearence
-                    
-                    nav.modalPresentationStyle = .fullScreen
-                    strongSelf.present(nav, animated: true, completion: nil)
-                }
-                catch {
-                    print("Failed to log out.")
-                }
-            }))
+                                          handler: { _ in strongSelf.logOutHandler() }))
             actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             
             strongSelf.present(actionSheet, animated: true, completion: nil)
         }))
+    }
+    
+    private func logOutHandler() {
+        UserDefaults.standard.set(nil, forKey: "email")
+        UserDefaults.standard.set(nil, forKey: "name")
         
+        GIDSignIn.sharedInstance()?.signOut()
         
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+            
+            let vc = LoginViewController()
+            let nav = UINavigationController(rootViewController: vc)
+            
+            let appearence = UINavigationBarAppearance()
+            appearence.backgroundColor = .secondarySystemBackground
+            nav.navigationBar.compactAppearance = appearence
+            nav.navigationBar.standardAppearance = appearence
+            nav.navigationBar.scrollEdgeAppearance = appearence
+            nav.navigationBar.compactScrollEdgeAppearance = appearence
+            
+            nav.modalPresentationStyle = .fullScreen
+            present(nav, animated: true, completion: nil)
+        }
+        catch {
+            print("Failed to log out.")
+        }
+    }
+    
+    private func setupTableView() {
         tableView.register(ProfileTableViewCell.self,
                            forCellReuseIdentifier: ProfileTableViewCell.identifier)
         tableView.delegate = self
@@ -77,7 +88,7 @@ final class ProfileViewController: UIViewController {
         tableView.tableHeaderView = createTableHeader()
     }
     
-    func createTableHeader() -> UIView? {
+    private func createTableHeader() -> UIView? {
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
         let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
         let filename = safeEmail + "_profile_picture.png"
@@ -110,6 +121,7 @@ final class ProfileViewController: UIViewController {
     }
 }
 
+//MARK: - ProfileViewController extension for UITableViewDelegate, UITableViewDataSource
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,22 +139,5 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         data[indexPath.row].handler?()
-    }
-}
-
-class ProfileTableViewCell: UITableViewCell {
-    
-    static let identifier = "ProfileTableViewCell"
-    
-    public func setup(with viewModel: ProfileViewModel) {
-        textLabel?.text = viewModel.title
-        switch viewModel.viewModelType {
-        case .info:
-            textLabel?.textAlignment = .left
-            selectionStyle = .none
-        case .logout:
-            textLabel?.textColor = .red
-            textLabel?.textAlignment = .center
-        }
     }
 }

@@ -9,17 +9,21 @@ import UIKit
 import CoreLocation
 import MapKit
 
+//MARK: - LocationPickerViewController class declaration
 final class LocationPickerViewController: UIViewController {
     
+    //MARK: - Properties
     public var completion: ((CLLocationCoordinate2D) -> Void)?
-    private var coordinates: CLLocationCoordinate2D?
-    private var isPickable = true
     
     private let map: MKMapView = {
         let map = MKMapView()
         return map
     }()
     
+    private var coordinates: CLLocationCoordinate2D?
+    private var isPickable = true
+    
+    //MARK: - Initializers
     init(coordinates: CLLocationCoordinate2D?) {
         self.coordinates = coordinates
         isPickable = coordinates == nil
@@ -30,8 +34,19 @@ final class LocationPickerViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        map.frame = view.bounds
+    }
+    
+    //MARK: - Private methods
+    private func setupView() {
         title = "Pick Location"
         view.backgroundColor = .systemBackground
         
@@ -40,15 +55,14 @@ final class LocationPickerViewController: UIViewController {
                                                                 style: .done,
                                                                 target: self,
                                                                 action: #selector(sendButtonTapped))
-
             map.isUserInteractionEnabled = true
             let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapMap(_:)))
             gesture.numberOfTouchesRequired = 1
             gesture.numberOfTapsRequired = 1
             map.addGestureRecognizer(gesture)
-        } else {
+        }
+        else {
             guard let coordinates = coordinates else { return }
-            
             let pin = MKPointAnnotation()
             pin.coordinate = coordinates
             map.addAnnotation(pin)
@@ -56,11 +70,7 @@ final class LocationPickerViewController: UIViewController {
         view.addSubview(map)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        map.frame = view.bounds
-    }
-    
+    //MARK: - Actions
     @objc func sendButtonTapped() {
         guard let coordinates = coordinates else {
             return

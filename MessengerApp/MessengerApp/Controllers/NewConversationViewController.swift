@@ -8,15 +8,11 @@
 import UIKit
 import JGProgressHUD
 
+//MARK: - NewConversationViewController class declaration
 final class NewConversationViewController: UIViewController {
     
-    public var completion: ((SearchResult) -> Void)?
-    
+    //MARK: - UI elements
     private let spinner = JGProgressHUD(style: .dark)
-    
-    private var users = [[String: String]]()
-    private var results = [SearchResult]()
-    private var hasFetched = false
     
     private let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -41,7 +37,15 @@ final class NewConversationViewController: UIViewController {
         label.font = .systemFont(ofSize: 21, weight: .medium)
         return label
     }()
-
+    
+    //MARK: - Properties
+    public var completion: ((SearchResult) -> Void)?
+    
+    private var users = [[String: String]]()
+    private var results = [SearchResult]()
+    private var hasFetched = false
+    
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,14 +54,12 @@ final class NewConversationViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.topItem?.titleView = searchBar
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel",
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(dismissSelf))
-        
         searchBar.becomeFirstResponder()
         searchBar.delegate = self
     }
@@ -73,6 +75,7 @@ final class NewConversationViewController: UIViewController {
     }
 }
 
+//MARK: - NewConversationViewController extension for UITableViewDelegate, UITableViewDataSource
 extension NewConversationViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,6 +105,7 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
     }
 }
 
+//MARK: - NewConversationViewController extension for UISearchBarDelegate
 extension NewConversationViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -114,7 +118,7 @@ extension NewConversationViewController: UISearchBarDelegate {
         searchUsers(query: text)
     }
     
-    func searchUsers(query: String) {
+    private func searchUsers(query: String) {
         if hasFetched {
             filterUsers(with: query)
         }
@@ -132,7 +136,7 @@ extension NewConversationViewController: UISearchBarDelegate {
         }
     }
     
-    func filterUsers(with term: String) {
+    private func filterUsers(with term: String) {
         guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String,
               hasFetched else { return }
         let safeEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
@@ -151,7 +155,7 @@ extension NewConversationViewController: UISearchBarDelegate {
         updateUI()
     }
     
-    func updateUI() {
+    private func updateUI() {
         if results.isEmpty {
             noResultsLabel.isHidden = false
             tableView.isHidden = true

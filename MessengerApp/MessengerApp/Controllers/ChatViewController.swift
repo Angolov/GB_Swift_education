@@ -12,11 +12,10 @@ import SDWebImage
 import AVKit
 import CoreLocation
 
+//MARK: - ChatViewController class declaration
 final class ChatViewController: MessagesViewController {
 
-    private var senderPhotoUrl: URL?
-    private var otherUserUrl: URL?
-    
+    //MARK: - Properties
     public static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -24,11 +23,12 @@ final class ChatViewController: MessagesViewController {
         formatter.locale = Locale(identifier: "en_us")
         return formatter
     }()
-    
     public var isNewConversation = false
-    private var conversationId: String?
     public let otherUserEmail: String
-    
+
+    private var senderPhotoUrl: URL?
+    private var otherUserUrl: URL?
+    private var conversationId: String?
     private var messages = [Message]()
     
     private var selfSender: Sender? {
@@ -41,6 +41,7 @@ final class ChatViewController: MessagesViewController {
         
     }
     
+    //MARK: - Initializers
     init(with email: String, id: String?) {
         otherUserEmail = email
         conversationId = id
@@ -51,6 +52,7 @@ final class ChatViewController: MessagesViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - ViewController lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,6 +64,15 @@ final class ChatViewController: MessagesViewController {
         setupInputButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        messageInputBar.inputTextView.becomeFirstResponder()
+        if let conversationId = conversationId {
+            listenForMessages(id: conversationId, shouldScrollToBottom: true)
+        }
+    }
+    
+    //MARK: - Private methods
     private func setupInputButton() {
         let button = InputBarButtonItem()
         button.setSize(CGSize(width: 35, height: 35), animated: false)
@@ -71,6 +82,28 @@ final class ChatViewController: MessagesViewController {
         }
         messageInputBar.setLeftStackViewWidthConstant(to: 36, animated: false)
         messageInputBar.setStackViewItems([button], forStack: .left, animated: false)
+    }
+    
+    private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
+        DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
+            switch result {
+            case .success(let messages):
+                guard !messages.isEmpty else {
+                    return
+                }
+                self?.messages = messages
+                
+                DispatchQueue.main.async {
+                    self?.messagesCollectionView.reloadDataAndKeepOffset()
+                    if shouldScrollToBottom{
+                        self?.messagesCollectionView.scrollToLastItem()
+                    }
+                }
+                
+            case .failure(let error):
+                print("Failed to get messages: \(error)")
+            }
+        }
     }
     
     private func presentInputActionSheet() {
@@ -94,7 +127,7 @@ final class ChatViewController: MessagesViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
-    func presentLocationPicker() {
+    private func presentLocationPicker() {
         let vc = LocationPickerViewController(coordinates: nil)
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.completion = { [weak self] selectedCoordinates in
@@ -180,45 +213,17 @@ final class ChatViewController: MessagesViewController {
         
         present(actionSheet, animated: true, completion: nil)
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        messageInputBar.inputTextView.becomeFirstResponder()
-        if let conversationId = conversationId {
-            listenForMessages(id: conversationId, shouldScrollToBottom: true)
-        }
-    }
-    
-    private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
-        DatabaseManager.shared.getAllMessagesForConversation(with: id) { [weak self] result in
-            switch result {
-            case .success(let messages):
-                guard !messages.isEmpty else {
-                    return
-                }
-                self?.messages = messages
-                
-                DispatchQueue.main.async {
-                    self?.messagesCollectionView.reloadDataAndKeepOffset()
-                    if shouldScrollToBottom{
-                        self?.messagesCollectionView.scrollToLastItem()
-                    }
-                }
-                
-            case .failure(let error):
-                print("Failed to get messages: \(error)")
-            }
-        }
-    }
 }
 
+//MARK: - ChatViewController extension for UIImagePickerControllerDelegate, UINavigationControllerDelegate
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let messageId = createMessageId(),
               let conversationId = conversationId,
@@ -305,12 +310,20 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                 }
             }
         }
-        
-        
     }
 }
 
+//MARK: - ChatViewController extension for InputBarAccessoryViewDelegate
 extension ChatViewController: InputBarAccessoryViewDelegate {
+    
+    private func createMessageId() -> String? {
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
+        let safeCurrentEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
+        let dateString = ChatViewController.dateFormatter.string(from: Date())
+        let newIdentifier = "\(otherUserEmail)_\(safeCurrentEmail)_\(dateString)"
+        print("Created message ID: \(newIdentifier)")
+        return newIdentifier
+    }
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         guard !text.replacingOccurrences(of: " ", with: "").isEmpty,
@@ -324,7 +337,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                               kind: .text(text))
         //Send message
         if isNewConversation {
-            // create convo in database
+            // create conversation in database
             DatabaseManager.shared.createNewConversation(with: otherUserEmail,
                                                          name: title ?? "User",
                                                          firstMessage: message) { [weak self] success in
@@ -354,17 +367,9 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         }
         messageInputBar.inputTextView.text = nil
     }
-    
-    private func createMessageId() -> String? {
-        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else { return nil }
-        let safeCurrentEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
-        let dateString = ChatViewController.dateFormatter.string(from: Date())
-        let newIdentifier = "\(otherUserEmail)_\(safeCurrentEmail)_\(dateString)"
-        print("Created message ID: \(newIdentifier)")
-        return newIdentifier
-    }
 }
 
+//MARK: - ChatViewController extension for MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate
 extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, MessagesDisplayDelegate {
     
     func currentSender() -> SenderType {
@@ -453,6 +458,7 @@ extension ChatViewController: MessagesDataSource, MessagesLayoutDelegate, Messag
     }
 }
 
+//MARK: - ChatViewController extension for MessageCellDelegate
 extension ChatViewController: MessageCellDelegate {
     
     func didTapMessage(in cell: MessageCollectionViewCell) {
