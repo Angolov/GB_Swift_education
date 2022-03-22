@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 
 //MARK: - PhotoViewerViewController class declaration
+/// Controller that shows photo on seoarate screen
 final class PhotoViewerViewController: UIViewController {
 
     //MARK: - UI elements

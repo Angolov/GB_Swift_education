@@ -9,6 +9,7 @@ import UIKit
 import JGProgressHUD
 
 //MARK: - NewConversationViewController class declaration
+/// Controller for search for new users to chat with
 final class NewConversationViewController: UIViewController {
     
     //MARK: - UI elements

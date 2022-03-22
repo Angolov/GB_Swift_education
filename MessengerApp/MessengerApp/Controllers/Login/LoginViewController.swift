@@ -11,6 +11,7 @@ import GoogleSignIn
 import JGProgressHUD
 
 //MARK: - LoginViewController class declaration
+/// Controller that shows login form
 final class LoginViewController: UIViewController {
     
     //MARK: - UI elements

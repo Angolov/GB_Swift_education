@@ -13,6 +13,7 @@ import AVKit
 import CoreLocation
 
 //MARK: - ChatViewController class declaration
+/// Controller that shows chat with target user
 final class ChatViewController: MessagesViewController {
 
     //MARK: - Properties
@@ -339,7 +340,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         if isNewConversation {
             // create conversation in database
             DatabaseManager.shared.createNewConversation(with: otherUserEmail,
-                                                         name: title ?? "User",
+                                                         recepientName: title ?? "User",
                                                          firstMessage: message) { [weak self] success in
                 if success {
                     print("message sent")
@@ -354,9 +355,13 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
             }
         }
         else {
-            guard let conversationId = self.conversationId, let name = title else { return }
+            guard let conversationId = self.conversationId,
+                  let name = title else { return }
             // append to existing conversation data
-            DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: message) { success in
+            DatabaseManager.shared.sendMessage(to: conversationId,
+                                               otherUserEmail: otherUserEmail,
+                                               name: name,
+                                               newMessage: message) { success in
                 if success {
                     print("message sent")
                 }

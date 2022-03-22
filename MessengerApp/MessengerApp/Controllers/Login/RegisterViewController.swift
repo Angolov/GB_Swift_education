@@ -10,6 +10,7 @@ import FirebaseAuth
 import JGProgressHUD
 
 //MARK: - RegisterViewController class declaration
+/// Controller for registration of a new user
 final class RegisterViewController: UIViewController {
 
     //MARK: - UI elements

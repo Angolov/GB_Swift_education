@@ -11,6 +11,7 @@ import GoogleSignIn
 import SDWebImage
 
 //MARK: - ProfileViewController class declaration
+/// Controller that shows user's profile
 final class ProfileViewController: UIViewController {
     
     //MARK: - UI elements

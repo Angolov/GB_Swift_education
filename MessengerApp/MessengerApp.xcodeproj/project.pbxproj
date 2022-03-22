@@ -136,11 +136,11 @@
 		5B83B4DD27C8A65100B027A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5B83B4E127C8A68000B027A3 /* Storyboards */,
-				5B83B4D127C80A7200B027A3 /* Assets.xcassets */,
 				5B99C89A27CCE7BE005AF6E4 /* ConversationTableViewCell.swift */,
 				5B150FC927CF3CA000342449 /* NewConversationCell.swift */,
 				5BB652B127E901A600DEF76A /* ProfileTableViewCell.swift */,
+				5B83B4E127C8A68000B027A3 /* Storyboards */,
+				5B83B4D127C80A7200B027A3 /* Assets.xcassets */,
 			);
 			path = Views;
 			sourceTree = "<group>";

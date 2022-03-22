@@ -10,6 +10,7 @@ import CoreLocation
 import MapKit
 
 //MARK: - LocationPickerViewController class declaration
+/// Controller that shows map to pick a location
 final class LocationPickerViewController: UIViewController {
     
     //MARK: - Properties

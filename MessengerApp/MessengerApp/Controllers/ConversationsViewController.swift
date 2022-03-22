@@ -10,7 +10,7 @@ import FirebaseAuth
 import JGProgressHUD
  
 //MARK: - ConversationsViewController class declaration
-/// Controller that shows list of conversations
+/// Controller that shows list of users conversations
 final class ConversationsViewController: UIViewController {
     
     //MARK: - UI elements
