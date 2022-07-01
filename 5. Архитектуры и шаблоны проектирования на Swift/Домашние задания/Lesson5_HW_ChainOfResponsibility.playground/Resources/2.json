@@ -1,0 +1,16 @@
+{
+    "result": [{
+        "name": "John",
+        "age": 30,
+        "isDeveloper": true
+    }, {
+        "name": "Alex",
+        "age": 31,
+        "isDeveloper": true
+    }, {
+        "name": "Steve",
+        "age": 32,
+        "isDeveloper": false
+    }
+    ]
+}
